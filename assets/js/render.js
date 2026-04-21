@@ -13,7 +13,7 @@ export function renderProducts(container, products, template, options = {}) {
     const title = node.querySelector("h3");
     const price = node.querySelector(".price");
     const meta = node.querySelector(".meta");
-    const affiliateLinks = node.querySelectorAll(".affiliate-link");
+    const actionLink = node.querySelector(".card-actions .affiliate-link");
     const href = resolveAffiliateHref(product);
 
     image.src = product.image;
@@ -43,10 +43,11 @@ export function renderProducts(container, products, template, options = {}) {
       meta.appendChild(createMetaRow("Fájl", (product.datasetLabels || []).join(", ")));
     }
 
-    affiliateLinks.forEach((link) => {
+    for (const link of [imageLink, actionLink]) {
+      if (!link) continue;
       link.href = href;
       if (href === "#") link.setAttribute("aria-disabled", "true");
-    });
+    }
 
     fragment.appendChild(node);
   }

@@ -67,7 +67,10 @@ async function loadManifest(mode) {
   console.groupCollapsed("[Admin catalog] Manifest betöltés");
 
   try {
-    catalog = await loadCatalogFromManifest({ debug: createDebug(mode) });
+    catalog = await loadCatalogFromManifest({
+      debug: createDebug(mode),
+      bypassCache: mode === "admin-reload" || mode === "diagnostics",
+    });
     renderAdmin();
     showStatus(
       elements.status,

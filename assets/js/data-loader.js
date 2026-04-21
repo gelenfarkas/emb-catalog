@@ -2,13 +2,16 @@ import { buildDatasetId, inferCategoryFromPath, normalizeDataset } from "./norma
 
 export async function loadFromManifest(manifestPath = "data/manifest.json", options = {}) {
   const debug = options.debug || null;
+  const metrics = createMetrics(options);
   const manifestDebug = debug ? startManifestDebug(debug, manifestPath) : null;
   let response;
   let text = "";
   let manifest;
 
   try {
-    response = await fetch(manifestPath, { cache: "no-store" });
+    const manifestFetchStart = performance.now();
+    response = await fetch(manifestPath, buildFetchOptions(options));
+    metrics.manifestFetchMs += elapsedSince(manifestFetchStart);
     if (manifestDebug) {
       manifestDebug.fetchSucceeded = true;
       manifestDebug.fetchStatus = response.status;
@@ -35,7 +38,9 @@ export async function loadFromManifest(manifestPath = "data/manifest.json", opti
 
   try {
     text = await response.text();
+    const manifestParseStart = performance.now();
     manifest = JSON.parse(text);
+    metrics.manifestParseMs += elapsedSince(manifestParseStart);
     if (manifestDebug) manifestDebug.parseSucceeded = true;
   } catch (error) {
     if (manifestDebug) {
@@ -54,50 +59,20 @@ export async function loadFromManifest(manifestPath = "data/manifest.json", opti
     manifestDebug.topLevelKeys = Object.keys(manifest || {});
   }
 
+  const datasetsStart = performance.now();
+  const results = await Promise.allSettled(
+    datasets.map((entry) => loadDatasetEntry(entry, options, debug, metrics)),
+  );
+  metrics.datasetTotalMs += elapsedSince(datasetsStart);
+
   const loaded = [];
   const errors = [];
 
-  for (const entry of datasets) {
-    const datasetDebug = debug ? startDatasetDebug(debug, entry) : null;
-    try {
-      const datasetPath = entry.path || "";
-      if (!datasetPath) throw new Error("Hiányzó dataset path a manifest entry-ben.");
-
-      if (datasetDebug) datasetDebug.fetchStarted = true;
-      const json = await fetchAndParseDataset(datasetPath, datasetDebug);
-      validateDatasetShape(json, datasetDebug);
-
-      const normalized = normalizeDataset(
-        json,
-        {
-          id: entry.id || buildDatasetId(datasetPath),
-          path: datasetPath,
-          label: entry.label,
-          category: entry.category,
-          categories: entry.categories,
-        },
-        options,
-      );
-
-      if (datasetDebug) {
-        datasetDebug.normalizeSucceeded = true;
-        datasetDebug.normalizedProductCount = normalized.products.length;
-        datasetDebug.status = normalized.products.length ? "ok" : "warning";
-        if (datasetDebug.rawItemCount > 0 && normalized.products.length === 0) {
-          datasetDebug.warnings.push("Van items tömb, de a normalizáló 0 terméket adott vissza.");
-        }
-      }
-
-      loaded.push(normalized);
-    } catch (error) {
-      if (datasetDebug) {
-        datasetDebug.status = "error";
-        datasetDebug.error = errorMessage(error);
-      }
-      errors.push({
-        path: entry.path || "(nincs path)",
-        message: errorMessage(error),
-      });
+  for (const result of results) {
+    if (result.status === "fulfilled") {
+      loaded.push(result.value);
+    } else {
+      errors.push(result.reason);
     }
   }
 
@@ -140,6 +115,7 @@ export async function loadFromFiles(fileList, options = {}) {
       validateDatasetShape(json, datasetDebug);
 
       const category = options.category || inferCategoryFromPath(relativePath);
+      const normalizeStart = performance.now();
       const normalized = normalizeDataset(
         json,
         {
@@ -151,6 +127,7 @@ export async function loadFromFiles(fileList, options = {}) {
         },
         options,
       );
+      createMetrics(options).normalizeMs += elapsedSince(normalizeStart);
 
       if (datasetDebug) {
         datasetDebug.normalizeSucceeded = true;
@@ -186,12 +163,61 @@ export function flattenLoadedDatasets(loaded) {
   return { datasets, products };
 }
 
-async function fetchAndParseDataset(path, datasetDebug) {
+async function loadDatasetEntry(entry, options, debug, metrics) {
+  const datasetDebug = debug ? startDatasetDebug(debug, entry) : null;
+  const datasetPath = entry.path || "";
+
+  try {
+    if (!datasetPath) throw new Error("Hiányzó dataset path a manifest entry-ben.");
+
+    if (datasetDebug) datasetDebug.fetchStarted = true;
+    const json = await fetchAndParseDataset(datasetPath, datasetDebug, options, metrics);
+    validateDatasetShape(json, datasetDebug);
+
+    const normalizeStart = performance.now();
+    const normalized = normalizeDataset(
+      json,
+      {
+        id: entry.id || buildDatasetId(datasetPath),
+        path: datasetPath,
+        label: entry.label,
+        category: entry.category,
+        categories: entry.categories,
+      },
+      options,
+    );
+    metrics.normalizeMs += elapsedSince(normalizeStart);
+
+    if (datasetDebug) {
+      datasetDebug.normalizeSucceeded = true;
+      datasetDebug.normalizedProductCount = normalized.products.length;
+      datasetDebug.status = normalized.products.length ? "ok" : "warning";
+      if (datasetDebug.rawItemCount > 0 && normalized.products.length === 0) {
+        datasetDebug.warnings.push("Van items tömb, de a normalizáló 0 terméket adott vissza.");
+      }
+    }
+
+    return normalized;
+  } catch (error) {
+    if (datasetDebug) {
+      datasetDebug.status = "error";
+      datasetDebug.error = errorMessage(error);
+    }
+    throw {
+      path: datasetPath || "(nincs path)",
+      message: errorMessage(error),
+    };
+  }
+}
+
+async function fetchAndParseDataset(path, datasetDebug, options, metrics) {
   let response;
   let text = "";
 
   try {
-    response = await fetch(path, { cache: "no-store" });
+    const fetchStart = performance.now();
+    response = await fetch(path, buildFetchOptions(options));
+    metrics.datasetFetchMs += elapsedSince(fetchStart);
     if (datasetDebug) {
       datasetDebug.fetchSucceeded = true;
       datasetDebug.fetchStatus = response.status;
@@ -212,7 +238,9 @@ async function fetchAndParseDataset(path, datasetDebug) {
 
   try {
     text = await response.text();
+    const parseStart = performance.now();
     const json = JSON.parse(text);
+    metrics.datasetParseMs += elapsedSince(parseStart);
     if (datasetDebug) datasetDebug.parseSucceeded = true;
     return json;
   } catch (error) {
@@ -264,11 +292,31 @@ function countReplacementInValue(value) {
   return typeof value === "string" ? (value.match(/\uFFFD/g) || []).length : 0;
 }
 
+function buildFetchOptions(options = {}) {
+  return options.bypassCache ? { cache: "no-store" } : {};
+}
+
+function createMetrics(options = {}) {
+  const metrics = options.metrics || {};
+  metrics.manifestFetchMs = metrics.manifestFetchMs || 0;
+  metrics.manifestParseMs = metrics.manifestParseMs || 0;
+  metrics.datasetTotalMs = metrics.datasetTotalMs || 0;
+  metrics.datasetFetchMs = metrics.datasetFetchMs || 0;
+  metrics.datasetParseMs = metrics.datasetParseMs || 0;
+  metrics.normalizeMs = metrics.normalizeMs || 0;
+  return metrics;
+}
+
+function elapsedSince(start) {
+  return performance.now() - start;
+}
+
 function startManifestDebug(debug, path) {
   const previousAttempts = debug.manifest?.attemptedPaths || [];
   debug.manifest = {
     path,
     attemptedPaths: [...previousAttempts, path],
+    selectedSource: "",
     status: "loading",
     fetchStarted: true,
     fetchSucceeded: false,
@@ -278,7 +326,6 @@ function startManifestDebug(debug, path) {
     parseSucceeded: false,
     entryCount: 0,
     topLevelKeys: [],
-    selectedSource: "",
     preview: "",
     error: "",
   };

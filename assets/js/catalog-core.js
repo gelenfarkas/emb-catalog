@@ -30,20 +30,31 @@ export function createDebug(mode) {
       status: "not-started",
       error: "",
     },
+    performance: {
+      manifestFetchMs: 0,
+      manifestParseMs: 0,
+      datasetTotalMs: 0,
+      datasetFetchMs: 0,
+      datasetParseMs: 0,
+      normalizeMs: 0,
+      dedupeMs: 0,
+      totalInitMs: 0,
+    },
     warnings: [],
     errors: [],
   };
 }
 
-export async function loadCatalogFromManifest({ debug = createDebug("manifest") } = {}) {
+export async function loadCatalogFromManifest({ debug = createDebug("manifest"), bypassCache = false } = {}) {
   let result = null;
   let lastError = null;
+  const start = performance.now();
   const candidates = location.protocol === "file:" ? [MANIFEST_PATHS[0]] : MANIFEST_PATHS;
 
   for (const manifestPath of candidates) {
     try {
       console.groupCollapsed(`[Catalog] Manifest: ${manifestPath}`);
-      result = await loadFromManifest(manifestPath, { debug });
+      result = await loadFromManifest(manifestPath, { debug, metrics: debug.performance, bypassCache });
       debug.manifest.selectedSource = manifestPath;
       debug.manifest.status = "ok";
       debug.manifest.entryCount = debug.manifest.entryCount || result.manifest?.datasets?.length || 0;
@@ -76,11 +87,15 @@ export async function loadCatalogFromManifest({ debug = createDebug("manifest") 
     });
   }
 
-  return buildCatalogState(result.loaded, debug);
+  const state = buildCatalogState(result.loaded, debug);
+  debug.performance.totalInitMs = performance.now() - start;
+  logPerformance("[Catalog] Betöltési idők", debug.performance);
+  return state;
 }
 
 export async function loadCatalogFromFiles(fileList, { debug = createDebug("manual") } = {}) {
-  const result = await loadFromFiles(fileList, { debug });
+  const start = performance.now();
+  const result = await loadFromFiles(fileList, { debug, metrics: debug.performance });
 
   for (const error of result.errors || []) {
     debug.errors.push({
@@ -90,12 +105,17 @@ export async function loadCatalogFromFiles(fileList, { debug = createDebug("manu
     });
   }
 
-  return buildCatalogState(result.loaded, debug);
+  const state = buildCatalogState(result.loaded, debug);
+  debug.performance.totalInitMs = performance.now() - start;
+  logPerformance("[Catalog] Kézi import idők", debug.performance);
+  return state;
 }
 
 export function buildCatalogState(loaded, debug) {
   const flat = flattenLoadedDatasets(loaded);
+  const dedupeStart = performance.now();
   const deduped = dedupeProducts(flat.products);
+  debug.performance.dedupeMs += performance.now() - dedupeStart;
   const state = {
     datasets: flat.datasets,
     products: deduped.products,
@@ -197,4 +217,22 @@ function compareNullablePrice(a, b) {
 function dateValue(value) {
   const date = Date.parse(value || "");
   return Number.isFinite(date) ? date : 0;
+}
+
+function logPerformance(label, metrics) {
+  console.info(label);
+  console.table({
+    "manifest fetch": roundMs(metrics.manifestFetchMs),
+    "manifest parse": roundMs(metrics.manifestParseMs),
+    "datasetek összesen": roundMs(metrics.datasetTotalMs),
+    "dataset fetch összesen": roundMs(metrics.datasetFetchMs),
+    "dataset parse összesen": roundMs(metrics.datasetParseMs),
+    normalizálás: roundMs(metrics.normalizeMs),
+    deduplikáció: roundMs(metrics.dedupeMs),
+    "teljes adat init": roundMs(metrics.totalInitMs),
+  });
+}
+
+function roundMs(value) {
+  return `${Math.round((value || 0) * 10) / 10} ms`;
 }

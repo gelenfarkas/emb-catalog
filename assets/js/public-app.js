@@ -35,6 +35,7 @@ let catalog = {
   debug: createDebug("public"),
 };
 let rendered = [];
+let renderFrame = 0;
 
 init();
 
@@ -51,13 +52,16 @@ async function init() {
 }
 
 async function loadManifest() {
+  const initStart = performance.now();
   showStatus(elements.status, "A katalógus betöltése folyamatban...");
   console.groupCollapsed("[Public catalog] Betöltés");
 
   try {
     catalog = await loadCatalogFromManifest({ debug: createDebug("public") });
     refreshFilterOptions();
-    render();
+    render({ reason: "initial" });
+    catalog.debug.performance.totalInitMs = performance.now() - initStart;
+    logPublicPerformance(catalog.debug.performance);
     showStatus(
       elements.status,
       catalog.debug.errors.length
@@ -87,8 +91,8 @@ function bindFilters() {
     elements.sellerFilter,
     elements.sortSelect,
   ]) {
-    input.addEventListener("input", render);
-    input.addEventListener("change", render);
+    input.addEventListener("input", scheduleRender);
+    input.addEventListener("change", scheduleRender);
   }
 }
 
@@ -98,17 +102,40 @@ function refreshFilterOptions() {
   fillSelect(elements.sellerFilter, options.sellers, "Összes bolt");
   renderCategoryNav(elements.categoryNav, options.categories, (category) => {
     elements.categoryFilter.value = category;
-    render();
+    render({ reason: "category-nav" });
     document.querySelector("#products").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
-function render() {
+function scheduleRender() {
+  if (renderFrame) return;
+  renderFrame = requestAnimationFrame(() => {
+    renderFrame = 0;
+    render({ reason: "filter-change" });
+  });
+}
+
+function render({ reason = "manual" } = {}) {
+  const start = performance.now();
   const filters = readFilters();
+  const filterStart = performance.now();
   rendered = sortProducts(filterProducts(catalog.products, filters), filters.sort);
+  const filterSortMs = performance.now() - filterStart;
 
   try {
+    const renderStart = performance.now();
     renderProducts(elements.productGrid, rendered, elements.productCardTemplate, { mode: "public" });
+    const renderMs = performance.now() - renderStart;
+    catalog.debug.performance.firstRenderMs = catalog.debug.performance.firstRenderMs || renderMs;
+
+    if (reason === "initial") {
+      console.info("[Public catalog] Első render", {
+        products: rendered.length,
+        filterSortMs: roundMs(filterSortMs),
+        renderMs: roundMs(renderMs),
+        totalRenderCycleMs: roundMs(performance.now() - start),
+      });
+    }
   } catch (error) {
     console.error("Publikus render hiba", error);
     showStatus(elements.status, `A terméklista megjelenítése nem sikerült: ${errorMessage(error)}`, "error");
@@ -146,5 +173,24 @@ function resetFilters() {
   elements.maxPriceInput.value = "";
   elements.sellerFilter.value = "";
   elements.sortSelect.value = "fresh";
-  render();
+  render({ reason: "reset" });
+}
+
+function logPublicPerformance(metrics) {
+  console.info("[Public catalog] Performance mérés");
+  console.table({
+    "manifest fetch": roundMs(metrics.manifestFetchMs),
+    "manifest parse": roundMs(metrics.manifestParseMs),
+    "datasetek összesen": roundMs(metrics.datasetTotalMs),
+    "dataset fetch összesen": roundMs(metrics.datasetFetchMs),
+    "dataset parse összesen": roundMs(metrics.datasetParseMs),
+    normalizálás: roundMs(metrics.normalizeMs),
+    deduplikáció: roundMs(metrics.dedupeMs),
+    "első render": roundMs(metrics.firstRenderMs),
+    "teljes public init": roundMs(metrics.totalInitMs),
+  });
+}
+
+function roundMs(value) {
+  return `${Math.round((value || 0) * 10) / 10} ms`;
 }

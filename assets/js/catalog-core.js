@@ -175,16 +175,18 @@ export function errorMessage(error) {
 function productMatches(product, filters) {
   const query = cleanText(filters.query).toLowerCase();
   if (query) {
-    const haystack = [
-      product.title,
-      product.itemId,
-      product.sellerName,
-      product.source,
-      ...(product.categories || []),
-      ...(product.datasetLabels || []),
-    ]
-      .join(" ")
-      .toLowerCase();
+    const haystack =
+      product.searchText ||
+      [
+        product.title,
+        product.itemId,
+        product.sellerName,
+        product.source,
+        ...(product.categories || []),
+        ...(product.datasetLabels || []),
+      ]
+        .join(" ")
+        .toLowerCase();
     if (!haystack.includes(query)) return false;
   }
 

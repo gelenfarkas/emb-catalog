@@ -23,9 +23,13 @@ const REQUIRED = [
   "#duplicateCount",
   "#categoryNav",
   "#productGrid",
+  "#loadMoreBtn",
   "#emptyState",
   "#productCardTemplate",
 ];
+
+const PAGE_SIZE = 48;
+const SEARCH_DEBOUNCE_MS = 180;
 
 let elements;
 let catalog = {
@@ -35,7 +39,9 @@ let catalog = {
   debug: createDebug("public"),
 };
 let rendered = [];
+let visibleLimit = PAGE_SIZE;
 let renderFrame = 0;
+let searchDebounceTimer = 0;
 
 init();
 
@@ -48,6 +54,7 @@ async function init() {
 
   bindFilters();
   document.querySelector("#resetFiltersBtn")?.addEventListener("click", resetFilters);
+  elements.loadMoreBtn.addEventListener("click", showMoreProducts);
   await loadManifest();
 }
 
@@ -58,6 +65,7 @@ async function loadManifest() {
 
   try {
     catalog = await loadCatalogFromManifest({ debug: createDebug("public") });
+    prepareProductsForSearch();
     refreshFilterOptions();
     render({ reason: "initial" });
     catalog.debug.performance.totalInitMs = performance.now() - initStart;
@@ -83,16 +91,31 @@ async function loadManifest() {
 }
 
 function bindFilters() {
-  for (const input of [
-    elements.searchInput,
-    elements.categoryFilter,
-    elements.minPriceInput,
-    elements.maxPriceInput,
-    elements.sellerFilter,
-    elements.sortSelect,
-  ]) {
-    input.addEventListener("input", scheduleRender);
-    input.addEventListener("change", scheduleRender);
+  elements.searchInput.addEventListener("input", scheduleSearchRender);
+  elements.searchInput.addEventListener("change", () => scheduleRender({ resetPage: true }));
+
+  for (const input of [elements.minPriceInput, elements.maxPriceInput]) {
+    input.addEventListener("input", () => scheduleRender({ resetPage: true }));
+    input.addEventListener("change", () => scheduleRender({ resetPage: true }));
+  }
+
+  for (const input of [elements.categoryFilter, elements.sellerFilter, elements.sortSelect]) {
+    input.addEventListener("change", () => scheduleRender({ resetPage: true }));
+  }
+}
+
+function prepareProductsForSearch() {
+  for (const product of catalog.products) {
+    product.searchText = [
+      product.title,
+      product.itemId,
+      product.sellerName,
+      product.source,
+      ...(product.categories || []),
+      ...(product.datasetLabels || []),
+    ]
+      .join(" ")
+      .toLowerCase();
   }
 }
 
@@ -102,35 +125,45 @@ function refreshFilterOptions() {
   fillSelect(elements.sellerFilter, options.sellers, "Összes bolt");
   renderCategoryNav(elements.categoryNav, options.categories, (category) => {
     elements.categoryFilter.value = category;
-    render({ reason: "category-nav" });
+    render({ reason: "category-nav", resetPage: true });
     document.querySelector("#products").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
-function scheduleRender() {
+function scheduleSearchRender() {
+  window.clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = window.setTimeout(() => {
+    scheduleRender({ resetPage: true });
+  }, SEARCH_DEBOUNCE_MS);
+}
+
+function scheduleRender({ resetPage = false } = {}) {
   if (renderFrame) return;
   renderFrame = requestAnimationFrame(() => {
     renderFrame = 0;
-    render({ reason: "filter-change" });
+    render({ reason: "filter-change", resetPage });
   });
 }
 
-function render({ reason = "manual" } = {}) {
+function render({ reason = "manual", resetPage = false } = {}) {
   const start = performance.now();
+  if (resetPage) visibleLimit = PAGE_SIZE;
   const filters = readFilters();
   const filterStart = performance.now();
   rendered = sortProducts(filterProducts(catalog.products, filters), filters.sort);
+  const visibleProducts = rendered.slice(0, visibleLimit);
   const filterSortMs = performance.now() - filterStart;
 
   try {
     const renderStart = performance.now();
-    renderProducts(elements.productGrid, rendered, elements.productCardTemplate, { mode: "public" });
+    renderProducts(elements.productGrid, visibleProducts, elements.productCardTemplate, { mode: "public" });
     const renderMs = performance.now() - renderStart;
     catalog.debug.performance.firstRenderMs = catalog.debug.performance.firstRenderMs || renderMs;
 
     if (reason === "initial") {
       console.info("[Public catalog] Első render", {
-        products: rendered.length,
+        products: visibleProducts.length,
+        totalMatches: rendered.length,
         filterSortMs: roundMs(filterSortMs),
         renderMs: roundMs(renderMs),
         totalRenderCycleMs: roundMs(performance.now() - start),
@@ -143,7 +176,9 @@ function render({ reason = "manual" } = {}) {
   }
 
   elements.emptyState.hidden = rendered.length > 0;
-  elements.resultCount.textContent = `${rendered.length} termék`;
+  elements.loadMoreBtn.hidden = visibleLimit >= rendered.length;
+  elements.resultCount.textContent =
+    visibleLimit < rendered.length ? `${visibleProducts.length} / ${rendered.length} termék` : `${rendered.length} termék`;
   elements.datasetCount.textContent = `${catalog.datasets.length} válogatás`;
   elements.duplicateCount.textContent = `${catalog.duplicateCount} ismétlődés szűrve`;
   renderActiveFilters(elements.activeFilters, [
@@ -153,6 +188,11 @@ function render({ reason = "manual" } = {}) {
     { label: "Max", value: filters.maxPrice ?? "" },
     { label: "Bolt", value: filters.seller },
   ]);
+}
+
+function showMoreProducts() {
+  visibleLimit += PAGE_SIZE;
+  render({ reason: "load-more" });
 }
 
 function readFilters() {
@@ -173,7 +213,7 @@ function resetFilters() {
   elements.maxPriceInput.value = "";
   elements.sellerFilter.value = "";
   elements.sortSelect.value = "fresh";
-  render({ reason: "reset" });
+  render({ reason: "reset", resetPage: true });
 }
 
 function logPublicPerformance(metrics) {

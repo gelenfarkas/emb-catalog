@@ -16,6 +16,10 @@ export function renderProducts(container, products, template, options = {}) {
     const actionLink = node.querySelector(".card-actions .affiliate-link");
     const href = resolveAffiliateHref(product);
 
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.width = 320;
+    image.height = 320;
     image.src = product.image;
     image.alt = product.title;
     image.onerror = () => {

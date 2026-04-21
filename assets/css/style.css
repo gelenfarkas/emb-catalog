@@ -637,6 +637,12 @@ select:focus {
   min-width: 0;
 }
 
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-4);
+}
+
 .product-card {
   display: grid;
   grid-template-rows: auto 1fr;

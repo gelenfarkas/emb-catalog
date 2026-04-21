@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EastMallBuy Válogatott Katalógus</title>
+    <meta
+      name="description"
+      content="Válogatott EastMallBuy termékek egyszerű kereséssel, kategóriákkal és partneroldali rendelési linkekkel."
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="public">
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Válogatott EastMallBuy ajánlatok</p>
+          <h1>Termékek egy helyen, gyors böngészéssel és közvetlen partnerlinkkel.</h1>
+          <p class="hero__lead">
+            Nézd át a friss válogatást kategória, ár vagy keresés alapján, majd nyisd meg
+            a kiszemelt terméket az EastMallBuy partneroldalán. Egyszerű katalógus,
+            kevesebb keresgélés, gyorsabb döntés.
+          </p>
+          <div class="hero__actions">
+            <a
+              id="registerLink"
+              class="btn btn--primary"
+              href="https://www.eastmallbuy.com/web/#/register?inviter=gelenfarkas"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              EastMallBuy regisztráció
+            </a>
+            <a class="btn btn--light" href="#products">Termékek böngészése</a>
+          </div>
+        </div>
+        <div class="hero__media" aria-label="Kiemelt termék előnézet">
+          <div class="hero-card">
+            <img
+              src="https://si.geilicdn.com/pcitem1376986363-401d0000019dad9d0b520a2102c5_1080_1080.jpg"
+              alt="Kiemelt EastMallBuy termék"
+            />
+            <div>
+              <strong>Válogatott termékek</strong>
+              <span>képek, árak, kategóriák és partneroldali megnyitás</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="benefits" aria-label="Előnyök">
+        <article>
+          <strong>Egyszerű böngészés</strong>
+          <span>Keresés címre, TID-re, boltra, kategóriára és árra.</span>
+        </article>
+        <article>
+          <strong>Gyors megnyitás</strong>
+          <span>Minden termékkártya közvetlen EastMallBuy partnerlinkre visz.</span>
+        </article>
+        <article>
+          <strong>Átlátható válogatás</strong>
+          <span>A termékek több exportból, deduplikált katalógusban jelennek meg.</span>
+        </article>
+      </section>
+
+      <section id="status" class="notice notice--info" role="status">
+        A katalógus betöltése folyamatban...
+      </section>
+
+      <section class="catalog-layout">
+        <aside class="filters" aria-label="Szűrők">
+          <div class="filter-head">
+            <div>
+              <p class="eyebrow">Szűrés</p>
+              <h2>Katalógus</h2>
+            </div>
+            <button id="resetFiltersBtn" class="btn btn--small" type="button">Törlés</button>
+          </div>
+
+          <label>
+            Keresés
+            <input id="searchInput" type="search" placeholder="Cím, TID vagy bolt" />
+          </label>
+
+          <label>
+            Kategória
+            <select id="categoryFilter">
+              <option value="">Összes kategória</option>
+            </select>
+          </label>
+
+          <div class="range-grid">
+            <label>
+              Min. ár USD
+              <input id="minPriceInput" type="number" min="0" step="0.01" placeholder="0" />
+            </label>
+            <label>
+              Max. ár USD
+              <input id="maxPriceInput" type="number" min="0" step="0.01" placeholder="100" />
+            </label>
+          </div>
+
+          <label>
+            Bolt / seller
+            <select id="sellerFilter">
+              <option value="">Összes bolt</option>
+            </select>
+          </label>
+
+          <label>
+            Rendezés
+            <select id="sortSelect">
+              <option value="fresh">Legfrissebb előre</option>
+              <option value="title-asc">Cím A-Z</option>
+              <option value="title-desc">Cím Z-A</option>
+              <option value="price-asc">Ár növekvő</option>
+              <option value="price-desc">Ár csökkenő</option>
+              <option value="category-asc">Kategória szerint</option>
+            </select>
+          </label>
+
+          <div id="activeFilters" class="chips" aria-label="Aktív szűrők"></div>
+        </aside>
+
+        <section class="catalog" id="products" aria-label="Termékek">
+          <div class="results-head">
+            <div>
+              <p class="eyebrow">Találatok</p>
+              <h2 id="resultCount">0 termék</h2>
+            </div>
+            <div class="stats">
+              <span id="datasetCount">0 válogatás</span>
+              <span id="duplicateCount">0 ismétlődés szűrve</span>
+            </div>
+          </div>
+
+          <div id="categoryNav" class="category-nav" aria-label="Kategória böngészés"></div>
+          <div id="productGrid" class="product-grid"></div>
+          <div id="emptyState" class="empty" hidden>
+            Nincs találat ezekkel a szűrőkkel. Próbálj meg kevesebb feltételt megadni.
+          </div>
+        </section>
+      </section>
+
+      <footer class="public-footer">
+        <a href="admin.html">Admin / setup</a>
+      </footer>
+    </main>
+
+    <template id="productCardTemplate">
+      <article class="product-card">
+        <a class="product-image affiliate-link" target="_blank" rel="noopener noreferrer">
+          <img alt="" loading="lazy" />
+        </a>
+        <div class="product-body">
+          <div class="badges"></div>
+          <h3></h3>
+          <div class="price"></div>
+          <dl class="meta"></dl>
+          <div class="card-actions">
+            <a class="btn btn--primary affiliate-link" target="_blank" rel="noopener noreferrer">
+              Termék megnyitása
+            </a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="assets/js/public-app.js"></script>
+  </body>
+</html>

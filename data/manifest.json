@@ -1,0 +1,19 @@
+{
+  "datasets": [
+    {
+      "path": "data/cipo/eastmallbuy-products-1772004864-2026-04-21T18-04-15-746Z.json",
+      "category": "Cipő",
+      "label": "Cipő / OHERO STUDIO valós export"
+    },
+    {
+      "path": "data/cipo/shop-1.json",
+      "category": "Cipő",
+      "label": "Cipő / OHERO STUDIO minta"
+    },
+    {
+      "path": "data/zokni/shop-1.json",
+      "category": "Zokni",
+      "label": "Zokni / példa export"
+    }
+  ]
+}

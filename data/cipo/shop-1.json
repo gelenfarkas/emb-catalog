@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "source": "goods_list_dom",
+  "sourceLabel": "Minta EastMallBuy export",
+  "itemCount": 2,
+  "generatedAt": "2026-04-21T18:04:15.745Z",
+  "affiliate": {
+    "username": "gelenfarkas",
+    "searchLang": "en"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&shopName=OHERO%20STUDIO",
+    "title": "OHERO STUDIO",
+    "sellerName": "OHERO STUDIO",
+    "tp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7740781099",
+      "tp": "micro",
+      "title": "Férfi cipő minta - Air Jordan 4 Retro AJ4",
+      "price": 55.53,
+      "priceLabel": "$55.53",
+      "image": "https://si.geilicdn.com/pcitem1376986363-401d0000019dad9d0b520a2102c5_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740781099&sales=0",
+      "sellerName": "OHERO STUDIO",
+      "source": "goods_list_dom",
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740781099&inviter=gelenfarkas"
+    },
+    {
+      "itemId": "7743781090",
+      "tp": "micro",
+      "title": "Nike Zoom Pegasus 42 futócipő minta",
+      "price": 40.11,
+      "priceLabel": "$40.11",
+      "image": "https://si.geilicdn.com/pcitem1376986363-58c70000019dad9c5ff30a23038e_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7743781090&sales=0",
+      "sellerName": "OHERO STUDIO",
+      "source": "goods_list_dom"
+    }
+  ]
+}

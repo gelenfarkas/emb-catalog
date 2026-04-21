@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EastMallBuy Katalógus Admin / Setup</title>
+    <meta
+      name="description"
+      content="Setup, admin útmutató és diagnosztika az EastMallBuy statikus katalógushoz."
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="admin">
+    <header class="admin-hero">
+      <div class="admin-hero__inner">
+        <p class="eyebrow">Admin / setup</p>
+        <h1>EastMallBuy katalógus kezelői útmutató</h1>
+        <p>
+          Ez az oldal a beüzemeléshez, JSON fájlok kezeléséhez, affiliate linkek
+          ellenőrzéséhez és hibakereséshez készült. A vásárlói felület külön oldalon fut.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="index.html">Publikus katalógus megnyitása</a>
+          <a class="btn btn--light" href="#admin-tools">Diagnosztikai eszközök</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell admin-shell">
+      <section class="docs admin-docs">
+        <article>
+          <h2>A) Alkalmazás áttekintése</h2>
+          <p>
+            Ez az app EastMallBuy export JSON fájlokból épít statikus, kereshető termékkatalógust.
+            A publikus oldalon a látogatók termékeket böngésznek, az admin oldalon pedig te tudod
+            ellenőrizni a betöltést, a manifestet és a fájlokat.
+          </p>
+          <p>
+            A működés röviden: a böngésző betölti a <code>data/manifest.json</code> fájlt,
+            végigolvassa a benne felsorolt exportokat, normalizálja a termékeket, deduplikál,
+            majd kirajzolja a katalógust.
+          </p>
+        </article>
+
+        <article>
+          <h2>B) Első beüzemelés</h2>
+          <p>
+            A teljes projektmappát tedd webszerver alá. XAMPP esetén például:
+            <code>c:\xampp\htdocs\embimport</code>, majd nyisd meg:
+            <code>http://localhost/embimport/</code>.
+          </p>
+          <p>
+            A <code>file://</code> megnyitás nem ajánlott, mert a böngésző blokkolhatja a
+            <code>fetch()</code> alapú manifest és JSON betöltést. Használj XAMPP-ot,
+            localhostot vagy bármilyen statikus tárhelyet.
+          </p>
+          <pre><code>/index.html
+/admin.html
+/assets/css/style.css
+/assets/js/public-app.js
+/assets/js/admin-app.js
+/data/manifest.json
+/data/cipo/shop1.json
+/data/zokni/shop1.json</code></pre>
+        </article>
+
+        <article>
+          <h2>C) JSON fájlok kezelése</h2>
+          <p>
+            Az exportokat kategóriamappákba érdemes tenni. Például a cipős fájlok menjenek
+            a <code>data/cipo/</code> mappába, a zoknik a <code>data/zokni/</code> mappába.
+          </p>
+          <p>Manifest példa:</p>
+          <pre><code>{
+  "datasets": [
+    {
+      "path": "data/cipo/shop1.json",
+      "category": "Cipő",
+      "label": "Cipő / Shop 1"
+    }
+  ]
+}</code></pre>
+          <p>Minimum elvárt JSON szerkezet:</p>
+          <pre><code>{
+  "items": [
+    {
+      "itemId": "123",
+      "title": "Példa termék",
+      "price": 12.5,
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&amp;tid=123",
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&amp;tid=123&amp;inviter=gelenfarkas"
+    }
+  ]
+}</code></pre>
+        </article>
+
+        <article>
+          <h2>D) Kézi import</h2>
+          <p>
+            Kézi importot akkor használj, ha gyorsan szeretnél több JSON-t ellenőrizni,
+            vagy <code>file://</code> módban nyitottad meg az oldalt, ahol a manifestes betöltés
+            blokkolódhat. Választhatsz több JSON fájlt, vagy támogatott böngészőben komplett
+            mappát is.
+          </p>
+        </article>
+
+        <article>
+          <h2>E) Affiliate link működés</h2>
+          <p>
+            A publikus katalógus minden kattintható terméklinknél affiliate linket használ.
+            Ha az exportban van <code>affiliateUrl</code>, mindig az kerül ki. Ha nincs,
+            az app újragenerálja a linket az <code>itemId</code>, <code>tp</code> és
+            <code>inviter</code> alapján.
+          </p>
+          <p>
+            Ellenőrzés: a publikus termékkártya gombjának URL-jében szerepelnie kell az
+            <code>inviter=gelenfarkas</code> paraméternek.
+          </p>
+        </article>
+
+        <article>
+          <h2>F) Hibakeresés / debug</h2>
+          <p>Ha nincs termék, ezeket nézd meg sorrendben:</p>
+          <ul>
+            <li>localhost alatt fut-e az oldal, nem <code>file://</code> módban?</li>
+            <li>elérhető-e a <code>data/manifest.json</code>?</li>
+            <li>a manifestben szereplő <code>path</code> tényleg létező JSON fájlra mutat?</li>
+            <li>van-e <code>items</code> tömb a JSON-ban?</li>
+            <li>UTF-8 kódolásúak-e a fájlok?</li>
+            <li>a debug panel mutat-e fetch, parse vagy normalizálási hibát?</li>
+          </ul>
+        </article>
+
+        <article>
+          <h2>G) Gyors ellenőrző lista</h2>
+          <ul class="checklist">
+            <li>Manifest létezik és érvényes JSON.</li>
+            <li>Dataset path jó és HTTP-n elérhető.</li>
+            <li>Az exportban van <code>items</code> tömb.</li>
+            <li>Az affiliate link tartalmaz <code>inviter</code> paramétert.</li>
+            <li>A fájlok UTF-8 kódolásúak.</li>
+            <li>A publikus oldalon megjelennek a termékek.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="admin-tools" class="toolbar" aria-label="Admin műveletek">
+        <div>
+          <p class="eyebrow">H) Technikai eszközök</p>
+          <h2>Betöltés, kézi import és diagnosztika</h2>
+          <p>
+            Ezek a kontrollok csak az admin oldalon vannak. A publikus katalógusban nem
+            jelennek meg fájlfeltöltő vagy debug elemek.
+          </p>
+        </div>
+        <div class="load-actions">
+          <button id="loadManifestBtn" class="btn btn--primary" type="button">
+            Manifest újratöltése
+          </button>
+          <label class="file-button">
+            Több JSON kiválasztása
+            <input id="fileInput" type="file" accept=".json,application/json" multiple />
+          </label>
+          <label class="file-button" id="directoryLabel">
+            Mappa importálása
+            <input id="directoryInput" type="file" accept=".json,application/json" webkitdirectory multiple />
+          </label>
+        </div>
+      </section>
+
+      <section id="status" class="notice notice--info" role="status">
+        Admin diagnosztika betöltése folyamatban...
+      </section>
+
+      <details id="debugPanel" class="debug-panel" open>
+        <summary>
+          <span>Betöltési debug</span>
+          <button id="runDiagnosticsBtn" class="btn btn--small" type="button">
+            Betöltési diagnosztika futtatása
+          </button>
+          <button id="copyDebugBtn" class="btn btn--small" type="button">
+            Debug másolása
+          </button>
+        </summary>
+        <div id="debugContent" class="debug-content">
+          A debug információk az első betöltés után jelennek meg.
+        </div>
+      </details>
+
+      <section class="datasets">
+        <div class="section-title">
+          <p class="eyebrow">Betöltött fájlok</p>
+          <h2>Dataset lista</h2>
+        </div>
+        <div id="datasetList" class="dataset-list"></div>
+      </section>
+
+      <section class="catalog admin-preview" id="products" aria-label="Admin előnézet">
+        <div class="results-head">
+          <div>
+            <p class="eyebrow">Előnézet</p>
+            <h2 id="resultCount">0 termék</h2>
+          </div>
+          <div class="stats">
+            <span id="datasetCount">0 dataset</span>
+            <span id="duplicateCount">0 duplikáció</span>
+          </div>
+        </div>
+        <div id="categoryNav" class="category-nav" aria-label="Kategória böngészés"></div>
+        <div id="productGrid" class="product-grid"></div>
+        <div id="emptyState" class="empty" hidden>Nincs betöltött előnézet.</div>
+      </section>
+
+    </main>
+
+    <template id="productCardTemplate">
+      <article class="product-card">
+        <a class="product-image affiliate-link" target="_blank" rel="noopener noreferrer">
+          <img alt="" loading="lazy" />
+        </a>
+        <div class="product-body">
+          <div class="badges"></div>
+          <h3></h3>
+          <div class="price"></div>
+          <dl class="meta"></dl>
+          <div class="card-actions">
+            <a class="btn btn--primary affiliate-link" target="_blank" rel="noopener noreferrer">
+              Termék megnyitása
+            </a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="assets/js/admin-app.js"></script>
+  </body>
+</html>

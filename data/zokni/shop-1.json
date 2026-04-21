@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "source": "manual_sample",
+  "sourceLabel": "Kézzel összeállított példa",
+  "itemCount": 1,
+  "generatedAt": "2026-04-21T18:10:00.000Z",
+  "affiliate": {
+    "username": "gelenfarkas",
+    "searchLang": "en"
+  },
+  "page": {
+    "sellerName": "Sample Socks Shop",
+    "tp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "990000001",
+      "tp": "micro",
+      "title": "Sport zokni csomag minta",
+      "price": 8.9,
+      "image": "",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=990000001",
+      "sellerName": "Sample Socks Shop",
+      "source": "manual_sample"
+    }
+  ]
+}

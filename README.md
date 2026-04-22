@@ -1,43 +1,67 @@
-# EastMallBuy statikus affiliate katalógus
+# EastMallBuy affiliate katalógus
 
-Ez a projekt több EastMallBuy JSON exportot olvas be, kategóriáz, deduplikál, majd laikusbarát termékkatalógusként jelenít meg. Alapértelmezésben PHP és MySQL nélkül működik.
+Short summary: frontend-only, JSON based affiliate/reseller catalog for EastMallBuy product exports.
 
-## Fájlszerkezet
+Ez az alkalmazás egy statikus, böngészőben futó termékkatalógus. EastMallBuy JSON exportokat olvas be, normalizálja a termékeket, kategóriákat és tageket rendel hozzájuk, majd kereshető, szűrhető publikus katalógusként jeleníti meg őket.
+
+A projekt affiliate / reseller katalógus jellegű: minden termékkattintás affiliate linkre mutat. Backend és adatbázis nem szükséges, az adatforrás a `data/manifest.json` és az abban felsorolt JSON datasetek.
+
+## Fő Funkciók
+
+- JSON alapú terméklista betöltése.
+- Manifest alapú dataset kezelés.
+- Multi category rendszer: egy termék több kategóriába/tagbe tartozhat.
+- Kulcsszó alapú kategorizálás HU, EN és CN kulcsszavak alapján.
+- Kategória, ár, bolt és keresés alapú szűrés.
+- Többnyelvű keresés normalizált szöveggel és kategória-kulcsszó bővítéssel.
+- Affiliate link használat vagy generálás.
+- OHERO STUDIO termékek alapértelmezett előresorolása.
+- Dinamikus kategórialista a manifest és a termékek alapján.
+- Lazy image loading a gyorsabb renderelésért.
+- Admin/debug oldal a betöltés és hibák ellenőrzésére.
+- Verziózott asset betöltés cache-busting célból.
+
+## Projekt Struktúra
 
 ```text
-/index.html
-/assets/css/style.css
-/assets/js/app.js
-/assets/js/data-loader.js
-/assets/js/normalizer.js
-/assets/js/render.js
-/data/manifest.json
-/data/cipo/shop-1.json
-/data/zokni/shop-1.json
-/manifest.php
+/index.html              Publikus katalógus oldal
+/admin.html              Setup, előnézet és debug oldal
+/assets/js               Alkalmazáslogika
+/assets/css              Stílusok
+/assets/favicon.svg      Favicon
+/data                    JSON adatfájlok
+/data/manifest.json      Dataset lista
+/manifest.php            Opcionális manifest fallback szerveren
 ```
 
-## Melyik fájl mire való?
+Fontosabb JavaScript fájlok:
 
-- `index.html`: a katalógus felülete, hero, CTA-k, szűrők, kártyák.
-- `assets/css/style.css`: mobilbarát, világos, kártyás design.
-- `assets/js/app.js`: állapotkezelés, szűrés, rendezés, események.
-- `assets/js/data-loader.js`: manifestes és kézi JSON betöltés.
-- `assets/js/normalizer.js`: termék-normalizálás, fallbackek, affiliate link generálás, deduplikáció.
-- `assets/js/render.js`: termékkártyák, dataset lista, szűrő opciók kirajzolása.
-- `data/manifest.json`: statikus fájllista kategóriákkal.
-- `manifest.php`: opcionális fallback, ha a szerver automatikusan listázza a `/data` JSON fájljait.
+- `assets/js/public-app.js`: publikus oldal állapota, szűrés, rendezés, render ciklus.
+- `assets/js/admin-app.js`: admin/debug előnézet.
+- `assets/js/catalog-core.js`: katalógus betöltés, szűrés, rendezés, debug state.
+- `assets/js/data-loader.js`: manifest és dataset fetch/parsing.
+- `assets/js/normalizer.js`: termék-normalizálás, deduplikáció, affiliate URL generálás.
+- `assets/js/category-mapping.js`: kategória térkép, kulcsszavak, `detectCategories`.
+- `assets/js/render.js`: termékkártyák, kategórianav és aktív filter chipek.
+- `assets/js/cache-utils.js`: verziózott asset URL-ek.
 
-## Új JSON hozzáadása
+## Adatkezelés
 
-1. Másold az exportot egy kategóriamappába, például `data/cipo/ohero-2026-04-21.json`.
-2. Bővítsd a `data/manifest.json` fájlt:
+Az app először a manifestet tölti be:
+
+```text
+data/manifest.json
+```
+
+Ha HTTP környezetben a statikus manifest nem érhető el, a rendszer megpróbálhatja a `manifest.php` fallbacket is. A manifest `datasets` tömbje mondja meg, mely JSON fájlokat kell beolvasni.
+
+Példa manifest entry:
 
 ```json
 {
   "datasets": [
     {
-      "path": "data/cipo/ohero-2026-04-21.json",
+      "path": "data/cipo/ohero-export.json",
       "category": "Cipő",
       "label": "Cipő / OHERO STUDIO"
     }
@@ -45,134 +69,196 @@ Ez a projekt több EastMallBuy JSON exportot olvas be, kategóriáz, deduplikál
 }
 ```
 
-## Új kategória mappa
+Új dataset hozzáadása:
 
-Hozz létre új mappát:
+1. Másold a JSON exportot a `data` alá, például `data/cipo/ohero-export.json`.
+2. Add hozzá a fájlt a `data/manifest.json` `datasets` tömbjéhez.
+3. Nyisd meg az admin oldalt, és ellenőrizd, hogy betölt-e.
 
-```text
-/data/taska/shop-1.json
-```
-
-Majd a manifestben:
+Minimális dataset struktúra:
 
 ```json
 {
-  "path": "data/taska/shop-1.json",
-  "category": "Táska",
-  "label": "Táska / Shop 1"
-}
-```
-
-## Statikus tárhelyre feltöltés
-
-Töltsd fel az egész projektmappát a tárhelyre. Fontos, hogy HTTP-n keresztül fusson, mert a böngészők a `fetch("data/manifest.json")` hívást sokszor blokkolják sima `file://` megnyitásnál. XAMPP alatt például ez működik:
-
-```text
-http://localhost/embimport/
-```
-
-## Kézi import stratégia
-
-Az oldalon két kézi mód van:
-
-- több JSON fájl kiválasztása `input[type=file][multiple]` mezővel;
-- komplett mappa importálása `webkitdirectory` támogatással.
-
-Mappaimportnál a relatív útvonalból jön a kategória. Példa:
-
-```js
-inferCategoryFromPath("data/cipo/shop-1.json");
-// "Cipő"
-```
-
-## Mikor kell PHP fallback?
-
-A PHP csak akkor indokolt, ha nem szeretnéd kézzel karbantartani a `data/manifest.json` fájlt. A `manifest.php` végigolvassa a `data` almappáit, és ilyen JSON listát ad vissza:
-
-```json
-{
-  "datasets": [
+  "items": [
     {
-      "path": "data/cipo/shop-1.json",
-      "category": "Cipő",
-      "label": "Cipő / shop-1"
+      "title": "Outdoor running shoes",
+      "price": 10,
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=123",
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=123&inviter=gelenfarkas",
+      "sellerName": "OHERO STUDIO"
     }
   ]
 }
 ```
 
-MySQL nem kell.
+Az app több mezőnév-változatot is elfogad az exportokból, de az `items` tömb a legfontosabb elvárás.
 
-## Normalizált termék objektum példa
+## Kategorizálás
 
-```json
+A kategorizálás alapja az `assets/js/category-mapping.js` fájlban lévő `CATEGORY_MAP`.
+
+Működés:
+
+- A `detectCategories(title)` végigmegy az összes kategórián.
+- Minden kategóriára score-t számol a kulcsszó egyezések alapján.
+- Minden `score > 0` kategória bekerül a termék `categories` tömbjébe.
+- A legmagasabb score lesz a primary kategória.
+
+Normalizált termékmezők:
+
+```js
+product.category      // primary kategória label, kompatibilitás miatt
+product.categoryId    // primary kategória id
+product.categoryLabel // primary kategória label
+product.categories    // összes felismert kategória/tag
+```
+
+Példa:
+
+```js
+detectCategories("Outdoor running shoes");
+// ["cipo", "sport", "outdoor"]
+```
+
+## Keresés
+
+A kereső a termék több mezőjéből épített `searchText` alapján dolgozik:
+
+- cím
+- TID / itemId
+- seller / bolt
+- forrás
+- kategóriák és tagek
+- dataset címkék
+
+A szöveg normalizálása kisbetűsítést, ékezetkezelést és whitespace tisztítást használ. Ha a keresés egy ismert kategóriára vagy kategória-kulcsszóra illeszkedik, a rendszer a kategória további HU, EN és CN kulcsszavait is figyelembe veszi.
+
+Ezért például egy kategória jellegű keresés nem csak a látható címkén, hanem a hozzá tartozó kulcsszavakon keresztül is találhat termékeket.
+
+## Szűrés
+
+A kategóriafilter multi-category módon működik:
+
+```js
+product.categories.includes(selectedCategory)
+```
+
+Ez azt jelenti, hogy ha egy termék egyszerre `Cipő`, `Sport` és `Outdoor`, akkor mindhárom szűrő alatt megjelenhet.
+
+A kategória opciók dinamikusan épülnek:
+
+- manifestben szereplő dataset kategóriákból;
+- normalizált termékek `categories` tömbjéből.
+
+## Rendezés
+
+Az alapértelmezett rendezés az OHERO STUDIO termékeket előre teszi:
+
+```js
+sellerName.toLowerCase().includes("ohero")
+```
+
+Ez csak a default rendezésnél érvényes. Ha a felhasználó ár, cím, frissesség vagy kategória szerint rendez, az app azt használja.
+
+## Affiliate Logika
+
+A publikus katalógus minden terméklinknél affiliate URL-t használ.
+
+Prioritás:
+
+1. Ha a JSON export tartalmaz `affiliateUrl` mezőt, az kerül a kártyára.
+2. Ha nincs `affiliateUrl`, az app generál linket a termék URL-je, `tid` / `itemId`, `tp` és az inviter alapján.
+
+Ez azért fontos, hogy a katalógusból érkező kattintások követhetők legyenek, és ne sima terméklinkre menjenek.
+
+## Futtatás Lokálisan
+
+Az appot HTTP-n keresztül kell futtatni. A `file://` megnyitás nem megbízható, mert a böngészők blokkolhatják a `fetch()` alapú manifest és JSON betöltést.
+
+Python:
+
+```bash
+python -m http.server
+```
+
+Ezután:
+
+```text
+http://localhost:8000/
+```
+
+XAMPP esetén:
+
+```text
+http://localhost/embimport/
+```
+
+## Deploy
+
+A projekt statikus hostingra telepíthető:
+
+- töltsd fel a teljes projektmappát;
+- vagy használj Git clone alapú deployt;
+- backend és adatbázis nem kell;
+- a `data/manifest.json` és az összes benne hivatkozott JSON fájl legyen elérhető HTTP-n.
+
+## Cache
+
+Az assetek verziózott URL-lel töltődnek be az `appendVersion()` segédfüggvényen keresztül. A verzió az `assets/js/app-version.js` fájlban van.
+
+Ez cache-bustingra szolgál: ha változik az app verziója, a böngésző új URL-t kap a JS/CSS fájlokra, így nem ragad bent egy régi asset.
+
+## Hibakeresés
+
+Gyors checklist:
+
+- A projekt HTTP-n fut, nem `file://` alatt.
+- A `data/manifest.json` elérhető böngészőből.
+- A manifest valid JSON.
+- A manifest `path` mezői létező JSON fájlokra mutatnak.
+- A dataset JSON tartalmaz `items` tömböt.
+- A böngésző konzolban nincs fetch vagy JSON parse hiba.
+- Az admin oldal debug panelje szerint a manifest státusza `ok`.
+- A kategória mappingben szerepel a várt kategória és kulcsszó.
+- A termékhez tartozó `sellerName` helyesen érkezik, ha OHERO prioritást vársz.
+- Az affiliate link tartalmazza az `inviter` paramétert, ha generált linkről van szó.
+
+## Bővítés
+
+Új kategória:
+
+1. Add hozzá az új kategóriát a `CATEGORY_MAP` tömbhöz.
+2. Adj meg `id`, `label` és `keywords` mezőket.
+3. Tegyél be HU, EN és szükség esetén CN kulcsszavakat.
+
+Új kulcsszó:
+
+```js
 {
-  "itemId": "7740781099",
-  "tp": "micro",
-  "title": "Air Jordan 4 Retro AJ4 minta termék",
-  "price": 55.53,
-  "priceLabel": "$55.53",
-  "approxHuf": "kb. 20 546 Ft",
-  "image": "https://si.geilicdn.com/example.jpg",
-  "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740781099",
-  "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740781099&inviter=gelenfarkas",
-  "sellerName": "OHERO STUDIO",
-  "source": "goods_list_dom",
-  "categories": ["Cipő"],
-  "datasetIds": ["data-cipo-shop-1-json-abc123"],
-  "datasetCount": 1
+  id: "outdoor",
+  label: "Outdoor",
+  keywords: {
+    hu: ["outdoor", "túra", "bakancs"],
+    en: ["outdoor", "hiking", "trail"],
+    cn: []
+  }
 }
 ```
 
-## Fontos függvény minták
+Új JSON dataset:
 
-Több fájl beolvasása:
+1. Másold a fájlt a `data` mappába.
+2. Hivatkozd be a `data/manifest.json` fájlban.
+3. Ellenőrizd az admin oldalon.
 
-```js
-document.querySelector("#fileInput").addEventListener("change", async (event) => {
-  const result = await loadFromFiles(event.target.files);
-  console.log(result.loaded);
-});
+## Rövid Működési Folyamat
+
+```text
+manifest.json
+  -> dataset JSON fájlok
+  -> normalizálás
+  -> kategória/tag felismerés
+  -> deduplikáció
+  -> szűrés/rendezés
+  -> renderelt termékkártyák affiliate linkekkel
 ```
-
-Mappaimport:
-
-```html
-<input type="file" webkitdirectory multiple accept=".json,application/json" />
-```
-
-Kategória kinyerése relatív útvonalból:
-
-```js
-inferCategoryFromPath("data/zokni/shop-1.json");
-// "Zokni"
-```
-
-Deduplikáció:
-
-```js
-const { products, duplicateCount } = dedupeProducts(allProducts);
-```
-
-Affiliate URL újragenerálás:
-
-```js
-buildAffiliateUrl({
-  url: "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740781099",
-  itemId: "7740781099",
-  tp: "micro",
-  inviter: "gelenfarkas"
-});
-```
-
-## Hero és CTA szöveg
-
-Hero:
-
-> Átlátható katalógus azoknak, akik gyorsan szeretnének jó termékeket találni.
-
-CTA-k:
-
-- Termék megnyitása
-- Affiliate link megnyitása
-- EastMallBuy regisztráció

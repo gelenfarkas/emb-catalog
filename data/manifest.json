@@ -61,6 +61,22 @@
     {
       "path": "data/nadrag/eastmallbuy-products-filtered-1776885680644.json",
       "category": "Nadrág"
+    },
+    {
+      "path": "data/nadrag/eastmallbuy-products-filtered-1776886418966.json",
+      "category": "Nadrág"
+    },
+    {
+      "path": "data/polo/eastmallbuy-products-filtered-1776886472876.json",
+      "category": "Póló"
+    },
+    {
+      "path": "data/kabat/eastmallbuy-products-filtered-1776886630541.json",
+      "category": "Kabát"
+    },
+    {
+      "path": "data/cipo/eastmallbuy-products-filtered-1776887436437.json",
+      "category": "Cipő"
     }
   ]
 }

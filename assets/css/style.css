@@ -709,6 +709,7 @@ select:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  align-content: start;
   min-width: 0;
   max-width: 100%;
   overflow: hidden;

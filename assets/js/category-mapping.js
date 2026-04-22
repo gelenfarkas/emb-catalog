@@ -10,9 +10,29 @@ export const CATEGORY_MAP = [
     id: "cipo",
     label: "Cipő",
     keywords: {
-      hu: ["cipő", "cipők", "sportcipő", "edzőcipő", "bakancs", "szandál"],
+      hu: ["cipő", "cipők", "sportcipő", "edzőcipő", "cipo", "cipok", "sportcipo", "edzocipo", "bakancs", "szandal"],
       en: ["shoe", "shoes", "sneaker", "sneakers", "running shoe", "basketball shoe", "boots", "sandals", "dunk"],
       cn: ["鞋", "鞋子", "运动鞋", "跑步鞋", "篮球鞋", "休闲鞋", "徒步", "越野", "户外", "低帮", "高帮", "DUNK"],
+    },
+  },
+  {
+    id: "sport",
+    label: "Sport",
+    priority: 1,
+    keywords: {
+      hu: ["sport", "edzo", "fut", "futas", "kosarlabda", "fitness"],
+      en: ["sport", "sports", "running", "runner", "basketball", "training", "fitness", "gym", "workout"],
+      cn: [],
+    },
+  },
+  {
+    id: "outdoor",
+    label: "Outdoor",
+    priority: 1,
+    keywords: {
+      hu: ["outdoor", "tura", "turazas", "turacipo", "bakancs", "terep", "kemping"],
+      en: ["outdoor", "hiking", "trekking", "trail", "camping", "boots", "mountain"],
+      cn: [],
     },
   },
   {
@@ -122,31 +142,19 @@ export const CATEGORY_MAP = [
 export const CATEGORY_BY_ID = Object.fromEntries(CATEGORY_MAP.map((category) => [category.id, category]));
 
 export function detectCategory(title) {
+  return detectCategories(title)[0] || "";
+}
+
+export function detectCategories(title) {
   const haystack = normalizeSearchText(title);
-  if (!haystack) return "";
+  if (!haystack) return [];
 
-  let best = null;
+  const matches = rankCategoryMatches(haystack);
+  const best = matches[0];
+  if (!best) return [];
+  if (hasUncategorizedKeyword(haystack) && best.score <= CN_WEIGHT) return [];
 
-  for (const category of CATEGORY_MAP) {
-    const scored = scoreCategory(category, haystack);
-    if (scored.score <= 0) continue;
-
-    if (
-      !best ||
-      scored.score > best.score ||
-      (scored.score === best.score && scored.longestKeyword.length > best.longestKeyword.length) ||
-      (scored.score === best.score &&
-        scored.longestKeyword.length === best.longestKeyword.length &&
-        categoryPriority(category) > categoryPriority(best.category))
-    ) {
-      best = { category, ...scored };
-    }
-  }
-
-  if (!best) return "";
-  if (hasUncategorizedKeyword(haystack) && best.score <= CN_WEIGHT) return "";
-
-  return best.category.id;
+  return matches.map((match) => match.category.id);
 }
 
 export function getCategoryLabel(categoryId) {
@@ -213,6 +221,16 @@ function scoreCategory(category, haystack) {
   }
 
   return { score, longestKeyword };
+}
+
+function rankCategoryMatches(haystack) {
+  return CATEGORY_MAP.map((category) => ({ category, ...scoreCategory(category, haystack) }))
+    .filter((match) => match.score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (b.longestKeyword.length !== a.longestKeyword.length) return b.longestKeyword.length - a.longestKeyword.length;
+      return categoryPriority(b.category) - categoryPriority(a.category);
+    });
 }
 
 function hasUncategorizedKeyword(haystack) {

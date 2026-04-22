@@ -160,7 +160,10 @@ export function sortProducts(products, sort = "fresh") {
 
 export function getFilterOptions(products, datasets = []) {
   return {
-    categories: unique(datasets.flatMap((dataset) => dataset.categories || [])),
+    categories: unique([
+      ...(datasets || []).flatMap((dataset) => dataset.categories || []),
+      ...(products || []).flatMap((product) => product.categories || product.categoryLabel || []),
+    ]),
     sellers: unique(products.map((product) => product.sellerName)),
     sources: unique(products.map((product) => product.source)),
     datasets: unique(datasets.map((dataset) => dataset.label)),
@@ -203,6 +206,7 @@ function productMatches(product, filters) {
     const matchesCategory =
       queryCategory &&
       (product.categoryId === queryCategory.id ||
+        product.category === queryCategory.label ||
         product.categoryLabel === queryCategory.label ||
         (product.categories || []).includes(queryCategory.label));
     if (!matchesText && !matchesCategory) return false;
@@ -210,6 +214,7 @@ function productMatches(product, filters) {
 
   if (
     filters.category &&
+    product.category !== filters.category &&
     product.categoryLabel !== filters.category &&
     product.categoryId !== filters.category &&
     !(product.categories || []).includes(filters.category)
@@ -226,12 +231,22 @@ function productMatches(product, filters) {
 }
 
 function compareProducts(a, b, sort) {
+  if (sort === "default") return compareOheroFirst(a, b) || dateValue(b.newestGeneratedAt) - dateValue(a.newestGeneratedAt);
   if (sort === "title-asc") return a.title.localeCompare(b.title, "hu");
   if (sort === "title-desc") return b.title.localeCompare(a.title, "hu");
   if (sort === "price-asc") return compareNullablePrice(a.price, b.price);
   if (sort === "price-desc") return compareNullablePrice(b.price, a.price);
   if (sort === "category-asc") return (a.categories?.[0] || "").localeCompare(b.categories?.[0] || "", "hu");
   return dateValue(b.newestGeneratedAt) - dateValue(a.newestGeneratedAt);
+}
+
+function compareOheroFirst(a, b) {
+  const aIsOhero = a.sellerName?.toLowerCase().includes("ohero");
+  const bIsOhero = b.sellerName?.toLowerCase().includes("ohero");
+
+  if (aIsOhero && !bIsOhero) return -1;
+  if (!aIsOhero && bIsOhero) return 1;
+  return 0;
 }
 
 function compareNullablePrice(a, b) {

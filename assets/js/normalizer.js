@@ -5,9 +5,11 @@ export const PLACEHOLDER_IMAGE =
 
 import { appendVersion } from "./cache-utils.js";
 
-const { UNCATEGORIZED_LABEL, detectCategory, getCategoryLabel, isManifestCategory, normalizeSearchText } = await import(
+const { UNCATEGORIZED_LABEL, detectCategories, getCategoryLabel, normalizeSearchText } = await import(
   appendVersion("./category-mapping.js")
 );
+
+const categoryDetectionCache = new Map();
 
 const CATEGORY_LABELS = {
   cipo: "Cipő",
@@ -75,7 +77,6 @@ export function normalizeDataset(json, datasetInput, options = {}) {
         dataset,
         index,
         affiliateUsername,
-        manifestCategories: normalizeCategories(options.manifestCategories || []),
       }),
     )
     .filter(Boolean);
@@ -103,12 +104,14 @@ export function normalizeProduct(item, context) {
   const sellerName =
     cleanText(firstNonEmpty([item.sellerName, raw.seller_name, raw.shop_name, raw.seller, page.sellerName, dataset.sellerName])) ||
     "EastMallBuy shop";
-  const normalizedTitle = normalizeSearchText([title, sellerName].join(" "));
-  const detectedCategoryId = detectCategory(normalizedTitle);
-  const categoryId =
-    detectedCategoryId && isAllowedManifestCategory(detectedCategoryId, context.manifestCategories) ? detectedCategoryId : "kategorizalatlan";
+  const normalizedTitle = normalizeSearchText(title);
+  const detectedCategoryIds = getDetectedCategoryIds(normalizedTitle);
+  const categoryId = detectedCategoryIds[0] || "kategorizalatlan";
   const categoryLabel = getCategoryLabel(categoryId) || UNCATEGORIZED_LABEL;
-  const categories = unique([categoryLabel]);
+  const categories = unique([
+    ...detectedCategoryIds.map((detectedCategoryId) => getCategoryLabel(detectedCategoryId) || UNCATEGORIZED_LABEL),
+    categoryLabel,
+  ]);
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
     normalizeUrl(item.affiliateUrl) ||
@@ -132,6 +135,7 @@ export function normalizeProduct(item, context) {
     affiliateUrl,
     sellerName,
     source,
+    category: categoryLabel,
     categoryId,
     categoryLabel,
     normalizedTitle,
@@ -166,11 +170,6 @@ export function dedupeProducts(products) {
     products: Array.from(byKey.values()),
     duplicateCount,
   };
-}
-
-function isAllowedManifestCategory(categoryId, manifestCategories = []) {
-  if (!manifestCategories.length) return true;
-  return isManifestCategory(categoryId, manifestCategories);
 }
 
 export function inferCategoryFromPath(path) {
@@ -234,6 +233,13 @@ function mergeProduct(existing, incoming) {
     newestGeneratedAt: maxDate(existing.newestGeneratedAt, incoming.newestGeneratedAt),
     raw: { ...(other.raw || {}), ...(better.raw || {}) },
   };
+}
+
+function getDetectedCategoryIds(normalizedTitle) {
+  if (!categoryDetectionCache.has(normalizedTitle)) {
+    categoryDetectionCache.set(normalizedTitle, detectCategories(normalizedTitle));
+  }
+  return categoryDetectionCache.get(normalizedTitle);
 }
 
 function scoreProduct(product) {

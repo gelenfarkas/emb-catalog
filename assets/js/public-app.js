@@ -38,6 +38,7 @@ const REQUIRED = [
 
 const PAGE_SIZE = 48;
 const SEARCH_DEBOUNCE_MS = 180;
+const DEFAULT_SORT = "default";
 
 let elements;
 let catalog = {
@@ -222,7 +223,7 @@ function resetFilters() {
   elements.minPriceInput.value = "";
   elements.maxPriceInput.value = "";
   elements.sellerFilter.value = "";
-  elements.sortSelect.value = "fresh";
+  elements.sortSelect.value = DEFAULT_SORT;
   render({ reason: "reset", resetPage: true });
 }
 

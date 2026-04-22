@@ -11,6 +11,20 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script type="importmap">
+      {
+        "imports": {
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+        },
+        "scopes": {
+          "./assets/js/": {
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+          }
+        }
+      }
+    </script>
     <script type="module">
       import { appendVersion } from "./assets/js/cache-utils.js";
       const favicon = document.createElement("link");
@@ -149,13 +163,14 @@
         <article>
           <h2>Cache / frissítés</h2>
           <p>
-            A központi verzióforrás az <code>assets/js/app-version.js</code>. A CSS, JS, favicon,
-            manifest és dataset JSON URL-ek <code>?v=APP_VERSION</code> query paramétert kapnak.
+            A projekt tudatosan nem használ kliensoldali cache-t. A központi verzióforrás az
+            <code>assets/js/app-version.js</code>, és minden kritikus erőforrás verziózott URL-t
+            kap: bootstrap JS, CSS, fő app JS, favicon, manifest és dataset JSON.
           </p>
           <p>
-            Az Apache konfiguráció és a PHP fallback no-store headereket küld HTML, CSS, JS, JSON,
-            SVG és PHP válaszokra. Nincs service worker, polling, auto-refresh vagy kliensoldali
-            JSON cache.
+            Az Apache konfiguráció és a PHP fallback <code>no-store</code> headereket küld. Nincs
+            service worker, PWA cache, localStorage/sessionStorage alapú JSON cache, polling vagy
+            auto-refresh. Új deploy után azonnali frissülés a cél, Chrome-ban is.
           </p>
         </article>
 
@@ -168,6 +183,7 @@
             <li>A dataset tartalmaz <code>items</code> tömböt.</li>
             <li>Új deploy után változott az <code>APP_VERSION</code>.</li>
             <li>Chrome DevTools Network fülön friss <code>?v=</code> értékek látszanak.</li>
+            <li>A <code>cache-utils.js</code> és <code>app-version.js</code> is verziózott URL-ről tölt.</li>
             <li>A debug panel nem mutat fetch, parse vagy normalizálási hibát.</li>
           </ul>
         </article>

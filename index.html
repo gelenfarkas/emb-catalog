@@ -11,6 +11,20 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+    <script type="importmap">
+      {
+        "imports": {
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+        },
+        "scopes": {
+          "./assets/js/": {
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+          }
+        }
+      }
+    </script>
     <script type="module">
       import { appendVersion } from "./assets/js/cache-utils.js";
       const favicon = document.createElement("link");

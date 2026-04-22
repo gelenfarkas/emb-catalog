@@ -42,7 +42,11 @@ export function renderProducts(container, products, template, options = {}) {
       badges.appendChild(createBadge(`${product.datasetCount} datasetben`));
     }
 
-    price.innerHTML = `${escapeHtml(product.priceLabel || "Ár nincs megadva")}<small>${escapeHtml(product.approxHuf || "")}</small>`;
+    price.innerHTML = `
+      <strong>${escapeHtml(product.approxHuf || "Ár nincs megadva")}</strong>
+      <small>${escapeHtml(product.priceLabel || "")}</small>
+    `;
+    price.insertAdjacentHTML("afterend", renderShippingEstimate(product));
     meta.appendChild(createMetaRow("Bolt", product.sellerName));
     meta.appendChild(createMetaRow("TID", product.itemId || "nincs adat"));
 
@@ -135,6 +139,22 @@ export function resolveAffiliateHref(product) {
   });
 
   return generated && generated.includes("inviter=") ? generated : "#";
+}
+
+function renderShippingEstimate(product) {
+  const estimate = product.shippingEstimate || {};
+  const value = estimate.displayHuf || product.shippingEstimateLabel || "Ismeretlen";
+  const detail = estimate.known
+    ? `${escapeHtml(estimate.sourceCategory || "Kategória")} alapján, tájékoztató becslés`
+    : "A kategória alapján nem becsülhető megbízhatóan";
+
+  return `
+    <div class="shipping-estimate" title="A szállítási díj tájékoztató jellegű becslés kategória és becsült méret alapján.">
+      <span>Becsült DHL szállítás</span>
+      <strong>${escapeHtml(value)}</strong>
+      <small>${detail}</small>
+    </div>
+  `;
 }
 
 function resolveCopyHref(product) {

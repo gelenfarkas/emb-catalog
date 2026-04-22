@@ -8,6 +8,7 @@ import { appendVersion } from "./cache-utils.js";
 const { UNCATEGORIZED_LABEL, detectCategories, getCategoryLabel, normalizeSearchText } = await import(
   appendVersion("./category-mapping.js")
 );
+const { estimateShipping } = await import(appendVersion("./shipping-estimator.js"));
 
 const categoryDetectionCache = new Map();
 
@@ -108,10 +109,12 @@ export function normalizeProduct(item, context) {
   const detectedCategoryIds = getDetectedCategoryIds(normalizedTitle);
   const categoryId = detectedCategoryIds[0] || "kategorizalatlan";
   const categoryLabel = getCategoryLabel(categoryId) || UNCATEGORIZED_LABEL;
+  const categoryIds = unique([categoryId, ...detectedCategoryIds]);
   const categories = unique([
     ...detectedCategoryIds.map((detectedCategoryId) => getCategoryLabel(detectedCategoryId) || UNCATEGORIZED_LABEL),
     categoryLabel,
   ]);
+  const shippingEstimate = estimateShipping({ categoryIds, categories });
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
     normalizeUrl(item.affiliateUrl) ||
@@ -137,9 +140,14 @@ export function normalizeProduct(item, context) {
     source,
     category: categoryLabel,
     categoryId,
+    categoryIds,
     categoryLabel,
     normalizedTitle,
     categories,
+    shippingEstimate,
+    shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
+    shippingEstimateLabel: shippingEstimate.displayHuf,
+    shippingEstimateSourceCategory: shippingEstimate.sourceCategory,
     datasetIds: [dataset.id],
     datasetLabels: [dataset.label],
     datasetPaths: [dataset.path],
@@ -220,12 +228,19 @@ function mergeProduct(existing, incoming) {
   const datasetIds = unique([...(existing.datasetIds || []), ...(incoming.datasetIds || [])]);
   const datasetLabels = unique([...(existing.datasetLabels || []), ...(incoming.datasetLabels || [])]);
   const datasetPaths = unique([...(existing.datasetPaths || []), ...(incoming.datasetPaths || [])]);
+  const categoryIds = unique([...(existing.categoryIds || [existing.categoryId]), ...(incoming.categoryIds || [incoming.categoryId])]);
   const categories = unique([...(existing.categories || []), ...(incoming.categories || [])]);
+  const shippingEstimate = estimateShipping({ categoryIds, categories });
 
   return {
     ...other,
     ...better,
+    categoryIds,
     categories,
+    shippingEstimate,
+    shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
+    shippingEstimateLabel: shippingEstimate.displayHuf,
+    shippingEstimateSourceCategory: shippingEstimate.sourceCategory,
     datasetIds,
     datasetLabels,
     datasetPaths,

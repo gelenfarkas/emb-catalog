@@ -3,7 +3,9 @@ import { appendVersion } from "./cache-utils.js";
 const [
   {
     createDebug,
+    applyDefaultProductPriority,
     getFilterOptions,
+    isOheroProduct,
     loadCatalogFromManifest,
     filterProducts,
     sortProducts,
@@ -161,7 +163,8 @@ function render({ reason = "manual", resetPage = false } = {}) {
   if (resetPage) visibleLimit = PAGE_SIZE;
   const filters = readFilters();
   const filterStart = performance.now();
-  rendered = sortProducts(filterProducts(catalog.products, filters), filters.sort);
+  const filteredProducts = filterProducts(catalog.products, filters);
+  rendered = hasUserSort(filters.sort) ? sortProducts(filteredProducts, filters.sort) : applyDefaultProductPriority(filteredProducts);
   const visibleProducts = rendered.slice(0, visibleLimit);
   const filterSortMs = performance.now() - filterStart;
 
@@ -172,9 +175,12 @@ function render({ reason = "manual", resetPage = false } = {}) {
     catalog.debug.performance.firstRenderMs = catalog.debug.performance.firstRenderMs || renderMs;
 
     if (reason === "initial") {
+      const oheroCount = rendered.reduce((count, product) => count + (isOheroProduct(product) ? 1 : 0), 0);
       console.info("[Public catalog] Első render", {
         products: visibleProducts.length,
         totalMatches: rendered.length,
+        oheroCount,
+        firstProductsAreOhero: rendered.slice(0, Math.min(oheroCount, 12)).every(isOheroProduct),
         filterSortMs: roundMs(filterSortMs),
         renderMs: roundMs(renderMs),
         totalRenderCycleMs: roundMs(performance.now() - start),
@@ -204,6 +210,10 @@ function render({ reason = "manual", resetPage = false } = {}) {
 function showMoreProducts() {
   visibleLimit += PAGE_SIZE;
   render({ reason: "load-more" });
+}
+
+function hasUserSort(sort) {
+  return Boolean(sort && sort !== DEFAULT_SORT);
 }
 
 function readFilters() {

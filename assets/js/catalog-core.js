@@ -158,6 +158,12 @@ export function sortProducts(products, sort = "fresh") {
   return sorted;
 }
 
+export function applyDefaultProductPriority(products) {
+  const sorted = [...(products || [])];
+  sorted.sort(compareOheroFirst);
+  return sorted;
+}
+
 export function getFilterOptions(products, datasets = []) {
   return {
     categories: unique([
@@ -231,7 +237,6 @@ function productMatches(product, filters) {
 }
 
 function compareProducts(a, b, sort) {
-  if (sort === "default") return compareOheroFirst(a, b) || dateValue(b.newestGeneratedAt) - dateValue(a.newestGeneratedAt);
   if (sort === "title-asc") return a.title.localeCompare(b.title, "hu");
   if (sort === "title-desc") return b.title.localeCompare(a.title, "hu");
   if (sort === "price-asc") return compareNullablePrice(a.price, b.price);
@@ -240,9 +245,14 @@ function compareProducts(a, b, sort) {
   return dateValue(b.newestGeneratedAt) - dateValue(a.newestGeneratedAt);
 }
 
+export function isOheroProduct(product) {
+  const sellerName = cleanText(product?.sellerName).toLowerCase();
+  return sellerName.includes("ohero") || sellerName.includes("ohero studio");
+}
+
 function compareOheroFirst(a, b) {
-  const aIsOhero = a.sellerName?.toLowerCase().includes("ohero");
-  const bIsOhero = b.sellerName?.toLowerCase().includes("ohero");
+  const aIsOhero = isOheroProduct(a);
+  const bIsOhero = isOheroProduct(b);
 
   if (aIsOhero && !bIsOhero) return -1;
   if (!aIsOhero && bIsOhero) return 1;

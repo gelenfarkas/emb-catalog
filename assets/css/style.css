@@ -784,7 +784,8 @@ select:focus {
   align-self: end;
 }
 
-.card-actions .btn {
+.card-actions .btn,
+.card-actions .copy-link-btn {
   flex: 1 1 min(100%, 150px);
   width: auto;
   min-height: 39px;
@@ -793,6 +794,12 @@ select:focus {
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.card-actions .copy-link-btn {
+  flex-basis: 100%;
+  width: 100%;
+  margin-top: 8px;
 }
 
 .stats span {

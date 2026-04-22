@@ -15,8 +15,10 @@ export function renderProducts(container, products, template, options = {}) {
     const title = node.querySelector("h3");
     const price = node.querySelector(".price");
     const meta = node.querySelector(".meta");
+    const cardActions = node.querySelector(".card-actions");
     const actionLink = node.querySelector(".card-actions .affiliate-link");
     const href = resolveAffiliateHref(product);
+    const copyHref = resolveCopyHref(product);
 
     image.loading = "lazy";
     image.decoding = "async";
@@ -53,6 +55,10 @@ export function renderProducts(container, products, template, options = {}) {
       if (!link) continue;
       link.href = href;
       if (href === "#") link.setAttribute("aria-disabled", "true");
+    }
+
+    if (cardActions) {
+      cardActions.appendChild(createCopyLinkButton(copyHref));
     }
 
     fragment.appendChild(node);
@@ -129,6 +135,72 @@ export function resolveAffiliateHref(product) {
   });
 
   return generated && generated.includes("inviter=") ? generated : "#";
+}
+
+function resolveCopyHref(product) {
+  if (product.affiliateUrl) return product.affiliateUrl;
+
+  const generated = buildAffiliateUrl({
+    url: product.url,
+    itemId: product.itemId,
+    tp: product.tp,
+    inviter: DEFAULT_AFFILIATE_USERNAME,
+  });
+
+  return generated && generated !== "#" ? generated : product.url || "";
+}
+
+function createCopyLinkButton(href) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "btn btn--ghost copy-link-btn";
+  button.textContent = "Link másolása";
+  button.addEventListener("click", async () => {
+    try {
+      await copyToClipboard(href);
+      button.textContent = "Kimásolva ✓";
+      window.setTimeout(() => {
+        button.textContent = "Link másolása";
+      }, 2000);
+    } catch (error) {
+      console.error("Link másolása nem sikerült", error);
+      button.textContent = "Nem sikerült";
+      window.setTimeout(() => {
+        button.textContent = "Link másolása";
+      }, 2000);
+    }
+  });
+  return button;
+}
+
+async function copyToClipboard(text) {
+  const value = String(text || "");
+  if (!value) throw new Error("Nincs másolható link.");
+
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return;
+    } catch (error) {
+      console.warn("Clipboard API fallback aktiválva", error);
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = value;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  textarea.style.top = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+
+  try {
+    if (!document.execCommand("copy")) throw new Error("execCommand copy sikertelen.");
+  } finally {
+    textarea.remove();
+  }
 }
 
 function createBadge(text) {

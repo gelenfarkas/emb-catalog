@@ -127,7 +127,9 @@ function prepareProductsForSearch() {
       product.sellerName,
       product.source,
       product.categoryLabel,
-      ...(product.categories || []),
+      product.manualCategory,
+      ...(product.autoCategories || []),
+      ...(product.allCategories || product.categories || []),
       ...(product.datasetLabels || []),
     ]
       .join(" ")

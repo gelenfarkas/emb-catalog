@@ -14,13 +14,13 @@
     <script type="importmap">
       {
         "imports": {
-          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-06",
-          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-06"
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
         },
         "scopes": {
           "./assets/js/": {
-            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-06",
-            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-06"
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
           }
         }
       }
@@ -88,6 +88,10 @@
             A <code>data/manifest.json</code> <code>datasets</code> tömbje mondja meg, mely
             exportokat kell betölteni. A <code>category</code> és <code>label</code> a dataset
             azonosítását segíti, a terméktageket a title alapú felismerés is bővíti.
+          </p>
+          <p>
+            A manifest kategória manuális hozzárendelésként elsőbbséget kap, az automatikus
+            kategóriák pedig deduplikált kiegészítő címkeként jelennek meg.
           </p>
           <pre><code>{
   "datasets": [

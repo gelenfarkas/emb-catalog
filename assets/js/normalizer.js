@@ -5,7 +5,7 @@ export const PLACEHOLDER_IMAGE =
 
 import { appendVersion } from "./cache-utils.js";
 
-const { UNCATEGORIZED_LABEL, detectCategories, getCategoryLabel, normalizeSearchText } = await import(
+const { UNCATEGORIZED_LABEL, detectCategories, getCategoryLabel, normalizeCategoryId, normalizeCategoryLabel, normalizeSearchText } = await import(
   appendVersion("./category-mapping.js")
 );
 const { estimateShipping } = await import(appendVersion("./shipping-estimator.js"));
@@ -22,13 +22,16 @@ const CATEGORY_LABELS = {
   taska: "Táska",
   bag: "Táska",
   bags: "Táska",
+  ruha: "Női ruhák",
+  noi_ruha: "Női ruhák",
+  noi_ruhak: "Női ruhák",
   sal: "Sál",
   nadrag: "Nadrág",
   kabat: "Kabát",
   melleny: "Mellény",
   sapka: "Sapka",
-  polo: "Póló",
-  pulcsi: "Pulcsi",
+  polo: "Póló / Ing",
+  pulcsi: "Pulóver",
   pulover: "Pulóver",
   furdoruha: "Fürdőruha",
   kategorizalatlan: "Kategorizálatlan",
@@ -107,14 +110,16 @@ export function normalizeProduct(item, context) {
     "EastMallBuy shop";
   const normalizedTitle = normalizeSearchText(title);
   const detectedCategoryIds = getDetectedCategoryIds(normalizedTitle);
-  const categoryId = detectedCategoryIds[0] || "kategorizalatlan";
-  const categoryLabel = getCategoryLabel(categoryId) || UNCATEGORIZED_LABEL;
-  const categoryIds = unique([categoryId, ...detectedCategoryIds]);
-  const categories = unique([
-    ...detectedCategoryIds.map((detectedCategoryId) => getCategoryLabel(detectedCategoryId) || UNCATEGORIZED_LABEL),
-    categoryLabel,
-  ]);
-  const shippingEstimate = estimateShipping({ categoryIds, categories });
+  const manualCategories = uniqueCategoryLabels(dataset.categories || []);
+  const manualCategory = manualCategories[0] || "";
+  const autoCategories = uniqueCategoryLabels(
+    detectedCategoryIds.map((detectedCategoryId) => getCategoryLabel(detectedCategoryId) || UNCATEGORIZED_LABEL),
+  );
+  const primaryCategory = manualCategory || autoCategories[0] || UNCATEGORIZED_LABEL;
+  const primaryCategoryId = normalizeCategoryId(primaryCategory) || detectedCategoryIds[0] || "kategorizalatlan";
+  const allCategories = uniqueCategoryLabels([...manualCategories, ...autoCategories, primaryCategory]);
+  const categoryIds = unique([primaryCategoryId, ...manualCategories.map(normalizeCategoryId), ...detectedCategoryIds]);
+  const shippingEstimate = estimateShipping({ categoryIds, categories: allCategories });
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
     normalizeUrl(item.affiliateUrl) ||
@@ -138,12 +143,18 @@ export function normalizeProduct(item, context) {
     affiliateUrl,
     sellerName,
     source,
-    category: categoryLabel,
-    categoryId,
+    category: primaryCategory,
+    categoryId: primaryCategoryId,
     categoryIds,
-    categoryLabel,
+    categoryLabel: primaryCategory,
+    manualCategory,
+    manualCategories,
+    autoCategories,
+    autoCategoryIds: detectedCategoryIds,
+    allCategories,
+    primaryCategory,
     normalizedTitle,
-    categories,
+    categories: allCategories,
     shippingEstimate,
     shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
     shippingEstimateLabel: shippingEstimate.displayHuf,
@@ -228,15 +239,36 @@ function mergeProduct(existing, incoming) {
   const datasetIds = unique([...(existing.datasetIds || []), ...(incoming.datasetIds || [])]);
   const datasetLabels = unique([...(existing.datasetLabels || []), ...(incoming.datasetLabels || [])]);
   const datasetPaths = unique([...(existing.datasetPaths || []), ...(incoming.datasetPaths || [])]);
-  const categoryIds = unique([...(existing.categoryIds || [existing.categoryId]), ...(incoming.categoryIds || [incoming.categoryId])]);
-  const categories = unique([...(existing.categories || []), ...(incoming.categories || [])]);
-  const shippingEstimate = estimateShipping({ categoryIds, categories });
+  const manualCategories = uniqueCategoryLabels([
+    ...(existing.manualCategories || [existing.manualCategory]),
+    ...(incoming.manualCategories || [incoming.manualCategory]),
+  ]);
+  const manualCategory = manualCategories[0] || "";
+  const autoCategories = uniqueCategoryLabels([...(existing.autoCategories || []), ...(incoming.autoCategories || [])]);
+  const allCategories = uniqueCategoryLabels([...manualCategories, ...autoCategories, ...(existing.allCategories || []), ...(incoming.allCategories || [])]);
+  const primaryCategory = manualCategory || better.primaryCategory || allCategories[0] || UNCATEGORIZED_LABEL;
+  const categoryIds = unique([
+    normalizeCategoryId(primaryCategory),
+    ...manualCategories.map(normalizeCategoryId),
+    ...(existing.categoryIds || [existing.categoryId]),
+    ...(incoming.categoryIds || [incoming.categoryId]),
+  ]);
+  const shippingEstimate = estimateShipping({ categoryIds, categories: allCategories });
 
   return {
     ...other,
     ...better,
+    category: primaryCategory,
+    categoryId: normalizeCategoryId(primaryCategory) || better.categoryId || "kategorizalatlan",
     categoryIds,
-    categories,
+    categoryLabel: primaryCategory,
+    manualCategory,
+    manualCategories,
+    autoCategories,
+    autoCategoryIds: unique([...(existing.autoCategoryIds || []), ...(incoming.autoCategoryIds || [])]),
+    allCategories,
+    primaryCategory,
+    categories: allCategories,
     shippingEstimate,
     shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
     shippingEstimateLabel: shippingEstimate.displayHuf,
@@ -271,8 +303,23 @@ function scoreProduct(product) {
 
 function normalizeCategories(value) {
   const raw = Array.isArray(value) ? value : String(value || "").split(",");
-  const categories = raw.map((entry) => cleanText(entry)).filter(Boolean);
+  const categories = uniqueCategoryLabels(raw);
   return categories.length ? unique(categories) : ["Egyéb"];
+}
+
+function uniqueCategoryLabels(values) {
+  const labels = [];
+  const seen = new Set();
+
+  for (const value of values || []) {
+    const label = normalizeCategoryLabel(value);
+    const key = categoryDedupeKey(label);
+    if (!label || seen.has(key)) continue;
+    seen.add(key);
+    labels.push(label);
+  }
+
+  return labels;
 }
 
 function maxDate(a, b) {
@@ -345,6 +392,13 @@ function firstNonEmpty(values) {
 
 function unique(values) {
   return Array.from(new Set(values.map((value) => cleanText(value)).filter(Boolean)));
+}
+
+function categoryDedupeKey(value) {
+  return cleanText(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function slugify(value) {

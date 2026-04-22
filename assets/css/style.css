@@ -803,6 +803,11 @@ select:focus {
   word-break: break-word;
 }
 
+.badge--manual {
+  background: var(--primary);
+  color: #fff;
+}
+
 .price {
   min-width: 0;
   max-width: 100%;

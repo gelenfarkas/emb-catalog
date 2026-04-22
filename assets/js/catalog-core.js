@@ -165,11 +165,11 @@ export function applyDefaultProductPriority(products) {
 }
 
 export function getFilterOptions(products, datasets = []) {
+  const manifestCategories = unique((datasets || []).flatMap((dataset) => dataset.categories || []));
   return {
-    categories: unique([
-      ...(datasets || []).flatMap((dataset) => dataset.categories || []),
-      ...(products || []).flatMap((product) => product.categories || product.categoryLabel || []),
-    ]),
+    categories: manifestCategories.length
+      ? manifestCategories
+      : unique((products || []).flatMap((product) => product.allCategories || product.categories || product.categoryLabel || [])),
     sellers: unique(products.map((product) => product.sellerName)),
     sources: unique(products.map((product) => product.source)),
     datasets: unique(datasets.map((dataset) => dataset.label)),
@@ -202,7 +202,9 @@ function productMatches(product, filters) {
         product.itemId,
         product.sellerName,
         product.source,
-        ...(product.categories || []),
+        product.manualCategory,
+        ...(product.autoCategories || []),
+        ...(product.allCategories || product.categories || []),
         ...(product.datasetLabels || []),
       ]
         .join(" ")
@@ -214,7 +216,7 @@ function productMatches(product, filters) {
       (product.categoryId === queryCategory.id ||
         product.category === queryCategory.label ||
         product.categoryLabel === queryCategory.label ||
-        (product.categories || []).includes(queryCategory.label));
+        (product.allCategories || product.categories || []).includes(queryCategory.label));
     if (!matchesText && !matchesCategory) return false;
   }
 
@@ -222,8 +224,9 @@ function productMatches(product, filters) {
     filters.category &&
     product.category !== filters.category &&
     product.categoryLabel !== filters.category &&
+    product.manualCategory !== filters.category &&
     product.categoryId !== filters.category &&
-    !(product.categories || []).includes(filters.category)
+    !(product.allCategories || product.categories || []).includes(filters.category)
   ) {
     return false;
   }

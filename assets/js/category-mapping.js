@@ -46,7 +46,7 @@ export const CATEGORY_MAP = [
   },
   {
     id: "ruha",
-    label: "Ruha",
+    label: "Női ruhák",
     keywords: {
       hu: ["ruha", "felső", "szoknya", "póló", "pulcsi", "pulóver", "ing", "melegítő"],
       en: ["dress", "top", "shirt", "t-shirt", "tee", "hoodie", "sweater", "outfit"],
@@ -55,7 +55,7 @@ export const CATEGORY_MAP = [
   },
   {
     id: "polo",
-    label: "Póló",
+    label: "Póló / Ing",
     priority: 1,
     keywords: {
       hu: ["póló", "rövid ujjú", "hosszú ujjú"],
@@ -65,7 +65,7 @@ export const CATEGORY_MAP = [
   },
   {
     id: "pulcsi",
-    label: "Pulcsi",
+    label: "Pulóver",
     priority: 1,
     keywords: {
       hu: ["pulcsi", "pulóver", "kapucnis pulóver"],
@@ -141,6 +141,37 @@ export const CATEGORY_MAP = [
 
 export const CATEGORY_BY_ID = Object.fromEntries(CATEGORY_MAP.map((category) => [category.id, category]));
 
+const CATEGORY_ALIAS_BY_KEY = {
+  cipo: "cipo",
+  cipok: "cipo",
+  shoe: "cipo",
+  shoes: "cipo",
+  taska: "taska",
+  bag: "taska",
+  bags: "taska",
+  ruha: "ruha",
+  noi_ruha: "ruha",
+  noi_ruhak: "ruha",
+  polo: "polo",
+  polo_ing: "polo",
+  polo_inge: "polo",
+  polo_ingek: "polo",
+  ing: "polo",
+  ingek: "polo",
+  poló: "polo",
+  pulcsi: "pulcsi",
+  pulover: "pulcsi",
+  pulóver: "pulcsi",
+  sapka: "sapka",
+  sal: "sal",
+  nadrag: "nadrag",
+  kabat: "kabat",
+  melleny: "melleny",
+  furdoruha: "furdoruha",
+  furdo_ruha: "furdoruha",
+  kategorizalatlan: "kategorizalatlan",
+};
+
 export function detectCategory(title) {
   return detectCategories(title)[0] || "";
 }
@@ -159,6 +190,19 @@ export function detectCategories(title) {
 
 export function getCategoryLabel(categoryId) {
   return CATEGORY_BY_ID[categoryId]?.label || "";
+}
+
+export function normalizeCategoryId(value) {
+  const key = normalizeCategoryKey(value);
+  if (!key) return "";
+  if (CATEGORY_BY_ID[key]) return key;
+  return CATEGORY_ALIAS_BY_KEY[key] || "";
+}
+
+export function normalizeCategoryLabel(value) {
+  const categoryId = normalizeCategoryId(value);
+  if (categoryId) return getCategoryLabel(categoryId);
+  return cleanCategoryLabel(value);
 }
 
 export function findCategoryByQuery(query) {
@@ -243,6 +287,16 @@ function categoryKeywords(category) {
 
 function categoryPriority(category) {
   return Number.isFinite(category.priority) ? category.priority : 0;
+}
+
+function normalizeCategoryKey(value) {
+  return normalizeSearchText(value)
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function cleanCategoryLabel(value) {
+  return String(value || "").replace(/\s+/g, " ").trim();
 }
 
 function unique(values) {

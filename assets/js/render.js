@@ -34,8 +34,17 @@ export function renderProducts(container, products, template, options = {}) {
     imageLink.href = href;
     title.textContent = product.title;
 
-    for (const category of product.categories?.length ? product.categories : [product.categoryLabel || "Egyéb"]) {
-      badges.appendChild(createBadge(category));
+    const displayCategories = product.allCategories?.length
+      ? product.allCategories
+      : product.categories?.length
+        ? product.categories
+        : [product.categoryLabel || "Egyéb"];
+    for (const category of displayCategories.slice(0, 4)) {
+      badges.appendChild(createBadge(category, category === product.manualCategory ? "badge--manual" : ""));
+    }
+
+    if (displayCategories.length > 4) {
+      badges.appendChild(createBadge(`+${displayCategories.length - 4}`));
     }
 
     if (product.datasetCount > 1) {
@@ -223,9 +232,9 @@ async function copyToClipboard(text) {
   }
 }
 
-function createBadge(text) {
+function createBadge(text, modifier = "") {
   const badge = document.createElement("span");
-  badge.className = "badge";
+  badge.className = modifier ? `badge ${modifier}` : "badge";
   badge.textContent = text;
   return badge;
 }

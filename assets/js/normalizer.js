@@ -3,6 +3,10 @@ export const DEFAULT_HUF_RATE = 370;
 export const PLACEHOLDER_IMAGE =
   "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20600'%3E%3Crect%20width='600'%20height='600'%20fill='%23efebe3'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20font-family='Arial'%20font-size='28'%20fill='%2368665f'%3ENincs%20k%C3%A9p%3C/text%3E%3C/svg%3E";
 
+import { appendVersion } from "./cache-utils.js";
+
+const { detectCategory, getCategoryLabel, normalizeSearchText } = await import(appendVersion("./category-mapping.js"));
+
 const CATEGORY_LABELS = {
   cipo: "Cipő",
   cipok: "Cipő",
@@ -86,6 +90,11 @@ export function normalizeProduct(item, context) {
   const sellerName =
     cleanText(firstNonEmpty([item.sellerName, raw.seller_name, raw.shop_name, raw.seller, page.sellerName, dataset.sellerName])) ||
     "EastMallBuy shop";
+  const normalizedTitle = normalizeSearchText([title, sellerName].join(" "));
+  const categoryId = detectCategory(normalizedTitle) || detectCategory((dataset.categories || []).join(" ")) || "egyeb";
+  const fallbackCategoryLabel = (dataset.categories || [])[0] || "Egyéb";
+  const categoryLabel = getCategoryLabel(categoryId) || fallbackCategoryLabel;
+  const categories = unique([categoryLabel, ...(dataset.categories || [])]);
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
     normalizeUrl(item.affiliateUrl) ||
@@ -109,7 +118,10 @@ export function normalizeProduct(item, context) {
     affiliateUrl,
     sellerName,
     source,
-    categories: dataset.categories,
+    categoryId,
+    categoryLabel,
+    normalizedTitle,
+    categories,
     datasetIds: [dataset.id],
     datasetLabels: [dataset.label],
     datasetPaths: [dataset.path],

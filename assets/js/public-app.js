@@ -115,10 +115,12 @@ function bindFilters() {
 function prepareProductsForSearch() {
   for (const product of catalog.products) {
     product.searchText = [
+      product.normalizedTitle,
       product.title,
       product.itemId,
       product.sellerName,
       product.source,
+      product.categoryLabel,
       ...(product.categories || []),
       ...(product.datasetLabels || []),
     ]

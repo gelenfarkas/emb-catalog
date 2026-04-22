@@ -32,7 +32,7 @@ export function renderProducts(container, products, template, options = {}) {
     imageLink.href = href;
     title.textContent = product.title;
 
-    for (const category of product.categories || ["Egyéb"]) {
+    for (const category of product.categoryLabel ? [product.categoryLabel] : product.categories || ["Egyéb"]) {
       badges.appendChild(createBadge(category));
     }
 

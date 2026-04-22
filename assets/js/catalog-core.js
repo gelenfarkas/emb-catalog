@@ -1,8 +1,13 @@
 import { appendVersion } from "./cache-utils.js";
 
-const [{ loadFromFiles, loadFromManifest, flattenLoadedDatasets }, { dedupeProducts }] = await Promise.all([
+const [
+  { loadFromFiles, loadFromManifest, flattenLoadedDatasets },
+  { dedupeProducts },
+  { findCategoryByQuery, normalizeSearchText },
+] = await Promise.all([
   import(appendVersion("./data-loader.js")),
   import(appendVersion("./normalizer.js")),
+  import(appendVersion("./category-mapping.js")),
 ]);
 
 export const MANIFEST_PATHS = ["data/manifest.json", "manifest.php"];
@@ -155,7 +160,7 @@ export function sortProducts(products, sort = "fresh") {
 
 export function getFilterOptions(products, datasets = []) {
   return {
-    categories: unique(products.flatMap((product) => product.categories || [])),
+    categories: unique(products.map((product) => product.categoryLabel || (product.categories || [])[0])),
     sellers: unique(products.map((product) => product.sellerName)),
     sources: unique(products.map((product) => product.source)),
     datasets: unique(datasets.map((dataset) => dataset.label)),
@@ -177,8 +182,9 @@ export function errorMessage(error) {
 }
 
 function productMatches(product, filters) {
-  const query = cleanText(filters.query).toLowerCase();
+  const query = normalizeSearchText(filters.query);
   if (query) {
+    const queryCategory = findCategoryByQuery(query);
     const haystack =
       product.searchText ||
       [
@@ -191,10 +197,23 @@ function productMatches(product, filters) {
       ]
         .join(" ")
         .toLowerCase();
-    if (!haystack.includes(query)) return false;
+    const matchesText = normalizeSearchText(haystack).includes(query);
+    const matchesCategory =
+      queryCategory &&
+      (product.categoryId === queryCategory.id ||
+        product.categoryLabel === queryCategory.label ||
+        (product.categories || []).includes(queryCategory.label));
+    if (!matchesText && !matchesCategory) return false;
   }
 
-  if (filters.category && !(product.categories || []).includes(filters.category)) return false;
+  if (
+    filters.category &&
+    product.categoryLabel !== filters.category &&
+    product.categoryId !== filters.category &&
+    !(product.categories || []).includes(filters.category)
+  ) {
+    return false;
+  }
   if (filters.source && product.source !== filters.source) return false;
   if (filters.seller && product.sellerName !== filters.seller) return false;
   if (filters.dataset && !(product.datasetLabels || []).includes(filters.dataset)) return false;

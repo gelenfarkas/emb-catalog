@@ -14,13 +14,13 @@
     <script type="importmap">
       {
         "imports": {
-          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
-          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-06",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-06"
         },
         "scopes": {
           "./assets/js/": {
-            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-05",
-            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-05"
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-06",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-06"
           }
         }
       }
@@ -168,6 +168,10 @@
           <div id="categoryNav" class="category-nav" aria-label="Kategória böngészés"></div>
           <div id="productGrid" class="product-grid"></div>
           <div class="load-more">
+            <div class="load-more-status" aria-live="polite">
+              <strong id="loadMoreCount">0 / 0 termék megjelenítve</strong>
+              <span id="loadMoreMessage">Nincs megjeleníthető termék.</span>
+            </div>
             <button id="loadMoreBtn" class="btn btn--primary load-more-btn" type="button" hidden>
               <span>További termékek betöltése</span>
               <small>Kattints a következő adag megjelenítéséhez</small>

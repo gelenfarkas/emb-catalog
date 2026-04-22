@@ -34,6 +34,8 @@ const REQUIRED = [
   "#categoryNav",
   "#productGrid",
   "#loadMoreBtn",
+  "#loadMoreCount",
+  "#loadMoreMessage",
   "#emptyState",
   "#productCardTemplate",
 ];
@@ -194,7 +196,7 @@ function render({ reason = "manual", resetPage = false } = {}) {
   }
 
   elements.emptyState.hidden = rendered.length > 0;
-  elements.loadMoreBtn.hidden = visibleLimit >= rendered.length;
+  updateLoadMoreState(visibleProducts.length, rendered.length);
   elements.resultCount.textContent =
     visibleLimit < rendered.length ? `${visibleProducts.length} / ${rendered.length} termék` : `${rendered.length} termék`;
   elements.datasetCount.textContent = `${catalog.datasets.length} válogatás`;
@@ -217,10 +219,24 @@ function showMoreProducts() {
   window.setTimeout(() => {
     visibleLimit += PAGE_SIZE;
     render({ reason: "load-more" });
-    button.disabled = false;
-    button.classList.remove("is-loading");
-    button.innerHTML = `<span>További termékek betöltése</span><small>Kattints a következő adag megjelenítéséhez</small>`;
   }, LOAD_MORE_DELAY_MS);
+}
+
+function updateLoadMoreState(loadedProducts, totalProducts) {
+  const hasProducts = totalProducts > 0;
+  const hasMoreProducts = loadedProducts < totalProducts;
+
+  elements.loadMoreCount.textContent = `${loadedProducts} / ${totalProducts} termék megjelenítve`;
+  elements.loadMoreMessage.textContent = hasProducts
+    ? hasMoreProducts
+      ? "Van még betölthető termék."
+      : "Az összes találat megjelenítve."
+    : "Nincs megjeleníthető termék.";
+
+  elements.loadMoreBtn.hidden = !hasMoreProducts;
+  elements.loadMoreBtn.disabled = false;
+  elements.loadMoreBtn.classList.remove("is-loading");
+  elements.loadMoreBtn.innerHTML = `<span>További termékek betöltése</span><small>Kattints a következő adag megjelenítéséhez</small>`;
 }
 
 function hasUserSort(sort) {

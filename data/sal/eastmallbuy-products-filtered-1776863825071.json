@@ -1,0 +1,174 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 7,
+  "generatedAt": "2026-04-22T13:17:05.071Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1649504061&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1649504061&shopName=J%20minsg%20gyors%20szllts",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "J minsg gyors szllts",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 5000,
+    "uniqueItemIds": 463,
+    "pricedItems": 463,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 22331,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7673258294",
+      "tp": "micro",
+      "title": "C-围巾01",
+      "price": 33.84,
+      "priceLabel": "$33.84",
+      "image": "https://si.geilicdn.com/pcitem1904816668-648700000199c1b964d40a23047e_1357_1357.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673258294&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673258294&sales=0",
+        "title": "C-围巾01",
+        "priceText": "$33.84",
+        "imageSrc": "https://si.geilicdn.com/pcitem1904816668-648700000199c1b964d40a23047e_1357_1357.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673258294&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "c-围巾01 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670317657",
+      "tp": "micro",
+      "title": "F-围巾02",
+      "price": 29.12,
+      "priceLabel": "$29.12",
+      "image": "https://si.geilicdn.com/pcitem1904816668-7b2000000199c1fb05e90a2301b4_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670317657&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670317657&sales=1",
+        "title": "F-围巾02",
+        "priceText": "$29.12",
+        "imageSrc": "https://si.geilicdn.com/pcitem1904816668-7b2000000199c1fb05e90a2301b4_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670317657&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "f-围巾02 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673250316",
+      "tp": "micro",
+      "title": "H-围巾04",
+      "price": 28.33,
+      "priceLabel": "$28.33",
+      "image": "https://si.geilicdn.com/pcitem1904816668-5e8700000199c8c5fd7b0a20e284_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673250316&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673250316&sales=0",
+        "title": "H-围巾04",
+        "priceText": "$28.33",
+        "imageSrc": "https://si.geilicdn.com/pcitem1904816668-5e8700000199c8c5fd7b0a20e284_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673250316&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "h-围巾04 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670213207",
+      "tp": "micro",
+      "title": "chan* 围巾",
+      "price": 37.78,
+      "priceLabel": "$37.78",
+      "image": "https://si.geilicdn.com/wdseller1814526504-07b1000001912882c79f0a811411_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670213207&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670213207&sales=0",
+        "title": "chan* 围巾",
+        "priceText": "$37.78",
+        "imageSrc": "https://si.geilicdn.com/wdseller1814526504-07b1000001912882c79f0a811411_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670213207&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "chan* 围巾 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670268313",
+      "tp": "micro",
+      "title": "DIO* SCARF",
+      "price": 12.43,
+      "priceLabel": "$12.43",
+      "image": "https://si.geilicdn.com/pcitem901875756253-5af3000001968af246350a239846_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670268313&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670268313&sales=1",
+        "title": "DIO* SCARF",
+        "priceText": "$12.43",
+        "imageSrc": "https://si.geilicdn.com/pcitem901875756253-5af3000001968af246350a239846_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670268313&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "dio* scarf j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673291818",
+      "tp": "micro",
+      "title": "GUCC* SCARF",
+      "price": 14.01,
+      "priceLabel": "$14.01",
+      "image": "https://si.geilicdn.com/pcitem901875756253-1dc3000001967b0cadbf0a23a2b8_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673291818&sales=2",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673291818&sales=2",
+        "title": "GUCC* SCARF",
+        "priceText": "$14.01",
+        "imageSrc": "https://si.geilicdn.com/pcitem901875756253-1dc3000001967b0cadbf0a23a2b8_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673291818&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "gucc* scarf j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673163580",
+      "tp": "micro",
+      "title": "BURBERR* SCARF",
+      "price": 14.01,
+      "priceLabel": "$14.01",
+      "image": "https://si.geilicdn.com/pcitem901875756253-7f2900000196c7eee2a90a2304aa-unadjust_1600_1600.gif",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673163580&sales=3",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673163580&sales=3",
+        "title": "BURBERR* SCARF",
+        "priceText": "$14.01",
+        "imageSrc": "https://si.geilicdn.com/pcitem901875756253-7f2900000196c7eee2a90a2304aa-unadjust_1600_1600.gif"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673163580&inviter=gelenfarkas",
+      "category": "sal",
+      "categoryLabel": "Sál",
+      "normalizedTitle": "burberr* scarf j minsg gyors szllts"
+    }
+  ]
+}

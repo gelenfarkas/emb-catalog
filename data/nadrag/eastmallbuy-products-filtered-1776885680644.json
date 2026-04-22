@@ -1,0 +1,300 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 13,
+  "generatedAt": "2026-04-22T19:21:20.644Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://www.eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1746025723&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1746025723&shopName=%E8%87%AA%E5%88%B6%E5%85%89%E6%9D%BF%E6%97%A0%E6%A0%87%E5%BA%97",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "自制光板无标店",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 2000,
+    "uniqueItemIds": 75,
+    "pricedItems": 75,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 5124,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7744454048",
+      "tp": "micro",
+      "title": "BB-THE-CH Shorts",
+      "price": 20.15,
+      "priceLabel": "$20.15",
+      "image": "https://si.geilicdn.com/pcitem902052586171-05ed0000019d7c4be0360a2304aa-unadjust_1200_1200.png",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7744454048&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7744454048&sales=0",
+        "title": "BB-THE-CH Shorts",
+        "priceText": "$20.15",
+        "imageSrc": "https://si.geilicdn.com/pcitem902052586171-05ed0000019d7c4be0360a2304aa-unadjust_1200_1200.png"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7744454048&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "bb-the-ch shorts 自制光板无标店"
+    },
+    {
+      "itemId": "7741428197",
+      "tp": "micro",
+      "title": "3M反光镭射炫彩抽绳运动休闲短裤男女宽松短裤",
+      "price": 23.61,
+      "priceLabel": "$23.61",
+      "image": "https://si.geilicdn.com/open1723671325-1234478995-504600000197f3f11cfd0a8115c2_1920_1920.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7741428197&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7741428197&sales=0",
+        "title": "3M反光镭射炫彩抽绳运动休闲短裤男女宽松短裤",
+        "priceText": "$23.61",
+        "imageSrc": "https://si.geilicdn.com/open1723671325-1234478995-504600000197f3f11cfd0a8115c2_1920_1920.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7741428197&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "3m反光镭射炫彩抽绳运动休闲短裤男女宽松短裤 自制光板无标店"
+    },
+    {
+      "itemId": "7741420157",
+      "tp": "micro",
+      "title": "短裤网眼透气运动短裤",
+      "price": 22.82,
+      "priceLabel": "$22.82",
+      "image": "https://si.geilicdn.com/pcitem1422394722-24c9000001991913e2bb0a8133cc_800_800.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7741420157&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7741420157&sales=0",
+        "title": "短裤网眼透气运动短裤",
+        "priceText": "$22.82",
+        "imageSrc": "https://si.geilicdn.com/pcitem1422394722-24c9000001991913e2bb0a8133cc_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7741420157&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "短裤网眼透气运动短裤 自制光板无标店"
+    },
+    {
+      "itemId": "7741459931",
+      "tp": "micro",
+      "title": "贝多芬 Gymshark短裤",
+      "price": 14.01,
+      "priceLabel": "$14.01",
+      "image": "https://si.geilicdn.com/wdseller1944483041-1c100000019d57c166810a239846_1664_1985.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7741459931&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7741459931&sales=0",
+        "title": "贝多芬 Gymshark短裤",
+        "priceText": "$14.01",
+        "imageSrc": "https://si.geilicdn.com/wdseller1944483041-1c100000019d57c166810a239846_1664_1985.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7741459931&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "贝多芬 gymshark短裤 自制光板无标店"
+    },
+    {
+      "itemId": "7743479990",
+      "tp": "micro",
+      "title": "*(PD Legacy) Soccer ball blind box, jerseys and pants are sent randomly, no refunds or exchanges",
+      "price": 2.35,
+      "priceLabel": "$2.35",
+      "image": "https://si.geilicdn.com/open1820645545-1234478995-300600000197cea063920a23b4de_800_800.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7743479990&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7743479990&sales=0",
+        "title": "*(PD Legacy) Soccer ball blind box, jerseys and pants are sent randomly, no refunds or exchanges",
+        "priceText": "$2.35",
+        "imageSrc": "https://si.geilicdn.com/open1820645545-1234478995-300600000197cea063920a23b4de_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7743479990&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "*(pd legacy) soccer ball blind box, jerseys and pants are sent randomly, no refunds or exchanges 自制光板无标店"
+    },
+    {
+      "itemId": "7743426206",
+      "tp": "micro",
+      "title": "LAC内裤满印 非质量问题不退换",
+      "price": 2.52,
+      "priceLabel": "$2.52",
+      "image": "https://si.geilicdn.com/weidian1958239966-19590000019b929360090a21146b_1024_1024.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7743426206&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7743426206&sales=0",
+        "title": "LAC内裤满印 非质量问题不退换",
+        "priceText": "$2.52",
+        "imageSrc": "https://si.geilicdn.com/weidian1958239966-19590000019b929360090a21146b_1024_1024.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7743426206&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "lac内裤满印 非质量问题不退换 自制光板无标店"
+    },
+    {
+      "itemId": "7740489909",
+      "tp": "micro",
+      "title": "Ralph Lauren shorts",
+      "price": 15.58,
+      "priceLabel": "$15.58",
+      "image": "https://si.geilicdn.com/weidian1777138180-60250000019532e1f2bc0a8134f0_2048_2048.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7740489909&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7740489909&sales=0",
+        "title": "Ralph Lauren shorts",
+        "priceText": "$15.58",
+        "imageSrc": "https://si.geilicdn.com/weidian1777138180-60250000019532e1f2bc0a8134f0_2048_2048.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740489909&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "ralph lauren shorts 自制光板无标店"
+    },
+    {
+      "itemId": "7743453986",
+      "tp": "micro",
+      "title": "运动加绒连帽卫衣日系小众男女休闲裤子-CY",
+      "price": 29.12,
+      "priceLabel": "$29.12",
+      "image": "https://si.geilicdn.com/open1652813497-252808396-3bf800000191efd93f6e0a232357_1200_1200.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7743453986&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7743453986&sales=0",
+        "title": "运动加绒连帽卫衣日系小众男女休闲裤子-CY",
+        "priceText": "$29.12",
+        "imageSrc": "https://si.geilicdn.com/open1652813497-252808396-3bf800000191efd93f6e0a232357_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7743453986&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "运动加绒连帽卫衣日系小众男女休闲裤子-cy 自制光板无标店"
+    },
+    {
+      "itemId": "7740545679",
+      "tp": "micro",
+      "title": "RL， Hoodies and pants",
+      "price": 23.3,
+      "priceLabel": "$23.30",
+      "image": "https://si.geilicdn.com/pcitem777921373-7233000001956787685b0a23047e_1200_1200.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7740545679&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7740545679&sales=0",
+        "title": "RL， Hoodies and pants",
+        "priceText": "$23.30",
+        "imageSrc": "https://si.geilicdn.com/pcitem777921373-7233000001956787685b0a23047e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740545679&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "rl， hoodies and pants 自制光板无标店"
+    },
+    {
+      "itemId": "7740463873",
+      "tp": "micro",
+      "title": "定制款内裤，不退换，拍下默认，无标白板，图片引流",
+      "price": 2.36,
+      "priceLabel": "$2.36",
+      "image": "https://si.geilicdn.com/wdseller1452235621-3db10000018dee8be7110a2104c1_1080_1080.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7740463873&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7740463873&sales=0",
+        "title": "定制款内裤，不退换，拍下默认，无标白板，图片引流",
+        "priceText": "$2.36",
+        "imageSrc": "https://si.geilicdn.com/wdseller1452235621-3db10000018dee8be7110a2104c1_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7740463873&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "定制款内裤，不退换，拍下默认，无标白板，图片引流 自制光板无标店"
+    },
+    {
+      "itemId": "7738939225",
+      "tp": "micro",
+      "title": "NOCTA男子连帽衫耐克勾针织反条短裤，全棉健康布面料FN7661.四色齐高品质 尺码：M L XL XXL",
+      "price": 23.61,
+      "priceLabel": "$23.61",
+      "image": "https://si.geilicdn.com/ch2057886904-72c30000019da2fe88c80a23111a_1024_1365.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7738939225&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7738939225&sales=0",
+        "title": "NOCTA男子连帽衫耐克勾针织反条短裤，全棉健康布面料FN7661.四色齐高品质 尺码：M L XL XXL",
+        "priceText": "$23.61",
+        "imageSrc": "https://si.geilicdn.com/ch2057886904-72c30000019da2fe88c80a23111a_1024_1365.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7738939225&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "nocta男子连帽衫耐克勾针织反条短裤，全棉健康布面料fn7661.四色齐高品质 尺码：m l xl xxl 自制光板无标店"
+    },
+    {
+      "itemId": "7738986771",
+      "tp": "micro",
+      "title": "Tech Windrunner短裤",
+      "price": 22.04,
+      "priceLabel": "$22.04",
+      "image": "https://si.geilicdn.com/ch2057886904-41470000019da2f9e3f90a20e672_1279_1420.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7738986771&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7738986771&sales=0",
+        "title": "Tech Windrunner短裤",
+        "priceText": "$22.04",
+        "imageSrc": "https://si.geilicdn.com/ch2057886904-41470000019da2f9e3f90a20e672_1279_1420.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7738986771&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "tech windrunner短裤 自制光板无标店"
+    },
+    {
+      "itemId": "7738980715",
+      "tp": "micro",
+      "title": "跨境针织TECH FLEECE短裤",
+      "price": 18.89,
+      "priceLabel": "$18.89",
+      "image": "https://si.geilicdn.com/weidian2057886904-664e0000019da2d882890a2303ee_1024_1365.jpg",
+      "url": "https://www.eastmallbuy.com/index/item/index.html?tp=micro&tid=7738980715&sales=0",
+      "sellerName": "自制光板无标店",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7738980715&sales=0",
+        "title": "跨境针织TECH FLEECE短裤",
+        "priceText": "$18.89",
+        "imageSrc": "https://si.geilicdn.com/weidian2057886904-664e0000019da2d882890a2303ee_1024_1365.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7738980715&inviter=gelenfarkas",
+      "category": "",
+      "categoryLabel": "Kategorizálatlan",
+      "normalizedTitle": "跨境针织tech fleece短裤 自制光板无标店"
+    }
+  ]
+}

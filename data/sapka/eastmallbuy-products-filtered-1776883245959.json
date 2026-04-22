@@ -1,0 +1,678 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 31,
+  "generatedAt": "2026-04-22T18:40:45.958Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1649504061&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1649504061&shopName=J%20minsg%20gyors%20szllts",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "J minsg gyors szllts",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 5000,
+    "uniqueItemIds": 463,
+    "pricedItems": 463,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 22331,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7722019155",
+      "tp": "micro",
+      "title": "潮牌菲利普普兰秋冬新品男卫衣欧美街头时尚烫钻绿龙连帽卫衣PP男",
+      "price": 28.33,
+      "priceLabel": "$28.33",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-36f90000019d42e296ac0a22d249_1920_1920.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7722019155&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7722019155&sales=0",
+        "title": "潮牌菲利普普兰秋冬新品男卫衣欧美街头时尚烫钻绿龙连帽卫衣PP男",
+        "priceText": "$28.33",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-36f90000019d42e296ac0a22d249_1920_1920.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7722019155&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "潮牌菲利普普兰秋冬新品男卫衣欧美街头时尚烫钻绿龙连帽卫衣pp男 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713280877",
+      "tp": "micro",
+      "title": "Hat",
+      "price": 11.95,
+      "priceLabel": "$11.95",
+      "image": "https://si.geilicdn.com/open1648936853-1234478995-55a8000001930f6c7d150a239383_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713280877&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713280877&sales=0",
+        "title": "Hat",
+        "priceText": "$11.95",
+        "imageSrc": "https://si.geilicdn.com/open1648936853-1234478995-55a8000001930f6c7d150a239383_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713280877&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "hat j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713363725",
+      "tp": "micro",
+      "title": "时尚百搭潮流毛线帽",
+      "price": 9.29,
+      "priceLabel": "$9.29",
+      "image": "https://si.geilicdn.com/open1648936853-1234478995-0c2200000193b906a2890a239383_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713363725&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713363725&sales=0",
+        "title": "时尚百搭潮流毛线帽",
+        "priceText": "$9.29",
+        "imageSrc": "https://si.geilicdn.com/open1648936853-1234478995-0c2200000193b906a2890a239383_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713363725&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "时尚百搭潮流毛线帽 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7716296276",
+      "tp": "micro",
+      "title": "m帽子",
+      "price": 14.01,
+      "priceLabel": "$14.01",
+      "image": "https://si.geilicdn.com/open1648936853-1234478995-6d3a00000193b9e1efb60a22d234_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716296276&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7716296276&sales=0",
+        "title": "m帽子",
+        "priceText": "$14.01",
+        "imageSrc": "https://si.geilicdn.com/open1648936853-1234478995-6d3a00000193b9e1efb60a22d234_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716296276&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "m帽子 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713343983",
+      "tp": "micro",
+      "title": "P秋冬季新款保暖针织帽百搭帽子",
+      "price": 11.81,
+      "priceLabel": "$11.81",
+      "image": "https://si.geilicdn.com/open1648936853-1234478995-143500000193b9d4b9d60a8115b5_1080_1080.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713343983&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713343983&sales=1",
+        "title": "P秋冬季新款保暖针织帽百搭帽子",
+        "priceText": "$11.81",
+        "imageSrc": "https://si.geilicdn.com/open1648936853-1234478995-143500000193b9d4b9d60a8115b5_1080_1080.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713343983&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "p秋冬季新款保暖针织帽百搭帽子 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713199387",
+      "tp": "micro",
+      "title": "Autumn and winter fashionable knitted hat （不退换）",
+      "price": 7.08,
+      "priceLabel": "$7.08",
+      "image": "https://si.geilicdn.com/open1648936853-1234478995-50e900000193b9effa0e0a232357_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713199387&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713199387&sales=0",
+        "title": "Autumn and winter fashionable knitted hat （不退换）",
+        "priceText": "$7.08",
+        "imageSrc": "https://si.geilicdn.com/open1648936853-1234478995-50e900000193b9effa0e0a232357_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713199387&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "autumn and winter fashionable knitted hat （不退换） j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713266989",
+      "tp": "micro",
+      "title": "Peaked Cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy港风休闲鸭舌帽旅游潮帽嘻哈帽",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/pcitem1145423173-6dbe0000019635a1b6140a2301b4_1024_768.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713266989&sales=2",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713266989&sales=2",
+        "title": "Peaked Cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy港风休闲鸭舌帽旅游潮帽嘻哈帽",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/pcitem1145423173-6dbe0000019635a1b6140a2301b4_1024_768.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713266989&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "peaked cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy港风休闲鸭舌帽旅游潮帽嘻哈帽 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7716199084",
+      "tp": "micro",
+      "title": "欧货原单~印花棒球帽男同款G正确版本时尚百搭老花帽子出口高品质",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-4bbe0000019d0f42939e0a8133b0_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716199084&sales=2",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7716199084&sales=2",
+        "title": "欧货原单~印花棒球帽男同款G正确版本时尚百搭老花帽子出口高品质",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-4bbe0000019d0f42939e0a8133b0_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716199084&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "欧货原单~印花棒球帽男同款g正确版本时尚百搭老花帽子出口高品质 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7716189148",
+      "tp": "micro",
+      "title": "新款糖果色字母硬顶棒球帽高品质欧美时尚百搭休闲鸭舌帽英文字母",
+      "price": 7.71,
+      "priceLabel": "$7.71",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-5ecd0000019d0f3f75fa0a23b4de_1074_1074.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716189148&sales=3",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7716189148&sales=3",
+        "title": "新款糖果色字母硬顶棒球帽高品质欧美时尚百搭休闲鸭舌帽英文字母",
+        "priceText": "$7.71",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-5ecd0000019d0f3f75fa0a23b4de_1074_1074.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716189148&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "新款糖果色字母硬顶棒球帽高品质欧美时尚百搭休闲鸭舌帽英文字母 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713256929",
+      "tp": "micro",
+      "title": "Philip** Peaked Cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy嘻哈街舞帽鸭舌帽",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/pcitem1145423173-071e0000019c369770000a2102c5_1024_768.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713256929&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713256929&sales=0",
+        "title": "Philip** Peaked Cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy嘻哈街舞帽鸭舌帽",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/pcitem1145423173-071e0000019c369770000a2102c5_1024_768.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713256929&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "philip** peaked cap 新款调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽bboy嘻哈街舞帽鸭舌帽 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712902767",
+      "tp": "micro",
+      "title": "跨境字母刺绣软顶鸭舌帽子男女春夏遮阳防晒学生情侣百搭棒球帽新",
+      "price": 2.83,
+      "priceLabel": "$2.83",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-62cd0000019d0f382d350a22d249_594_594.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712902767&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712902767&sales=0",
+        "title": "跨境字母刺绣软顶鸭舌帽子男女春夏遮阳防晒学生情侣百搭棒球帽新",
+        "priceText": "$2.83",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-62cd0000019d0f382d350a22d249_594_594.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712902767&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "跨境字母刺绣软顶鸭舌帽子男女春夏遮阳防晒学生情侣百搭棒球帽新 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713299929",
+      "tp": "micro",
+      "title": "Ver sace Peaked Cap 新款调节帽棒球帽子 夏季男女防晒帽韩版百搭遮阳帽港风休闲鸭舌帽网帽抖音爆款",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/pcitem1145423173-30270000017985a5e4280a20b7b9_800_667.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713299929&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713299929&sales=0",
+        "title": "Ver sace Peaked Cap 新款调节帽棒球帽子 夏季男女防晒帽韩版百搭遮阳帽港风休闲鸭舌帽网帽抖音爆款",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/pcitem1145423173-30270000017985a5e4280a20b7b9_800_667.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713299929&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "ver sace peaked cap 新款调节帽棒球帽子 夏季男女防晒帽韩版百搭遮阳帽港风休闲鸭舌帽网帽抖音爆款 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713195519",
+      "tp": "micro",
+      "title": "时尚帽子-M01(非质量问题不退换)-113",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/open1696133557-1234478995-270600000195392e0e0e0a8133b0_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713195519&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713195519&sales=0",
+        "title": "时尚帽子-M01(非质量问题不退换)-113",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/open1696133557-1234478995-270600000195392e0e0e0a8133b0_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713195519&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "时尚帽子-m01(非质量问题不退换)-113 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7697085067",
+      "tp": "micro",
+      "title": "欧美小鸟提花针织帽正确字母百搭保暖大版加厚毛线帽个性 冷帽潮",
+      "price": 2.52,
+      "priceLabel": "$2.52",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-51ed0000019c9e7c232b0aa08239_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7697085067&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7697085067&sales=0",
+        "title": "欧美小鸟提花针织帽正确字母百搭保暖大版加厚毛线帽个性 冷帽潮",
+        "priceText": "$2.52",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-51ed0000019c9e7c232b0aa08239_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7697085067&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "欧美小鸟提花针织帽正确字母百搭保暖大版加厚毛线帽个性 冷帽潮 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7698711598",
+      "tp": "micro",
+      "title": "高版本supreme25SS 潮牌HOODED SWEATSHIRT 大LOGO加绒帽衫卫衣",
+      "price": 12.28,
+      "priceLabel": "$12.28",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-5e5b0000019c93ee9c360a8133b0_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698711598&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7698711598&sales=1",
+        "title": "高版本supreme25SS 潮牌HOODED SWEATSHIRT 大LOGO加绒帽衫卫衣",
+        "priceText": "$12.28",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-5e5b0000019c93ee9c360a8133b0_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698711598&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "高版本supreme25ss 潮牌hooded sweatshirt 大logo加绒帽衫卫衣 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7698650140",
+      "tp": "micro",
+      "title": "欧美好莱坞潮牌CHROME克罗银心十字架勋章大檐帽太阳帽男女",
+      "price": 5.51,
+      "priceLabel": "$5.51",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-61a90000019c93ae576d0aa08239_1500_1500.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698650140&sales=4",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7698650140&sales=4",
+        "title": "欧美好莱坞潮牌CHROME克罗银心十字架勋章大檐帽太阳帽男女",
+        "priceText": "$5.51",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-61a90000019c93ae576d0aa08239_1500_1500.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698650140&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "欧美好莱坞潮牌chrome克罗银心十字架勋章大檐帽太阳帽男女 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7695685909",
+      "tp": "micro",
+      "title": "外贸鸭舌帽棉布刺绣运动休闲鸭舌帽调节嘻哈韩版帽洋基队字母帽子",
+      "price": 4.96,
+      "priceLabel": "$4.96",
+      "image": "https://si.geilicdn.com/open1622517075-1622517075-37e70000019a731647eb0a23b491_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7695685909&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7695685909&sales=1",
+        "title": "外贸鸭舌帽棉布刺绣运动休闲鸭舌帽调节嘻哈韩版帽洋基队字母帽子",
+        "priceText": "$4.96",
+        "imageSrc": "https://si.geilicdn.com/open1622517075-1622517075-37e70000019a731647eb0a23b491_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7695685909&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "外贸鸭舌帽棉布刺绣运动休闲鸭舌帽调节嘻哈韩版帽洋基队字母帽子 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7687824917",
+      "tp": "micro",
+      "title": "模糊字母印花字母做旧破坏连帽卫衣男女同款",
+      "price": 49.42,
+      "priceLabel": "$49.42",
+      "image": "https://si.geilicdn.com/pcitem1792950303-1277000001932ef1f08f0a23111a-unadjust_800_800.png",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7687824917&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7687824917&sales=0",
+        "title": "模糊字母印花字母做旧破坏连帽卫衣男女同款",
+        "priceText": "$49.42",
+        "imageSrc": "https://si.geilicdn.com/pcitem1792950303-1277000001932ef1f08f0a23111a-unadjust_800_800.png"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7687824917&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "模糊字母印花字母做旧破坏连帽卫衣男女同款 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7688924828",
+      "tp": "micro",
+      "title": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫",
+      "price": 24.24,
+      "priceLabel": "$24.24",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-16ed0000019bbbb163670a8115c2_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7688924828&sales=6",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7688924828&sales=6",
+        "title": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫",
+        "priceText": "$24.24",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-16ed0000019bbbb163670a8115c2_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7688924828&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7681004392",
+      "tp": "micro",
+      "title": "美式小众潮牌侧面女神大LOGO印花高街男女宽松连帽做旧拉链卫衣帽",
+      "price": 13.06,
+      "priceLabel": "$13.06",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-1eb50000019c03b351d30a23b4de_1066_1066.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7681004392&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7681004392&sales=0",
+        "title": "美式小众潮牌侧面女神大LOGO印花高街男女宽松连帽做旧拉链卫衣帽",
+        "priceText": "$13.06",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-1eb50000019c03b351d30a23b4de_1066_1066.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7681004392&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "美式小众潮牌侧面女神大logo印花高街男女宽松连帽做旧拉链卫衣帽 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670241081",
+      "tp": "micro",
+      "title": "(PD Welfare)Knitted hat blind box, styles randomly distributed",
+      "price": 3.76,
+      "priceLabel": "$3.76",
+      "image": "https://si.geilicdn.com/pcitem1923191567-61bd00000199326a6d6f0a2304aa_1280_1280.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670241081&sales=7",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670241081&sales=7",
+        "title": "(PD Welfare)Knitted hat blind box, styles randomly distributed",
+        "priceText": "$3.76",
+        "imageSrc": "https://si.geilicdn.com/pcitem1923191567-61bd00000199326a6d6f0a2304aa_1280_1280.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670241081&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "(pd welfare)knitted hat blind box, styles randomly distributed j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673274202",
+      "tp": "micro",
+      "title": "(PD Welfare)Duck tongue cap blind box, randomly distributed.",
+      "price": 1.56,
+      "priceLabel": "$1.56",
+      "image": "https://si.geilicdn.com/pcitem1923191567-5faa00000195b70781a60a23111a_2309_1732.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673274202&sales=12",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673274202&sales=12",
+        "title": "(PD Welfare)Duck tongue cap blind box, randomly distributed.",
+        "priceText": "$1.56",
+        "imageSrc": "https://si.geilicdn.com/pcitem1923191567-5faa00000195b70781a60a23111a_2309_1732.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673274202&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "(pd welfare)duck tongue cap blind box, randomly distributed. j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673242452",
+      "tp": "micro",
+      "title": "时尚帽子-M01(非质量问题不退换)-113",
+      "price": 7.87,
+      "priceLabel": "$7.87",
+      "image": "https://si.geilicdn.com/open1696133557-1234478995-270600000195392e0e0e0a8133b0_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673242452&sales=6",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673242452&sales=6",
+        "title": "时尚帽子-M01(非质量问题不退换)-113",
+        "priceText": "$7.87",
+        "imageSrc": "https://si.geilicdn.com/open1696133557-1234478995-270600000195392e0e0e0a8133b0_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673242452&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "时尚帽子-m01(非质量问题不退换)-113 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670300171",
+      "tp": "micro",
+      "title": "Jor** Peaked Cap 全系列调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽 港风休闲鸭舌帽旅游网帽嘻哈街舞帽",
+      "price": 5.98,
+      "priceLabel": "$5.98",
+      "image": "https://si.geilicdn.com/pcitem1145423173-6c000000018f0e23c2550a20e284_800_600.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670300171&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670300171&sales=1",
+        "title": "Jor** Peaked Cap 全系列调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽 港风休闲鸭舌帽旅游网帽嘻哈街舞帽",
+        "priceText": "$5.98",
+        "imageSrc": "https://si.geilicdn.com/pcitem1145423173-6c000000018f0e23c2550a20e284_800_600.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670300171&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "jor** peaked cap 全系列调节帽棒球帽子 男女防晒帽韩版百搭遮阳帽 港风休闲鸭舌帽旅游网帽嘻哈街舞帽 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7663408879",
+      "tp": "micro",
+      "title": "REPRESENT 22秋冬标语logo印花连帽卫衣",
+      "price": 31.32,
+      "priceLabel": "$31.32",
+      "image": "https://si.geilicdn.com/pcitem1773215124-64550000018a5ca645850a2102d0_2160_2160.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7663408879&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7663408879&sales=0",
+        "title": "REPRESENT 22秋冬标语logo印花连帽卫衣",
+        "priceText": "$31.32",
+        "imageSrc": "https://si.geilicdn.com/pcitem1773215124-64550000018a5ca645850a2102d0_2160_2160.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7663408879&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "represent 22秋冬标语logo印花连帽卫衣 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7662104445",
+      "tp": "micro",
+      "title": "爆款百搭休闲连帽衫",
+      "price": 31.17,
+      "priceLabel": "$31.17",
+      "image": "https://si.geilicdn.com/open1818983101-1234478995-16670000019826db2f590a23b491-unadjust_1200_1200.png",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7662104445&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7662104445&sales=0",
+        "title": "爆款百搭休闲连帽衫",
+        "priceText": "$31.17",
+        "imageSrc": "https://si.geilicdn.com/open1818983101-1234478995-16670000019826db2f590a23b491-unadjust_1200_1200.png"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7662104445&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "爆款百搭休闲连帽衫 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7665046904",
+      "tp": "micro",
+      "title": "FOG双排硅胶帽衫Fear of God Essentials SS23 Essentials Hoodie SycamoreLogo 加厚加绒秋冬连帽卫衣 （不退换）",
+      "price": 26.44,
+      "priceLabel": "$26.44",
+      "image": "https://si.geilicdn.com/wdseller1283537978-03cf000001882a83f6f30a20e284_1179_884.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7665046904&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7665046904&sales=1",
+        "title": "FOG双排硅胶帽衫Fear of God Essentials SS23 Essentials Hoodie SycamoreLogo 加厚加绒秋冬连帽卫衣 （不退换）",
+        "priceText": "$26.44",
+        "imageSrc": "https://si.geilicdn.com/wdseller1283537978-03cf000001882a83f6f30a20e284_1179_884.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7665046904&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "fog双排硅胶帽衫fear of god essentials ss23 essentials hoodie sycamorelogo 加厚加绒秋冬连帽卫衣 （不退换） j minsg gyors szllts"
+    },
+    {
+      "itemId": "7665048846",
+      "tp": "micro",
+      "title": "青春潮流帽衫套装",
+      "price": 29.59,
+      "priceLabel": "$29.59",
+      "image": "https://si.geilicdn.com/open1783746229-1234478995-6753000001956fea17e20a8133b0_1108_1108.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7665048846&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7665048846&sales=0",
+        "title": "青春潮流帽衫套装",
+        "priceText": "$29.59",
+        "imageSrc": "https://si.geilicdn.com/open1783746229-1234478995-6753000001956fea17e20a8133b0_1108_1108.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7665048846&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "青春潮流帽衫套装 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7662074505",
+      "tp": "micro",
+      "title": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫",
+      "price": 24.24,
+      "priceLabel": "$24.24",
+      "image": "https://si.geilicdn.com/open1649504061-1234478995-16ed0000019bbbb163670a8115c2_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7662074505&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7662074505&sales=0",
+        "title": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫",
+        "priceText": "$24.24",
+        "imageSrc": "https://si.geilicdn.com/open1649504061-1234478995-16ed0000019bbbb163670a8115c2_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7662074505&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "现货实拍潮牌十字架连帽卫衣跨境宽松男女拉链帽衫 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7656125411",
+      "tp": "micro",
+      "title": "CT卫衣帽衫拉链中空流星P048",
+      "price": 29.59,
+      "priceLabel": "$29.59",
+      "image": "https://si.geilicdn.com/pcitem1375395368-6e40000001998cee4f290a20e2c5_667_667.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7656125411&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7656125411&sales=0",
+        "title": "CT卫衣帽衫拉链中空流星P048",
+        "priceText": "$29.59",
+        "imageSrc": "https://si.geilicdn.com/pcitem1375395368-6e40000001998cee4f290a20e2c5_667_667.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7656125411&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "ct卫衣帽衫拉链中空流星p048 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7659196098",
+      "tp": "micro",
+      "title": "syna SKULL seamless BEANIE cold HAT",
+      "price": 7.08,
+      "priceLabel": "$7.08",
+      "image": "https://si.geilicdn.com/pcitem1944479080-119c00000199718ae6420a2303ee_1276_1276.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7659196098&sales=4",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7659196098&sales=4",
+        "title": "syna SKULL seamless BEANIE cold HAT",
+        "priceText": "$7.08",
+        "imageSrc": "https://si.geilicdn.com/pcitem1944479080-119c00000199718ae6420a2303ee_1276_1276.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7659196098&inviter=gelenfarkas",
+      "category": "sapka",
+      "categoryLabel": "Sapka",
+      "normalizedTitle": "syna skull seamless beanie cold hat j minsg gyors szllts"
+    }
+  ]
+}

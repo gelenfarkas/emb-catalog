@@ -26,11 +26,12 @@ if (is_dir($root)) {
 
         $parts = explode('/', $relative);
         $folder = $parts[1] ?? 'egyeb';
+        $category = categoryLabel($folder);
 
         $datasets[] = [
             'path' => $relative,
-            'category' => categoryLabel($folder),
-            'label' => categoryLabel($folder) . ' / ' . $file->getBasename('.json'),
+            'category' => $category,
+            'label' => $category . ' / ' . $file->getBasename('.json'),
         ];
     }
 }
@@ -46,6 +47,15 @@ function categoryLabel(string $folder): string
         'cipok' => 'Cipő',
         'zokni' => 'Zokni',
         'taska' => 'Táska',
+        'sal' => 'Sál',
+        'nadrag' => 'Nadrág',
+        'kabat' => 'Kabát',
+        'melleny' => 'Mellény',
+        'sapka' => 'Sapka',
+        'polo' => 'Póló',
+        'pulcsi' => 'Pulcsi',
+        'furdoruha' => 'Fürdőruha',
+        'kategorizalatlan' => 'Kategorizálatlan',
     ];
 
     $key = strtolower(trim($folder));

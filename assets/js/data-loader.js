@@ -62,9 +62,11 @@ export async function loadFromManifest(manifestPath = "data/manifest.json", opti
     manifestDebug.topLevelKeys = Object.keys(manifest || {});
   }
 
+  const manifestCategories = uniqueManifestCategories(datasets);
+  const datasetOptions = { ...options, manifestCategories };
   const datasetsStart = performance.now();
   const results = await Promise.allSettled(
-    datasets.map((entry) => loadDatasetEntry(entry, options, debug, metrics)),
+    datasets.map((entry) => loadDatasetEntry(entry, datasetOptions, debug, metrics)),
   );
   metrics.datasetTotalMs += elapsedSince(datasetsStart);
 
@@ -281,6 +283,18 @@ function validateDatasetShape(json, datasetDebug) {
   if (!isObject) throw new Error("A dataset JSON nem objektum.");
   if (!hasItems) throw new Error(`Nincs items tömb. Top-level kulcsok: ${Object.keys(json).join(", ")}`);
   if (!itemsIsArray) throw new Error("Az items mező nem tömb.");
+}
+
+function uniqueManifestCategories(datasets) {
+  const values = [];
+  for (const dataset of datasets || []) {
+    if (Array.isArray(dataset.categories)) {
+      values.push(...dataset.categories);
+    } else if (dataset.category) {
+      values.push(dataset.category);
+    }
+  }
+  return Array.from(new Set(values.map((value) => String(value || "").replace(/\s+/g, " ").trim()).filter(Boolean)));
 }
 
 function countReplacementCharacters(items) {

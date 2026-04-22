@@ -1,65 +1,93 @@
+export const UNCATEGORIZED_LABEL = "Kategorizálatlan";
+
+const CN_WEIGHT = 2;
+const DEFAULT_WEIGHT = 1;
+
+const UNCATEGORIZED_KEYWORDS = ["耳机", "钱包", "腰带"];
+
 export const CATEGORY_MAP = [
   {
     id: "cipo",
     label: "Cipő",
     keywords: {
-      hu: ["cipő", "sportcipő", "bakancs", "szandál"],
-      en: ["shoe", "shoes", "sneaker", "boots", "sandals"],
-      cn: ["鞋", "运动鞋", "靴", "凉鞋"],
+      hu: ["cipő", "cipők", "sportcipő", "edzőcipő", "bakancs", "szandál"],
+      en: ["shoe", "shoes", "sneaker", "sneakers", "running shoe", "basketball shoe", "boots", "sandals", "dunk"],
+      cn: ["鞋", "鞋子", "运动鞋", "跑步鞋", "篮球鞋", "休闲鞋", "徒步", "越野", "户外", "低帮", "高帮", "DUNK"],
     },
   },
   {
     id: "taska",
     label: "Táska",
     keywords: {
-      hu: ["táska", "hátizsák", "sporttáska", "oldaltáska"],
-      en: ["bag", "backpack", "shoulder bag", "sport bag"],
-      cn: ["包", "背包", "双肩包", "手提包"],
+      hu: ["táska", "táskák", "hátizsák", "sporttáska", "oldaltáska", "kézitáska", "válltáska"],
+      en: ["bag", "bags", "backpack", "shoulder bag", "tote bag", "bucket bag", "travel bag", "school bag", "makeup bag"],
+      cn: ["包", "背包", "双肩包", "手提包", "单肩包", "斜挎包", "托特包", "水桶包", "购物袋", "旅行包", "书包", "化妆包"],
     },
   },
   {
-    id: "nadrag_hosszu",
-    label: "Nadrág (hosszú)",
+    id: "ruha",
+    label: "Ruha",
     keywords: {
-      hu: ["nadrág", "farmer", "melegítő nadrág"],
-      en: ["pants", "trousers", "jeans"],
-      cn: ["裤", "长裤", "牛仔裤"],
+      hu: ["ruha", "felső", "szoknya", "póló", "pulcsi", "pulóver", "ing", "melegítő"],
+      en: ["dress", "top", "shirt", "t-shirt", "tee", "hoodie", "sweater", "outfit"],
+      cn: ["衣", "上衣", "外套", "短袖", "长袖", "套装", "卫衣", "毛衣", "连衣裙", "衬衫", "T恤"],
     },
   },
   {
-    id: "nadrag_rovid",
-    label: "Nadrág (rövid)",
+    id: "polo",
+    label: "Póló",
+    priority: 1,
     keywords: {
-      hu: ["rövidnadrág", "short"],
-      en: ["shorts"],
-      cn: ["短裤"],
+      hu: ["póló", "rövid ujjú", "hosszú ujjú"],
+      en: ["t-shirt", "tee", "short sleeve", "long sleeve"],
+      cn: ["短袖", "长袖", "T恤"],
     },
   },
   {
-    id: "noi_ruha",
-    label: "Női ruhák",
+    id: "pulcsi",
+    label: "Pulcsi",
+    priority: 1,
     keywords: {
-      hu: ["ruha", "szoknya", "felső", "melegítő"],
-      en: ["dress", "skirt", "top", "outfit"],
-      cn: ["裙", "连衣裙", "女装", "上衣"],
+      hu: ["pulcsi", "pulóver", "kapucnis pulóver"],
+      en: ["hoodie", "sweater", "pullover"],
+      cn: ["卫衣", "毛衣"],
     },
   },
   {
-    id: "lego",
-    label: "Lego",
+    id: "sapka",
+    label: "Sapka",
     keywords: {
-      hu: ["lego"],
-      en: ["lego", "building blocks"],
-      cn: ["乐高", "积木"],
+      hu: ["sapka", "kalap", "baseball sapka"],
+      en: ["cap", "hat", "baseball cap", "beanie", "knit hat"],
+      cn: ["帽", "帽子", "棒球帽", "鸭舌帽", "毛线帽", "针织帽"],
+    },
+  },
+  {
+    id: "sal",
+    label: "Sál",
+    keywords: {
+      hu: ["sál", "nyaksál", "kendő", "csősál", "körsál", "téli sál", "gyapjú sál"],
+      en: ["scarf", "neck scarf", "neck warmer", "winter scarf", "shawl", "wrap", "loop scarf", "infinity scarf"],
+      cn: ["围巾", "围脖", "披肩"],
+    },
+  },
+  {
+    id: "nadrag",
+    label: "Nadrág",
+    keywords: {
+      hu: ["nadrág", "farmer", "rövidnadrág", "melegítő nadrág"],
+      en: ["pants", "trousers", "jeans", "shorts"],
+      cn: ["裤", "长裤", "短裤", "牛仔裤"],
     },
   },
   {
     id: "kabat",
     label: "Kabát",
+    priority: 1,
     keywords: {
       hu: ["kabát", "dzseki"],
-      en: ["jacket", "coat"],
-      cn: ["外套", "夹克"],
+      en: ["jacket", "coat", "down jacket"],
+      cn: ["外套", "夹克", "羽绒服"],
     },
   },
   {
@@ -72,33 +100,6 @@ export const CATEGORY_MAP = [
     },
   },
   {
-    id: "sapka",
-    label: "Sapka",
-    keywords: {
-      hu: ["sapka", "kalap"],
-      en: ["cap", "hat"],
-      cn: ["帽", "帽子"],
-    },
-  },
-  {
-    id: "polo_ing",
-    label: "Póló / Ing",
-    keywords: {
-      hu: ["póló", "ing"],
-      en: ["t-shirt", "shirt"],
-      cn: ["T恤", "衬衫"],
-    },
-  },
-  {
-    id: "pulover",
-    label: "Pulóver",
-    keywords: {
-      hu: ["pulóver"],
-      en: ["hoodie", "sweater"],
-      cn: ["卫衣", "毛衣"],
-    },
-  },
-  {
     id: "furdoruha",
     label: "Fürdőruha",
     keywords: {
@@ -108,12 +109,12 @@ export const CATEGORY_MAP = [
     },
   },
   {
-    id: "sal",
-    label: "Sál",
+    id: "kategorizalatlan",
+    label: UNCATEGORIZED_LABEL,
     keywords: {
-      hu: ["sál", "nyaksál", "kendő", "csősál", "körsál", "téli sál", "gyapjú sál"],
-      en: ["scarf", "neck scarf", "neck warmer", "winter scarf", "shawl", "wrap", "loop scarf", "infinity scarf"],
-      cn: ["围巾", "围脖", "披肩", "围巾女", "围巾男", "冬季围巾"],
+      hu: [],
+      en: [],
+      cn: [],
     },
   },
 ];
@@ -124,19 +125,28 @@ export function detectCategory(title) {
   const haystack = normalizeSearchText(title);
   if (!haystack) return "";
 
-  let match = null;
+  let best = null;
 
   for (const category of CATEGORY_MAP) {
-    for (const keyword of categoryKeywords(category)) {
-      const normalizedKeyword = normalizeSearchText(keyword);
-      if (!normalizedKeyword || !haystack.includes(normalizedKeyword)) continue;
-      if (!match || normalizedKeyword.length > match.keyword.length) {
-        match = { category, keyword: normalizedKeyword };
-      }
+    const scored = scoreCategory(category, haystack);
+    if (scored.score <= 0) continue;
+
+    if (
+      !best ||
+      scored.score > best.score ||
+      (scored.score === best.score && scored.longestKeyword.length > best.longestKeyword.length) ||
+      (scored.score === best.score &&
+        scored.longestKeyword.length === best.longestKeyword.length &&
+        categoryPriority(category) > categoryPriority(best.category))
+    ) {
+      best = { category, ...scored };
     }
   }
 
-  return match ? match.category.id : "";
+  if (!best) return "";
+  if (hasUncategorizedKeyword(haystack) && best.score <= CN_WEIGHT) return "";
+
+  return best.category.id;
 }
 
 export function getCategoryLabel(categoryId) {
@@ -160,6 +170,25 @@ export function findCategoryByQuery(query) {
   return null;
 }
 
+export function expandSearchQuery(query) {
+  const terms = [normalizeSearchText(query)].filter(Boolean);
+  const category = findCategoryByQuery(query);
+  if (!category) return terms;
+
+  for (const keyword of categoryKeywords(category)) {
+    const normalizedKeyword = normalizeSearchText(keyword);
+    if (normalizedKeyword) terms.push(normalizedKeyword);
+  }
+
+  return unique(terms);
+}
+
+export function isManifestCategory(categoryId, manifestCategories = []) {
+  const label = getCategoryLabel(categoryId);
+  if (!label) return false;
+  return manifestCategories.some((category) => normalizeSearchText(category) === normalizeSearchText(label));
+}
+
 export function normalizeSearchText(value) {
   return String(value || "")
     .normalize("NFD")
@@ -169,6 +198,35 @@ export function normalizeSearchText(value) {
     .trim();
 }
 
+function scoreCategory(category, haystack) {
+  let score = 0;
+  let longestKeyword = "";
+
+  for (const [language, keywords] of Object.entries(category.keywords || {})) {
+    const weight = language === "cn" ? CN_WEIGHT : DEFAULT_WEIGHT;
+    for (const keyword of keywords || []) {
+      const normalizedKeyword = normalizeSearchText(keyword);
+      if (!normalizedKeyword || !haystack.includes(normalizedKeyword)) continue;
+      score += weight;
+      if (normalizedKeyword.length > longestKeyword.length) longestKeyword = normalizedKeyword;
+    }
+  }
+
+  return { score, longestKeyword };
+}
+
+function hasUncategorizedKeyword(haystack) {
+  return UNCATEGORIZED_KEYWORDS.some((keyword) => haystack.includes(normalizeSearchText(keyword)));
+}
+
 function categoryKeywords(category) {
   return Object.values(category.keywords || {}).flat();
+}
+
+function categoryPriority(category) {
+  return Number.isFinite(category.priority) ? category.priority : 0;
+}
+
+function unique(values) {
+  return Array.from(new Set(values));
 }

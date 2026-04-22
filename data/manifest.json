@@ -1,19 +1,66 @@
 {
   "datasets": [
     {
+      "path": "data/cipo/eastmallbuy-products-filtered-1776863491250.json",
+      "category": "Cipő",
+      "label": "Cipő / OHERO STUDIO valós export"
+    },
+    {
+      "path": "data/taska/eastmallbuy-products-filtered-1776863623331.json",
+      "category": "Táska"
+    },
+    {
       "path": "data/cipo/eastmallbuy-products-1772004864-2026-04-22T11-20-57-848Z.json",
       "category": "Cipő",
       "label": "Cipő / OHERO STUDIO valós export"
     },
     {
-      "path": "data/cipo/shop-1.json",
-      "category": "Cipő",
-      "label": "Cipő / OHERO STUDIO minta"
+      "path": "data/sal/eastmallbuy-products-filtered-1776863825071.json",
+      "category": "Sál"
     },
     {
-      "path": "data/zokni/shop-1.json",
-      "category": "Zokni",
-      "label": "Zokni / példa export"
+      "path": "data/kategorizalatlan/eastmallbuy-products-filtered-1776864045341.json",
+      "category": "Kategorizálatlan"
+    },
+    {
+      "path": "data/nadrag/eastmallbuy-products-filtered-1776865340005.json",
+      "category": "Nadrág"
+    },
+    {
+      "path": "data/nadrag/eastmallbuy-products-filtered-1776865378993.json",
+      "category": "Nadrág"
+    },
+    {
+      "path": "data/kabat/eastmallbuy-products-filtered-1776882641810.json",
+      "category": "Kabát"
+    },
+    {
+      "path": "data/melleny/eastmallbuy-products-filtered-1776882835426.json",
+      "category": "Mellény"
+    },
+    {
+      "path": "data/sapka/eastmallbuy-products-filtered-1776883245959.json",
+      "category": "Sapka"
+    },
+    {
+      "path": "data/polo/eastmallbuy-products-filtered-1776883279811.json",
+      "category": "Póló"
+    },
+    {
+      "path": "data/pulcsi/eastmallbuy-products-filtered-1776883322686.json",
+      "category": "Pulcsi"
+    },
+    {
+      "path": "data/furdoruha/eastmallbuy-products-filtered-1776883365257.json",
+      "category": "Fürdőruha"
+    },
+    {
+      "path": "data/polo/eastmallbuy-products-filtered-1776885612175.json",
+      "category": "Póló"
+    },
+    {
+      "path": "data/nadrag/eastmallbuy-products-filtered-1776885680644.json",
+      "category": "Nadrág"
     }
   ]
 }

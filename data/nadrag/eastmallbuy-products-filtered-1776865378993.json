@@ -1,0 +1,426 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 19,
+  "generatedAt": "2026-04-22T13:42:58.993Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1649504061&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1649504061&shopName=J%20minsg%20gyors%20szllts",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "J minsg gyors szllts",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 5000,
+    "uniqueItemIds": 463,
+    "pricedItems": 463,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 22331,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7716332546",
+      "tp": "micro",
+      "title": "2025ss A'MIRI Short sleeved suit",
+      "price": 37.78,
+      "priceLabel": "$37.78",
+      "image": "https://si.geilicdn.com/pcitem901956561917-1c53000001977d26a1530a207569_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716332546&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7716332546&sales=0",
+        "title": "2025ss A'MIRI Short sleeved suit",
+        "priceText": "$37.78",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-1c53000001977d26a1530a207569_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716332546&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss a'miri short sleeved suit j minsg gyors szllts"
+    },
+    {
+      "itemId": "7713213217",
+      "tp": "micro",
+      "title": "2025ss D GI V111111uitton Bu1be11y shorts",
+      "price": 22.82,
+      "priceLabel": "$22.82",
+      "image": "https://si.geilicdn.com/pcitem901956561917-17a100000196f0f394c40a23057e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713213217&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7713213217&sales=1",
+        "title": "2025ss D GI V111111uitton Bu1be11y shorts",
+        "priceText": "$22.82",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-17a100000196f0f394c40a23057e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7713213217&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss d gi v111111uitton bu1be11y shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7716264216",
+      "tp": "micro",
+      "title": "2025ss D printed letter shorts",
+      "price": 18.26,
+      "priceLabel": "$18.26",
+      "image": "https://si.geilicdn.com/pcitem901956561917-268a000001973f7cfd1f0a23057e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716264216&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7716264216&sales=0",
+        "title": "2025ss D printed letter shorts",
+        "priceText": "$18.26",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-268a000001973f7cfd1f0a23057e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7716264216&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss d printed letter shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712084747",
+      "tp": "micro",
+      "title": "2025ss D printed letter shorts",
+      "price": 18.26,
+      "priceLabel": "$18.26",
+      "image": "https://si.geilicdn.com/pcitem901956561917-268a000001973f7cfd1f0a23057e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712084747&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712084747&sales=0",
+        "title": "2025ss D printed letter shorts",
+        "priceText": "$18.26",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-268a000001973f7cfd1f0a23057e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712084747&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss d printed letter shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712483149",
+      "tp": "micro",
+      "title": "Summer casual sports shorts 18",
+      "price": 8.66,
+      "priceLabel": "$8.66",
+      "image": "https://si.geilicdn.com/pcitem901904891510-6b6c000001964d6937aa0a2102c5_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712483149&sales=3",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712483149&sales=3",
+        "title": "Summer casual sports shorts 18",
+        "priceText": "$8.66",
+        "imageSrc": "https://si.geilicdn.com/pcitem901904891510-6b6c000001964d6937aa0a2102c5_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712483149&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "summer casual sports shorts 18 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712554327",
+      "tp": "micro",
+      "title": "C00rte1z Shorts",
+      "price": 19.68,
+      "priceLabel": "$19.68",
+      "image": "https://si.geilicdn.com/pcitem1885302871-514a00000198695a21e20a23057e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712554327&sales=3",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712554327&sales=3",
+        "title": "C00rte1z Shorts",
+        "priceText": "$19.68",
+        "imageSrc": "https://si.geilicdn.com/pcitem1885302871-514a00000198695a21e20a23057e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712554327&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "c00rte1z shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712544343",
+      "tp": "micro",
+      "title": "Rhμde Five cent hip hop shorts",
+      "price": 16.53,
+      "priceLabel": "$16.53",
+      "image": "https://si.geilicdn.com/pcitem1885302871-529e00000198695fcf070a23111a_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712544343&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712544343&sales=0",
+        "title": "Rhμde Five cent hip hop shorts",
+        "priceText": "$16.53",
+        "imageSrc": "https://si.geilicdn.com/pcitem1885302871-529e00000198695fcf070a23111a_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712544343&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "rhμde five cent hip hop shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7714644272",
+      "tp": "micro",
+      "title": "BP home Short T-shirt/Long T-shirt",
+      "price": 16.53,
+      "priceLabel": "$16.53",
+      "image": "https://si.geilicdn.com/pcitem1885302871-4c350000019869536fad0a23038e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7714644272&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7714644272&sales=0",
+        "title": "BP home Short T-shirt/Long T-shirt",
+        "priceText": "$16.53",
+        "imageSrc": "https://si.geilicdn.com/pcitem1885302871-4c350000019869536fad0a23038e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7714644272&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "bp home short t-shirt/long t-shirt j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712419230",
+      "tp": "micro",
+      "title": "🔥🔥Summer casual sports shorts classic replica 1 to 1 restoration",
+      "price": 14.01,
+      "priceLabel": "$14.01",
+      "image": "https://si.geilicdn.com/pcitem901848070252-612f0000018ec5a1d3b80a22d50c_1500_1500.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712419230&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712419230&sales=0",
+        "title": "🔥🔥Summer casual sports shorts classic replica 1 to 1 restoration",
+        "priceText": "$14.01",
+        "imageSrc": "https://si.geilicdn.com/pcitem901848070252-612f0000018ec5a1d3b80a22d50c_1500_1500.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712419230&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "🔥🔥summer casual sports shorts classic replica 1 to 1 restoration j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712561654",
+      "tp": "micro",
+      "title": "2025ss Bxxxxxxga shorts",
+      "price": 23.61,
+      "priceLabel": "$23.61",
+      "image": "https://si.geilicdn.com/pcitem901956561917-65ae00000197868e8eb50a81347d_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712561654&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712561654&sales=0",
+        "title": "2025ss Bxxxxxxga shorts",
+        "priceText": "$23.61",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-65ae00000197868e8eb50a81347d_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712561654&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss bxxxxxxga shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7709557825",
+      "tp": "micro",
+      "title": "2025ss S1one 1s1and，shorts",
+      "price": 15.43,
+      "priceLabel": "$15.43",
+      "image": "https://si.geilicdn.com/pcitem901956561917-4276000001976cf7f5ba0a2396f4_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7709557825&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7709557825&sales=1",
+        "title": "2025ss S1one 1s1and，shorts",
+        "priceText": "$15.43",
+        "imageSrc": "https://si.geilicdn.com/pcitem901956561917-4276000001976cf7f5ba0a2396f4_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7709557825&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "2025ss s1one 1s1and，shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7695587235",
+      "tp": "micro",
+      "title": "AM11 Summer pure cotton shorts",
+      "price": 18.89,
+      "priceLabel": "$18.89",
+      "image": "https://si.geilicdn.com/pcitem1885302871-760f00000195a33265030a23047e_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7695587235&sales=3",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7695587235&sales=3",
+        "title": "AM11 Summer pure cotton shorts",
+        "priceText": "$18.89",
+        "imageSrc": "https://si.geilicdn.com/pcitem1885302871-760f00000195a33265030a23047e_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7695587235&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "am11 summer pure cotton shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7698650058",
+      "tp": "micro",
+      "title": "88Aappe shorts",
+      "price": 17.31,
+      "priceLabel": "$17.31",
+      "image": "https://si.geilicdn.com/pcitem1885302871-117d000001961410610e0a23037f_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698650058&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7698650058&sales=0",
+        "title": "88Aappe shorts",
+        "priceText": "$17.31",
+        "imageSrc": "https://si.geilicdn.com/pcitem1885302871-117d000001961410610e0a23037f_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7698650058&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "88aappe shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7690822338",
+      "tp": "micro",
+      "title": "DenimT summer short sleeved American T-shirt 国潮没标",
+      "price": 8.66,
+      "priceLabel": "$8.66",
+      "image": "https://si.geilicdn.com/wdseller1452235621-0c1c000001909b80df120a81347d_1200_900.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7690822338&sales=10",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7690822338&sales=10",
+        "title": "DenimT summer short sleeved American T-shirt 国潮没标",
+        "priceText": "$8.66",
+        "imageSrc": "https://si.geilicdn.com/wdseller1452235621-0c1c000001909b80df120a81347d_1200_900.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7690822338&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "denimt summer short sleeved american t-shirt 国潮没标 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7676902206",
+      "tp": "micro",
+      "title": "P@lm Shorts",
+      "price": 21.25,
+      "priceLabel": "$21.25",
+      "image": "https://si.geilicdn.com/pcitem1841091927-78b800000190ab2327180a23038e_3000_3000.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7676902206&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7676902206&sales=0",
+        "title": "P@lm Shorts",
+        "priceText": "$21.25",
+        "imageSrc": "https://si.geilicdn.com/pcitem1841091927-78b800000190ab2327180a23038e_3000_3000.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7676902206&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "p@lm shorts j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673288432",
+      "tp": "micro",
+      "title": "*(PD Heritage) Short Sleeve Blind Box, Randomized",
+      "price": 4.55,
+      "priceLabel": "$4.55",
+      "image": "https://si.geilicdn.com/pcitem1826598197-488a000001982b0de0420a23057e_1278_1278.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673288432&sales=25",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673288432&sales=25",
+        "title": "*(PD Heritage) Short Sleeve Blind Box, Randomized",
+        "priceText": "$4.55",
+        "imageSrc": "https://si.geilicdn.com/pcitem1826598197-488a000001982b0de0420a23057e_1278_1278.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673288432&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "*(pd heritage) short sleeve blind box, randomized j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670270693",
+      "tp": "micro",
+      "title": "💥Factory direct sales-Summer casual sports shorts 08",
+      "price": 11.02,
+      "priceLabel": "$11.02",
+      "image": "https://si.geilicdn.com/pcitem901904891510-2109000001961efb244b0a20e273_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670270693&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670270693&sales=1",
+        "title": "💥Factory direct sales-Summer casual sports shorts 08",
+        "priceText": "$11.02",
+        "imageSrc": "https://si.geilicdn.com/pcitem901904891510-2109000001961efb244b0a20e273_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670270693&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "💥factory direct sales-summer casual sports shorts 08 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670553226",
+      "tp": "micro",
+      "title": "RL Casual Fashion Short Cotton Jacket Trendy Coat",
+      "price": 36.99,
+      "priceLabel": "$36.99",
+      "image": "https://si.geilicdn.com/pcitem1897935117-73d30000019a95d702310a21146b_1080_1440.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670553226&sales=1",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670553226&sales=1",
+        "title": "RL Casual Fashion Short Cotton Jacket Trendy Coat",
+        "priceText": "$36.99",
+        "imageSrc": "https://si.geilicdn.com/pcitem1897935117-73d30000019a95d702310a21146b_1080_1440.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670553226&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "rl casual fashion short cotton jacket trendy coat j minsg gyors szllts"
+    },
+    {
+      "itemId": "7661402682",
+      "tp": "micro",
+      "title": "short sleeve, random delivery. No returns or exchanges after order.",
+      "price": 7.08,
+      "priceLabel": "$7.08",
+      "image": "https://si.geilicdn.com/open1820645545-1234478995-7c3a00000196fc1069cc0aa0834c_800_800.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7661402682&sales=6",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7661402682&sales=6",
+        "title": "short sleeve, random delivery. No returns or exchanges after order.",
+        "priceText": "$7.08",
+        "imageSrc": "https://si.geilicdn.com/open1820645545-1234478995-7c3a00000196fc1069cc0aa0834c_800_800.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7661402682&inviter=gelenfarkas",
+      "category": "nadrag_rovid",
+      "categoryLabel": "Nadrág (rövid)",
+      "normalizedTitle": "short sleeve, random delivery. no returns or exchanges after order. j minsg gyors szllts"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 5,
+  "generatedAt": "2026-04-22T18:33:55.426Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1649504061&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1649504061&shopName=J%20minsg%20gyors%20szllts",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "J minsg gyors szllts",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 5000,
+    "uniqueItemIds": 463,
+    "pricedItems": 463,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 22331,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7714891071",
+      "tp": "micro",
+      "title": "Vest down jac*ket-007 m1 w2crep.com",
+      "price": 31.32,
+      "priceLabel": "$31.32",
+      "image": "https://si.geilicdn.com/open1761500601-1234478995-2ad1000001954c40e0a20a22d249_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7714891071&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7714891071&sales=0",
+        "title": "Vest down jac*ket-007 m1 w2crep.com",
+        "priceText": "$31.32",
+        "imageSrc": "https://si.geilicdn.com/open1761500601-1234478995-2ad1000001954c40e0a20a22d249_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7714891071&inviter=gelenfarkas",
+      "category": "melleny",
+      "categoryLabel": "Mellény",
+      "normalizedTitle": "vest down jac*ket-007 m1 w2crep.com j minsg gyors szllts"
+    },
+    {
+      "itemId": "7712529222",
+      "tp": "micro",
+      "title": "DJXPCS新款时尚百搭羽绒服马甲-02",
+      "price": 15.58,
+      "priceLabel": "$15.58",
+      "image": "https://si.geilicdn.com/pcitem1950340596-0b6b00000198651ad02c0a20e273-unadjust_1200_1200.png",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712529222&sales=2",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7712529222&sales=2",
+        "title": "DJXPCS新款时尚百搭羽绒服马甲-02",
+        "priceText": "$15.58",
+        "imageSrc": "https://si.geilicdn.com/pcitem1950340596-0b6b00000198651ad02c0a20e273-unadjust_1200_1200.png"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7712529222&inviter=gelenfarkas",
+      "category": "melleny",
+      "categoryLabel": "Mellény",
+      "normalizedTitle": "djxpcs新款时尚百搭羽绒服马甲-02 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7674002070",
+      "tp": "micro",
+      "title": "Vest for men and women",
+      "price": 19.83,
+      "priceLabel": "$19.83",
+      "image": "https://si.geilicdn.com/wdseller1827543360-58b800000197d88cbc420a2315ef_1179_878.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7674002070&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7674002070&sales=0",
+        "title": "Vest for men and women",
+        "priceText": "$19.83",
+        "imageSrc": "https://si.geilicdn.com/wdseller1827543360-58b800000197d88cbc420a2315ef_1179_878.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7674002070&inviter=gelenfarkas",
+      "category": "melleny",
+      "categoryLabel": "Mellény",
+      "normalizedTitle": "vest for men and women j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670468043",
+      "tp": "micro",
+      "title": "TN American version autumn and winter warm down cotton vest",
+      "price": 12.59,
+      "priceLabel": "$12.59",
+      "image": "https://si.geilicdn.com/weidian1452235621-12c20000019ae83b231c0a20e2c5_1920_1440.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670468043&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670468043&sales=0",
+        "title": "TN American version autumn and winter warm down cotton vest",
+        "priceText": "$12.59",
+        "imageSrc": "https://si.geilicdn.com/weidian1452235621-12c20000019ae83b231c0a20e2c5_1920_1440.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670468043&inviter=gelenfarkas",
+      "category": "melleny",
+      "categoryLabel": "Mellény",
+      "normalizedTitle": "tn american version autumn and winter warm down cotton vest j minsg gyors szllts"
+    },
+    {
+      "itemId": "7670371407",
+      "tp": "micro",
+      "title": "maya秋冬新款男女童定制款Maya经典马甲_90白鸭绒羽绒服,面料采用正宗进口帝人株式会社_降落伞尼龙66，专柜对色对手感，正宗的面料光泽度将长久保持,内里填充新国标90白鸭绒，良好的回",
+      "price": 54.78,
+      "priceLabel": "$54.78",
+      "image": "https://si.geilicdn.com/weidian1425960945-127a000001934ae1a1600a23057e_2048_2048.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670371407&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670371407&sales=0",
+        "title": "maya秋冬新款男女童定制款Maya经典马甲_90白鸭绒羽绒服,面料采用正宗进口帝人株式会社_降落伞尼龙66，专柜对色对手感，正宗的面料光泽度将长久保持,内里填充新国标90白鸭绒，良好的回",
+        "priceText": "$54.78",
+        "imageSrc": "https://si.geilicdn.com/weidian1425960945-127a000001934ae1a1600a23057e_2048_2048.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670371407&inviter=gelenfarkas",
+      "category": "melleny",
+      "categoryLabel": "Mellény",
+      "normalizedTitle": "maya秋冬新款男女童定制款maya经典马甲_90白鸭绒羽绒服,面料采用正宗进口帝人株式会社_降落伞尼龙66，专柜对色对手感，正宗的面料光泽度将长久保持,内里填充新国标90白鸭绒，良好的回 j minsg gyors szllts"
+    }
+  ]
+}

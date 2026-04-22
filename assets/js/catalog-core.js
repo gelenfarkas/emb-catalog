@@ -3,7 +3,7 @@ import { appendVersion } from "./cache-utils.js";
 const [
   { loadFromFiles, loadFromManifest, flattenLoadedDatasets },
   { dedupeProducts },
-  { findCategoryByQuery, normalizeSearchText },
+  { expandSearchQuery, findCategoryByQuery, normalizeSearchText },
 ] = await Promise.all([
   import(appendVersion("./data-loader.js")),
   import(appendVersion("./normalizer.js")),
@@ -160,7 +160,7 @@ export function sortProducts(products, sort = "fresh") {
 
 export function getFilterOptions(products, datasets = []) {
   return {
-    categories: unique(products.map((product) => product.categoryLabel || (product.categories || [])[0])),
+    categories: unique(datasets.flatMap((dataset) => dataset.categories || [])),
     sellers: unique(products.map((product) => product.sellerName)),
     sources: unique(products.map((product) => product.source)),
     datasets: unique(datasets.map((dataset) => dataset.label)),
@@ -185,6 +185,7 @@ function productMatches(product, filters) {
   const query = normalizeSearchText(filters.query);
   if (query) {
     const queryCategory = findCategoryByQuery(query);
+    const queryTerms = expandSearchQuery(filters.query);
     const haystack =
       product.searchText ||
       [
@@ -197,7 +198,8 @@ function productMatches(product, filters) {
       ]
         .join(" ")
         .toLowerCase();
-    const matchesText = normalizeSearchText(haystack).includes(query);
+    const normalizedHaystack = normalizeSearchText(haystack);
+    const matchesText = queryTerms.some((term) => normalizedHaystack.includes(term));
     const matchesCategory =
       queryCategory &&
       (product.categoryId === queryCategory.id ||

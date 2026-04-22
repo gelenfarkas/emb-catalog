@@ -5,7 +5,9 @@ export const PLACEHOLDER_IMAGE =
 
 import { appendVersion } from "./cache-utils.js";
 
-const { detectCategory, getCategoryLabel, normalizeSearchText } = await import(appendVersion("./category-mapping.js"));
+const { UNCATEGORIZED_LABEL, detectCategory, getCategoryLabel, isManifestCategory, normalizeSearchText } = await import(
+  appendVersion("./category-mapping.js")
+);
 
 const CATEGORY_LABELS = {
   cipo: "Cipő",
@@ -17,6 +19,16 @@ const CATEGORY_LABELS = {
   taska: "Táska",
   bag: "Táska",
   bags: "Táska",
+  sal: "Sál",
+  nadrag: "Nadrág",
+  kabat: "Kabát",
+  melleny: "Mellény",
+  sapka: "Sapka",
+  polo: "Póló",
+  pulcsi: "Pulcsi",
+  pulover: "Pulóver",
+  furdoruha: "Fürdőruha",
+  kategorizalatlan: "Kategorizálatlan",
 };
 
 export function normalizeDataset(json, datasetInput, options = {}) {
@@ -63,6 +75,7 @@ export function normalizeDataset(json, datasetInput, options = {}) {
         dataset,
         index,
         affiliateUsername,
+        manifestCategories: normalizeCategories(options.manifestCategories || []),
       }),
     )
     .filter(Boolean);
@@ -91,10 +104,11 @@ export function normalizeProduct(item, context) {
     cleanText(firstNonEmpty([item.sellerName, raw.seller_name, raw.shop_name, raw.seller, page.sellerName, dataset.sellerName])) ||
     "EastMallBuy shop";
   const normalizedTitle = normalizeSearchText([title, sellerName].join(" "));
-  const categoryId = detectCategory(normalizedTitle) || detectCategory((dataset.categories || []).join(" ")) || "egyeb";
-  const fallbackCategoryLabel = (dataset.categories || [])[0] || "Egyéb";
-  const categoryLabel = getCategoryLabel(categoryId) || fallbackCategoryLabel;
-  const categories = unique([categoryLabel, ...(dataset.categories || [])]);
+  const detectedCategoryId = detectCategory(normalizedTitle);
+  const categoryId =
+    detectedCategoryId && isAllowedManifestCategory(detectedCategoryId, context.manifestCategories) ? detectedCategoryId : "kategorizalatlan";
+  const categoryLabel = getCategoryLabel(categoryId) || UNCATEGORIZED_LABEL;
+  const categories = unique([categoryLabel]);
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
     normalizeUrl(item.affiliateUrl) ||
@@ -152,6 +166,11 @@ export function dedupeProducts(products) {
     products: Array.from(byKey.values()),
     duplicateCount,
   };
+}
+
+function isAllowedManifestCategory(categoryId, manifestCategories = []) {
+  if (!manifestCategories.length) return true;
+  return isManifestCategory(categoryId, manifestCategories);
 }
 
 export function inferCategoryFromPath(path) {

@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "source": "goods_list_dom_only",
+  "sourceLabel": "Nem volt használható hálózati feed, ezért a lista közvetlenül a shop oldal HTML-jéből készült.",
+  "itemCount": 2,
+  "generatedAt": "2026-04-22T18:42:45.257Z",
+  "affiliate": {
+    "username": "gelenfarkas"
+  },
+  "page": {
+    "href": "https://eastmallbuy.com/index/shop/index.html?tp=micro&api_type=micro&type=seller&shop_id=1649504061&shop_url=https%3A%2F%2Fweidian.com%2F%3Fuserid%3D1649504061&shopName=J%20minsg%20gyors%20szllts",
+    "title": "EastMallBuy – Eastmallbuy: Taobao, Tmall, Jingdong, 1688 agent purchase of goods",
+    "sellerName": "J minsg gyors szllts",
+    "tp": "micro"
+  },
+  "stats": {
+    "requestedMaxItems": 5000,
+    "uniqueItemIds": 463,
+    "pricedItems": 463,
+    "loadOrigin": "browser_network_and_dom",
+    "primarySource": "goods_list_dom_only",
+    "durationMs": 22331,
+    "dominantTp": "micro"
+  },
+  "items": [
+    {
+      "itemId": "7670460091",
+      "tp": "micro",
+      "title": "时尚泳衣-Y01",
+      "price": 20.15,
+      "priceLabel": "$20.15",
+      "image": "https://si.geilicdn.com/open1617754045-1234478995-57ef00000197a68c61890aa0c791_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670460091&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7670460091&sales=0",
+        "title": "时尚泳衣-Y01",
+        "priceText": "$20.15",
+        "imageSrc": "https://si.geilicdn.com/open1617754045-1234478995-57ef00000197a68c61890aa0c791_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7670460091&inviter=gelenfarkas",
+      "category": "furdoruha",
+      "categoryLabel": "Fürdőruha",
+      "normalizedTitle": "时尚泳衣-y01 j minsg gyors szllts"
+    },
+    {
+      "itemId": "7673363280",
+      "tp": "micro",
+      "title": "时尚泳衣-Y02",
+      "price": 20.15,
+      "priceLabel": "$20.15",
+      "image": "https://si.geilicdn.com/open1617754045-1234478995-103e00000197a691a5850a8133b0_1200_1200.jpg",
+      "url": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673363280&sales=0",
+      "sellerName": "J minsg gyors szllts",
+      "source": "goods_list_dom",
+      "raw": {
+        "href": "/index/item/index.html?tp=micro&tid=7673363280&sales=0",
+        "title": "时尚泳衣-Y02",
+        "priceText": "$20.15",
+        "imageSrc": "https://si.geilicdn.com/open1617754045-1234478995-103e00000197a691a5850a8133b0_1200_1200.jpg"
+      },
+      "affiliateUrl": "https://eastmallbuy.com/index/item/index.html?tp=micro&tid=7673363280&inviter=gelenfarkas",
+      "category": "furdoruha",
+      "categoryLabel": "Fürdőruha",
+      "normalizedTitle": "时尚泳衣-y02 j minsg gyors szllts"
+    }
+  ]
+}

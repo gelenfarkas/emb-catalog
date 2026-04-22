@@ -40,6 +40,7 @@ const REQUIRED = [
 
 const PAGE_SIZE = 48;
 const SEARCH_DEBOUNCE_MS = 180;
+const LOAD_MORE_DELAY_MS = 120;
 const DEFAULT_SORT = "default";
 
 let elements;
@@ -208,8 +209,18 @@ function render({ reason = "manual", resetPage = false } = {}) {
 }
 
 function showMoreProducts() {
-  visibleLimit += PAGE_SIZE;
-  render({ reason: "load-more" });
+  const button = elements.loadMoreBtn;
+  button.disabled = true;
+  button.classList.add("is-loading");
+  button.innerHTML = `<span>Betöltés...</span><small>A következő termékek előkészítése</small>`;
+
+  window.setTimeout(() => {
+    visibleLimit += PAGE_SIZE;
+    render({ reason: "load-more" });
+    button.disabled = false;
+    button.classList.remove("is-loading");
+    button.innerHTML = `<span>További termékek betöltése</span><small>Kattints a következő adag megjelenítéséhez</small>`;
+  }, LOAD_MORE_DELAY_MS);
 }
 
 function hasUserSort(sort) {

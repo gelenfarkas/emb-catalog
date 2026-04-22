@@ -11,7 +11,14 @@
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <script type="module">
+      import { appendVersion } from "./assets/js/cache-utils.js";
+      const favicon = document.createElement("link");
+      favicon.rel = "icon";
+      favicon.type = "image/svg+xml";
+      favicon.href = appendVersion("assets/favicon.svg");
+      document.head.append(favicon);
+    </script>
     <script type="module">
       import { loadVersionedStylesheet } from "./assets/js/cache-utils.js";
       loadVersionedStylesheet("assets/css/style.css");
@@ -147,7 +154,10 @@
           <div id="categoryNav" class="category-nav" aria-label="Kategória böngészés"></div>
           <div id="productGrid" class="product-grid"></div>
           <div class="load-more">
-            <button id="loadMoreBtn" class="btn btn--ghost" type="button" hidden>További termékek</button>
+            <button id="loadMoreBtn" class="btn btn--primary load-more-btn" type="button" hidden>
+              <span>További termékek betöltése</span>
+              <small>Kattints a következő adag megjelenítéséhez</small>
+            </button>
           </div>
           <div id="emptyState" class="empty" hidden>
             Nincs találat ezekkel a szűrőkkel. Próbálj meg kevesebb feltételt megadni.

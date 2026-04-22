@@ -313,8 +313,13 @@ function countReplacementInValue(value) {
 
 function buildFetchOptions(options = {}) {
   return {
-    cache: "no-store",
     ...(options.fetchOptions || {}),
+    cache: "no-store",
+    headers: {
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+      ...(options.fetchOptions?.headers || {}),
+    },
   };
 }
 

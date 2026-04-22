@@ -640,7 +640,56 @@ select:focus {
 .load-more {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-4);
+  margin: var(--space-6) 0 var(--space-2);
+  padding: var(--space-4) 0 var(--space-2);
+}
+
+.load-more-btn {
+  position: relative;
+  width: min(100%, 360px);
+  min-height: 58px;
+  display: grid;
+  gap: 3px;
+  border-color: color-mix(in srgb, var(--primary) 70%, #fff);
+  box-shadow: 0 12px 28px rgba(20, 107, 95, 0.22);
+  animation: load-more-cta 2.8s ease-in-out infinite;
+}
+
+.load-more-btn::after {
+  content: "↓";
+  font-size: 1.05rem;
+  line-height: 1;
+  transform: translateY(-1px);
+  animation: load-more-arrow 1.6s ease-in-out infinite;
+}
+
+.load-more-btn span,
+.load-more-btn small {
+  display: block;
+}
+
+.load-more-btn small {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.load-more-btn:disabled {
+  cursor: wait;
+  opacity: 0.78;
+  transform: none;
+  animation: none;
+}
+
+.load-more-btn.is-loading::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  margin: 2px auto 0;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: load-more-spin 0.7s linear infinite;
 }
 
 .product-card {
@@ -854,6 +903,42 @@ code {
   padding: 2px 5px;
   font-size: 0.92em;
   overflow-wrap: anywhere;
+}
+
+@keyframes load-more-cta {
+  0%,
+  100% {
+    box-shadow: 0 12px 28px rgba(20, 107, 95, 0.2);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 16px 34px rgba(20, 107, 95, 0.32);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes load-more-arrow {
+  0%,
+  100% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes load-more-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .load-more-btn,
+  .load-more-btn::after,
+  .load-more-btn.is-loading::after {
+    animation: none;
+  }
 }
 
 @media (max-width: 960px) {

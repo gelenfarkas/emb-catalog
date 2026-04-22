@@ -1,16 +1,19 @@
-import { buildDatasetId, inferCategoryFromPath, normalizeDataset } from "./normalizer.js";
+import { appendVersion } from "./cache-utils.js";
+
+const { buildDatasetId, inferCategoryFromPath, normalizeDataset } = await import(appendVersion("./normalizer.js"));
 
 export async function loadFromManifest(manifestPath = "data/manifest.json", options = {}) {
   const debug = options.debug || null;
   const metrics = createMetrics(options);
-  const manifestDebug = debug ? startManifestDebug(debug, manifestPath) : null;
+  const manifestUrl = appendVersion(manifestPath);
+  const manifestDebug = debug ? startManifestDebug(debug, manifestPath, manifestUrl) : null;
   let response;
   let text = "";
   let manifest;
 
   try {
     const manifestFetchStart = performance.now();
-    response = await fetch(manifestPath, buildFetchOptions(options));
+    response = await fetch(manifestUrl, buildFetchOptions(options));
     metrics.manifestFetchMs += elapsedSince(manifestFetchStart);
     if (manifestDebug) {
       manifestDebug.fetchSucceeded = true;
@@ -213,12 +216,14 @@ async function loadDatasetEntry(entry, options, debug, metrics) {
 async function fetchAndParseDataset(path, datasetDebug, options, metrics) {
   let response;
   let text = "";
+  const fetchUrl = appendVersion(path);
 
   try {
     const fetchStart = performance.now();
-    response = await fetch(path, buildFetchOptions(options));
+    response = await fetch(fetchUrl, buildFetchOptions(options));
     metrics.datasetFetchMs += elapsedSince(fetchStart);
     if (datasetDebug) {
+      datasetDebug.fetchUrl = fetchUrl;
       datasetDebug.fetchSucceeded = true;
       datasetDebug.fetchStatus = response.status;
       datasetDebug.fetchStatusText = response.statusText;
@@ -293,7 +298,10 @@ function countReplacementInValue(value) {
 }
 
 function buildFetchOptions(options = {}) {
-  return options.bypassCache ? { cache: "no-store" } : {};
+  return {
+    cache: "no-store",
+    ...(options.fetchOptions || {}),
+  };
 }
 
 function createMetrics(options = {}) {
@@ -311,10 +319,11 @@ function elapsedSince(start) {
   return performance.now() - start;
 }
 
-function startManifestDebug(debug, path) {
+function startManifestDebug(debug, path, fetchUrl) {
   const previousAttempts = debug.manifest?.attemptedPaths || [];
   debug.manifest = {
     path,
+    fetchUrl,
     attemptedPaths: [...previousAttempts, path],
     selectedSource: "",
     status: "loading",
@@ -335,6 +344,7 @@ function startManifestDebug(debug, path) {
 function startDatasetDebug(debug, entry) {
   const record = {
     path: entry.path || "",
+    fetchUrl: "",
     label: entry.label || "",
     category: entry.category || (Array.isArray(entry.categories) ? entry.categories.join(", ") : ""),
     status: "loading",

@@ -1,13 +1,21 @@
-import {
-  createDebug,
-  getFilterOptions,
-  loadCatalogFromManifest,
-  filterProducts,
-  sortProducts,
-  errorMessage,
-} from "./catalog-core.js";
-import { requireElements, showStatus, parseNumber } from "./dom-utils.js";
-import { fillSelect, renderActiveFilters, renderCategoryNav, renderProducts } from "./render.js";
+import { appendVersion } from "./cache-utils.js";
+
+const [
+  {
+    createDebug,
+    getFilterOptions,
+    loadCatalogFromManifest,
+    filterProducts,
+    sortProducts,
+    errorMessage,
+  },
+  { requireElements, showStatus, parseNumber },
+  { fillSelect, renderActiveFilters, renderCategoryNav, renderProducts },
+] = await Promise.all([
+  import(appendVersion("./catalog-core.js")),
+  import(appendVersion("./dom-utils.js")),
+  import(appendVersion("./render.js")),
+]);
 
 const REQUIRED = [
   "#status",

@@ -1,5 +1,9 @@
-import { loadFromFiles, loadFromManifest, flattenLoadedDatasets } from "./data-loader.js";
-import { dedupeProducts } from "./normalizer.js";
+import { appendVersion } from "./cache-utils.js";
+
+const [{ loadFromFiles, loadFromManifest, flattenLoadedDatasets }, { dedupeProducts }] = await Promise.all([
+  import(appendVersion("./data-loader.js")),
+  import(appendVersion("./normalizer.js")),
+]);
 
 export const MANIFEST_PATHS = ["data/manifest.json", "manifest.php"];
 

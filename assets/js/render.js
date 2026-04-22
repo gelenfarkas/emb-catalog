@@ -1,4 +1,6 @@
-import { DEFAULT_AFFILIATE_USERNAME, buildAffiliateUrl } from "./normalizer.js";
+import { appendVersion } from "./cache-utils.js";
+
+const { DEFAULT_AFFILIATE_USERNAME, buildAffiliateUrl } = await import(appendVersion("./normalizer.js"));
 
 export function renderProducts(container, products, template, options = {}) {
   container.textContent = "";

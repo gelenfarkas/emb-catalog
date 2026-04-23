@@ -14,13 +14,13 @@
     <script type="importmap">
       {
         "imports": {
-          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
-          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
         },
         "scopes": {
           "./assets/js/": {
-            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
-            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
           }
         }
       }
@@ -112,11 +112,39 @@
             <input id="searchInput" type="search" placeholder="Cím, TID vagy bolt" />
           </label>
 
+          <div class="search-help" aria-label="Keresési útmutató">
+            <strong>Keresési tippek</strong>
+            <ul>
+              <li>Keress konkrét névre, modellre, TID-re vagy kulcsszóra.</li>
+              <li>Szűkíts először fő kategóriára, majd finomíts automatikus kategóriával vagy márkával.</li>
+              <li>Ha nincs találat, próbálj angol kulcsszót is, például <span>watch</span>, <span>belt</span> vagy <span>wallet</span>.</li>
+              <li>A felismerés offline, kulcsszó alapú, ezért nem minden termék kap automatikus címkét.</li>
+            </ul>
+          </div>
+
           <label>
-            Kategória
-            <select id="categoryFilter">
-              <option value="">Összes kategória</option>
+            Főkategória
+            <select id="mainCategoryFilter">
+              <option value="">Összes fő kategória</option>
             </select>
+            <small class="helper-text">Ez a szűrő a kézzel megadott fő kategóriákat használja.</small>
+          </label>
+
+          <label>
+            Automatikus kategória
+            <select id="autoCategoryFilter">
+              <option value="">Összes automatikus kategória</option>
+            </select>
+            <small class="helper-text">Ez a szűrő a termék nevéből automatikusan felismert kategóriákat használja.</small>
+            <small class="helper-text">A rendszer nem minden terméknél ismeri fel pontosan az automatikus kategóriát.</small>
+          </label>
+
+          <label>
+            Márka
+            <select id="brandFilter">
+              <option value="">Összes márka</option>
+            </select>
+            <small class="helper-text">A rendszer nem minden terméknél ismeri fel biztosan a márkát.</small>
           </label>
 
           <div class="range-grid">

@@ -165,13 +165,14 @@ export function applyDefaultProductPriority(products) {
 }
 
 export function getFilterOptions(products, datasets = []) {
-  const manifestCategories = unique((datasets || []).flatMap((dataset) => dataset.categories || []));
+  const mainCategories = unique((datasets || []).flatMap((dataset) => dataset.categories || dataset.category || []));
+  const autoCategories = unique((products || []).flatMap((product) => product.autoCategories || []));
   return {
-    categories: manifestCategories.length
-      ? manifestCategories
-      : unique((products || []).flatMap((product) => product.allCategories || product.categories || product.categoryLabel || [])),
-    sellers: unique(products.map((product) => product.sellerName)),
-    sources: unique(products.map((product) => product.source)),
+    mainCategories,
+    autoCategories,
+    brands: unique((products || []).flatMap((product) => product.brands || product.primaryBrand || [])),
+    sellers: unique((products || []).map((product) => product.sellerName)),
+    sources: unique((products || []).map((product) => product.source)),
     datasets: unique(datasets.map((dataset) => dataset.label)),
   };
 }
@@ -203,6 +204,9 @@ function productMatches(product, filters) {
         product.sellerName,
         product.source,
         product.manualCategory,
+        ...(product.manualCategories || []),
+        product.primaryBrand,
+        ...(product.brands || []),
         ...(product.autoCategories || []),
         ...(product.allCategories || product.categories || []),
         ...(product.datasetLabels || []),
@@ -220,16 +224,14 @@ function productMatches(product, filters) {
     if (!matchesText && !matchesCategory) return false;
   }
 
-  if (
-    filters.category &&
-    product.category !== filters.category &&
-    product.categoryLabel !== filters.category &&
-    product.manualCategory !== filters.category &&
-    product.categoryId !== filters.category &&
-    !(product.allCategories || product.categories || []).includes(filters.category)
-  ) {
-    return false;
-  }
+  const selectedMainCategory = normalizeSearchText(filters.mainCategory);
+  if (selectedMainCategory && product.manualCategoryNormalized !== selectedMainCategory) return false;
+
+  const selectedAutoCategory = normalizeSearchText(filters.autoCategory);
+  if (selectedAutoCategory && !(product.autoCategoriesNormalized || []).includes(selectedAutoCategory)) return false;
+
+  const selectedBrand = normalizeSearchText(filters.brand);
+  if (selectedBrand && !(product.brandsNormalized || []).includes(selectedBrand)) return false;
   if (filters.source && product.source !== filters.source) return false;
   if (filters.seller && product.sellerName !== filters.seller) return false;
   if (filters.dataset && !(product.datasetLabels || []).includes(filters.dataset)) return false;

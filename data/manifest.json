@@ -77,6 +77,14 @@
     {
       "path": "data/cipo/eastmallbuy-products-filtered-1776887436437.json",
       "category": "Cipő"
+    },
+    {
+      "path": "data/noihalo/eastmallbuy-products-598830405-2026-04-23T06-58-26-891Z.json",
+      "category": "Női hálóing"
+    },
+    {
+      "path": "data/noiviselet/eastmallbuy-products-112322357-2026-04-23T07-02-50-256Z.json",
+      "category": "Női utcai viselet"
     }
   ]
 }

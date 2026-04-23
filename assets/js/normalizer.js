@@ -8,9 +8,11 @@ import { appendVersion } from "./cache-utils.js";
 const { UNCATEGORIZED_LABEL, detectCategories, getCategoryLabel, normalizeCategoryId, normalizeCategoryLabel, normalizeSearchText } = await import(
   appendVersion("./category-mapping.js")
 );
+const { detectBrands } = await import(appendVersion("./brand-mapping.js"));
 const { estimateShipping } = await import(appendVersion("./shipping-estimator.js"));
 
 const categoryDetectionCache = new Map();
+const brandDetectionCache = new Map();
 
 const CATEGORY_LABELS = {
   cipo: "Cipő",
@@ -34,6 +36,15 @@ const CATEGORY_LABELS = {
   pulcsi: "Pulóver",
   pulover: "Pulóver",
   furdoruha: "Fürdőruha",
+  ora: "Óra",
+  watch: "Óra",
+  ov: "Öv",
+  belt: "Öv",
+  takaro: "Takaró / Pléd",
+  pled: "Takaró / Pléd",
+  blanket: "Takaró / Pléd",
+  penztarca: "Pénztárca",
+  wallet: "Pénztárca",
   kategorizalatlan: "Kategorizálatlan",
 };
 
@@ -110,6 +121,8 @@ export function normalizeProduct(item, context) {
     "EastMallBuy shop";
   const normalizedTitle = normalizeSearchText(title);
   const detectedCategoryIds = getDetectedCategoryIds(normalizedTitle);
+  const brands = getDetectedBrands(normalizedTitle);
+  const primaryBrand = brands[0] || "";
   const manualCategories = uniqueCategoryLabels(dataset.categories || []);
   const manualCategory = manualCategories[0] || "";
   const autoCategories = uniqueCategoryLabels(
@@ -119,6 +132,13 @@ export function normalizeProduct(item, context) {
   const primaryCategoryId = normalizeCategoryId(primaryCategory) || detectedCategoryIds[0] || "kategorizalatlan";
   const allCategories = uniqueCategoryLabels([...manualCategories, ...autoCategories, primaryCategory]);
   const categoryIds = unique([primaryCategoryId, ...manualCategories.map(normalizeCategoryId), ...detectedCategoryIds]);
+  const manualCategoryNormalized = normalizeFilterValue(manualCategory);
+  const manualCategoriesNormalized = manualCategories.map(normalizeFilterValue).filter(Boolean);
+  const autoCategoriesNormalized = autoCategories.map(normalizeFilterValue).filter(Boolean);
+  const allCategoriesNormalized = allCategories.map(normalizeFilterValue).filter(Boolean);
+  const primaryCategoryNormalized = normalizeFilterValue(primaryCategory);
+  const brandsNormalized = brands.map(normalizeFilterValue).filter(Boolean);
+  const primaryBrandNormalized = normalizeFilterValue(primaryBrand);
   const shippingEstimate = estimateShipping({ categoryIds, categories: allCategories });
   const source = cleanText(item.source || dataset.source || "unknown");
   const affiliateUrl =
@@ -149,12 +169,21 @@ export function normalizeProduct(item, context) {
     categoryLabel: primaryCategory,
     manualCategory,
     manualCategories,
+    manualCategoryNormalized,
+    manualCategoriesNormalized,
     autoCategories,
     autoCategoryIds: detectedCategoryIds,
+    autoCategoriesNormalized,
     allCategories,
+    allCategoriesNormalized,
     primaryCategory,
+    primaryCategoryNormalized,
     normalizedTitle,
     categories: allCategories,
+    brands,
+    primaryBrand,
+    brandsNormalized,
+    primaryBrandNormalized,
     shippingEstimate,
     shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
     shippingEstimateLabel: shippingEstimate.displayHuf,
@@ -247,6 +276,15 @@ function mergeProduct(existing, incoming) {
   const autoCategories = uniqueCategoryLabels([...(existing.autoCategories || []), ...(incoming.autoCategories || [])]);
   const allCategories = uniqueCategoryLabels([...manualCategories, ...autoCategories, ...(existing.allCategories || []), ...(incoming.allCategories || [])]);
   const primaryCategory = manualCategory || better.primaryCategory || allCategories[0] || UNCATEGORIZED_LABEL;
+  const brands = unique([...(existing.brands || []), ...(incoming.brands || [])]);
+  const primaryBrand = better.primaryBrand || brands[0] || "";
+  const manualCategoryNormalized = normalizeFilterValue(manualCategory);
+  const manualCategoriesNormalized = manualCategories.map(normalizeFilterValue).filter(Boolean);
+  const autoCategoriesNormalized = autoCategories.map(normalizeFilterValue).filter(Boolean);
+  const allCategoriesNormalized = allCategories.map(normalizeFilterValue).filter(Boolean);
+  const primaryCategoryNormalized = normalizeFilterValue(primaryCategory);
+  const brandsNormalized = brands.map(normalizeFilterValue).filter(Boolean);
+  const primaryBrandNormalized = normalizeFilterValue(primaryBrand);
   const categoryIds = unique([
     normalizeCategoryId(primaryCategory),
     ...manualCategories.map(normalizeCategoryId),
@@ -264,11 +302,20 @@ function mergeProduct(existing, incoming) {
     categoryLabel: primaryCategory,
     manualCategory,
     manualCategories,
+    manualCategoryNormalized,
+    manualCategoriesNormalized,
     autoCategories,
     autoCategoryIds: unique([...(existing.autoCategoryIds || []), ...(incoming.autoCategoryIds || [])]),
+    autoCategoriesNormalized,
     allCategories,
+    allCategoriesNormalized,
     primaryCategory,
+    primaryCategoryNormalized,
     categories: allCategories,
+    brands,
+    primaryBrand,
+    brandsNormalized,
+    primaryBrandNormalized,
     shippingEstimate,
     shippingEstimateHuf: shippingEstimate.dhlEstimateHuf,
     shippingEstimateLabel: shippingEstimate.displayHuf,
@@ -287,6 +334,13 @@ function getDetectedCategoryIds(normalizedTitle) {
     categoryDetectionCache.set(normalizedTitle, detectCategories(normalizedTitle));
   }
   return categoryDetectionCache.get(normalizedTitle);
+}
+
+function getDetectedBrands(normalizedTitle) {
+  if (!brandDetectionCache.has(normalizedTitle)) {
+    brandDetectionCache.set(normalizedTitle, detectBrands(normalizedTitle));
+  }
+  return brandDetectionCache.get(normalizedTitle);
 }
 
 function scoreProduct(product) {
@@ -320,6 +374,10 @@ function uniqueCategoryLabels(values) {
   }
 
   return labels;
+}
+
+function normalizeFilterValue(value) {
+  return normalizeSearchText(value);
 }
 
 function maxDate(a, b) {

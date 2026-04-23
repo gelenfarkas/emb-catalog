@@ -3,16 +3,16 @@ export const UNCATEGORIZED_LABEL = "Kategorizálatlan";
 const CN_WEIGHT = 2;
 const DEFAULT_WEIGHT = 1;
 
-const UNCATEGORIZED_KEYWORDS = ["耳机", "钱包", "腰带"];
+const UNCATEGORIZED_KEYWORDS = ["耳机"];
 
 export const CATEGORY_MAP = [
   {
     id: "cipo",
     label: "Cipő",
     keywords: {
-      hu: ["cipő", "cipők", "sportcipő", "edzőcipő", "cipo", "cipok", "sportcipo", "edzocipo", "bakancs", "szandal"],
-      en: ["shoe", "shoes", "sneaker", "sneakers", "running shoe", "basketball shoe", "boots", "sandals", "dunk"],
-      cn: ["鞋", "鞋子", "运动鞋", "跑步鞋", "篮球鞋", "休闲鞋", "徒步", "越野", "户外", "低帮", "高帮", "DUNK"],
+      hu: ["cipő", "cipők", "sportcipő", "edzőcipő", "bakancs", "szandál", "szandal"],
+      en: ["shoe", "shoes", "sneaker", "sneakers", "running shoe", "basketball shoe", "boots", "sandals", "trainer"],
+      cn: ["鞋子", "运动鞋", "跑步鞋", "篮球鞋", "休闲鞋", "徒步鞋", "低帮", "高帮", "板鞋", "帆布鞋", "凉鞋"],
     },
   },
   {
@@ -20,9 +20,9 @@ export const CATEGORY_MAP = [
     label: "Sport",
     priority: 1,
     keywords: {
-      hu: ["sport", "edzo", "fut", "futas", "kosarlabda", "fitness"],
+      hu: ["sport", "edző", "edzo", "futás", "futas", "kosárlabda", "kosarlabda", "fitness"],
       en: ["sport", "sports", "running", "runner", "basketball", "training", "fitness", "gym", "workout"],
-      cn: [],
+      cn: ["运动", "篮球", "训练", "健身"],
     },
   },
   {
@@ -30,27 +30,33 @@ export const CATEGORY_MAP = [
     label: "Outdoor",
     priority: 1,
     keywords: {
-      hu: ["outdoor", "tura", "turazas", "turacipo", "bakancs", "terep", "kemping"],
-      en: ["outdoor", "hiking", "trekking", "trail", "camping", "boots", "mountain"],
-      cn: [],
+      hu: ["outdoor", "túra", "tura", "túrázás", "turazas", "túracipő", "turacipo", "terep", "kemping"],
+      en: ["outdoor", "hiking", "trekking", "trail", "camping", "mountain"],
+      cn: ["户外", "登山", "徒步", "越野"],
     },
   },
   {
     id: "taska",
     label: "Táska",
     keywords: {
-      hu: ["táska", "táskák", "hátizsák", "sporttáska", "oldaltáska", "kézitáska", "válltáska"],
+      hu: ["táska", "táskák", "hátizsák", "hatizsak", "sporttáska", "oldaltáska", "kézitáska", "kezitaska", "válltáska", "valltaska"],
       en: ["bag", "bags", "backpack", "shoulder bag", "tote bag", "bucket bag", "travel bag", "school bag", "makeup bag"],
-      cn: ["包", "背包", "双肩包", "手提包", "单肩包", "斜挎包", "托特包", "水桶包", "购物袋", "旅行包", "书包", "化妆包"],
+      cn: ["背包", "双肩包", "手提包", "单肩包", "斜挎包", "托特包", "水桶包", "购物袋", "旅行包", "书包", "化妆包"],
     },
   },
   {
     id: "ruha",
     label: "Női ruhák",
-    keywords: {
-      hu: ["ruha", "felső", "szoknya", "póló", "pulcsi", "pulóver", "ing", "melegítő"],
-      en: ["dress", "top", "shirt", "t-shirt", "tee", "hoodie", "sweater", "outfit"],
-      cn: ["衣", "上衣", "外套", "短袖", "长袖", "套装", "卫衣", "毛衣", "连衣裙", "衬衫", "T恤"],
+    priority: 1,
+    contextualKeywords: {
+      hu: ["női", "noi", "lány", "lany"],
+      en: ["woman", "women", "girl", "girls", "lady", "ladies", "female"],
+      cn: ["女", "女士", "女款", "女装", "女生"],
+    },
+    contextKeywords: {
+      hu: ["ruha", "felső", "felso", "szoknya", "póló", "polo", "pulcsi", "pulóver", "pulover", "ing", "kabát", "kabat", "dzseki", "mellény", "melleny"],
+      en: ["dress", "shirt", "t shirt", "tee", "hoodie", "sweater", "pullover", "blouse", "jacket", "coat", "skirt"],
+      cn: ["连衣裙", "裙子", "上衣", "短袖", "长袖", "卫衣", "毛衣", "衬衫", "外套", "夹克"],
     },
   },
   {
@@ -58,9 +64,9 @@ export const CATEGORY_MAP = [
     label: "Póló / Ing",
     priority: 1,
     keywords: {
-      hu: ["póló", "rövid ujjú", "hosszú ujjú"],
-      en: ["t-shirt", "tee", "short sleeve", "long sleeve"],
-      cn: ["短袖", "长袖", "T恤"],
+      hu: ["póló", "polo", "rövid ujjú", "rovid ujju", "hosszú ujjú", "hosszu ujju", "ing"],
+      en: ["t shirt", "tee", "short sleeve", "long sleeve", "shirt"],
+      cn: ["短袖", "长袖", "衬衫", "t恤"],
     },
   },
   {
@@ -68,9 +74,9 @@ export const CATEGORY_MAP = [
     label: "Pulóver",
     priority: 1,
     keywords: {
-      hu: ["pulcsi", "pulóver", "kapucnis pulóver"],
-      en: ["hoodie", "sweater", "pullover"],
-      cn: ["卫衣", "毛衣"],
+      hu: ["pulcsi", "pulóver", "pulover", "kapucnis pulóver", "kapucnis pulover"],
+      en: ["hoodie", "sweater", "pullover", "hooded sweatshirt"],
+      cn: ["卫衣", "毛衣", "帽衫"],
     },
   },
   {
@@ -79,14 +85,14 @@ export const CATEGORY_MAP = [
     keywords: {
       hu: ["sapka", "kalap", "baseball sapka"],
       en: ["cap", "hat", "baseball cap", "beanie", "knit hat"],
-      cn: ["帽", "帽子", "棒球帽", "鸭舌帽", "毛线帽", "针织帽"],
+      cn: ["帽子", "棒球帽", "鸭舌帽", "毛线帽", "针织帽"],
     },
   },
   {
     id: "sal",
     label: "Sál",
     keywords: {
-      hu: ["sál", "nyaksál", "kendő", "csősál", "körsál", "téli sál", "gyapjú sál"],
+      hu: ["sál", "sal", "nyaksál", "nyaksal", "kendő", "kendo", "csősál", "csosal", "körsál", "korsal", "téli sál", "teli sal", "gyapjú sál", "gyapju sal"],
       en: ["scarf", "neck scarf", "neck warmer", "winter scarf", "shawl", "wrap", "loop scarf", "infinity scarf"],
       cn: ["围巾", "围脖", "披肩"],
     },
@@ -95,9 +101,9 @@ export const CATEGORY_MAP = [
     id: "nadrag",
     label: "Nadrág",
     keywords: {
-      hu: ["nadrág", "farmer", "rövidnadrág", "melegítő nadrág"],
-      en: ["pants", "trousers", "jeans", "shorts"],
-      cn: ["裤", "长裤", "短裤", "牛仔裤"],
+      hu: ["nadrág", "nadrag", "farmer", "rövidnadrág", "rovidnadrag", "melegítő nadrág", "melegito nadrag"],
+      en: ["trousers", "cargo pants", "track pants", "sweatpants", "joggers"],
+      cn: ["长裤", "短裤", "牛仔裤", "裤子", "休闲裤", "卫裤", "工装裤"],
     },
   },
   {
@@ -105,17 +111,17 @@ export const CATEGORY_MAP = [
     label: "Kabát",
     priority: 1,
     keywords: {
-      hu: ["kabát", "dzseki"],
-      en: ["jacket", "coat", "down jacket"],
-      cn: ["外套", "夹克", "羽绒服"],
+      hu: ["kabát", "kabat", "dzseki"],
+      en: ["jacket", "coat", "down jacket", "puffer"],
+      cn: ["外套", "夹克", "羽绒服", "棉服"],
     },
   },
   {
     id: "melleny",
     label: "Mellény",
     keywords: {
-      hu: ["mellény"],
-      en: ["vest"],
+      hu: ["mellény", "melleny"],
+      en: ["vest", "gilet"],
       cn: ["马甲"],
     },
   },
@@ -123,9 +129,54 @@ export const CATEGORY_MAP = [
     id: "furdoruha",
     label: "Fürdőruha",
     keywords: {
-      hu: ["fürdőruha"],
-      en: ["swimwear", "swimsuit"],
-      cn: ["泳衣"],
+      hu: ["fürdőruha", "furdoruha"],
+      en: ["swimwear", "swimsuit", "bikini"],
+      cn: ["泳衣", "比基尼"],
+    },
+  },
+  {
+    id: "ora",
+    label: "Óra",
+    keywords: {
+      hu: ["óra", "ora", "karóra", "karora"],
+      en: ["watch", "wrist watch"],
+      cn: ["手表"],
+    },
+  },
+  {
+    id: "ov",
+    label: "Öv",
+    keywords: {
+      hu: ["öv", "ov"],
+      en: ["belt"],
+      cn: ["腰带", "皮带"],
+    },
+  },
+  {
+    id: "zokni",
+    label: "Zokni",
+    keywords: {
+      hu: ["zokni"],
+      en: ["sock", "socks"],
+      cn: ["袜子", "长袜", "短袜"],
+    },
+  },
+  {
+    id: "takaro_pled",
+    label: "Takaró / Pléd",
+    keywords: {
+      hu: ["takaró", "takaro", "pléd", "pled"],
+      en: ["blanket", "throw"],
+      cn: ["毛毯", "毯子"],
+    },
+  },
+  {
+    id: "penztarca",
+    label: "Pénztárca",
+    keywords: {
+      hu: ["pénztárca", "penztarca", "pénztárca szett", "penztarca szett", "kártyatartó", "kartyatarto"],
+      en: ["wallet", "card holder", "coin purse"],
+      cn: ["钱包", "卡包", "钱夹", "零钱包"],
     },
   },
   {
@@ -154,14 +205,10 @@ const CATEGORY_ALIAS_BY_KEY = {
   noi_ruhak: "ruha",
   polo: "polo",
   polo_ing: "polo",
-  polo_inge: "polo",
   polo_ingek: "polo",
   ing: "polo",
-  ingek: "polo",
-  poló: "polo",
   pulcsi: "pulcsi",
   pulover: "pulcsi",
-  pulóver: "pulcsi",
   sapka: "sapka",
   sal: "sal",
   nadrag: "nadrag",
@@ -169,6 +216,20 @@ const CATEGORY_ALIAS_BY_KEY = {
   melleny: "melleny",
   furdoruha: "furdoruha",
   furdo_ruha: "furdoruha",
+  ora: "ora",
+  watch: "ora",
+  ov: "ov",
+  belt: "ov",
+  zokni: "zokni",
+  sock: "zokni",
+  socks: "zokni",
+  takaro: "takaro_pled",
+  takaro_pled: "takaro_pled",
+  pled: "takaro_pled",
+  blanket: "takaro_pled",
+  penztarca: "penztarca",
+  wallet: "penztarca",
+  card_holder: "penztarca",
   kategorizalatlan: "kategorizalatlan",
 };
 
@@ -178,9 +239,11 @@ export function detectCategory(title) {
 
 export function detectCategories(title) {
   const haystack = normalizeSearchText(title);
-  if (!haystack) return [];
+  const tokenText = normalizeTokenText(title);
+  if (!haystack || !tokenText) return [];
 
-  const matches = rankCategoryMatches(haystack);
+  const tokens = tokenize(tokenText);
+  const matches = rankCategoryMatches({ haystack, tokenText, tokens });
   const best = matches[0];
   if (!best) return [];
   if (hasUncategorizedKeyword(haystack) && best.score <= CN_WEIGHT) return [];
@@ -207,6 +270,7 @@ export function normalizeCategoryLabel(value) {
 
 export function findCategoryByQuery(query) {
   const normalizedQuery = normalizeSearchText(query);
+  const normalizedTokenQuery = normalizeTokenText(query);
   if (!normalizedQuery) return null;
 
   for (const category of CATEGORY_MAP) {
@@ -215,7 +279,9 @@ export function findCategoryByQuery(query) {
     }
 
     for (const keyword of categoryKeywords(category)) {
-      if (normalizeSearchText(keyword) === normalizedQuery) return category;
+      const normalizedKeyword = normalizeTokenText(keyword);
+      if (!normalizedKeyword) continue;
+      if (normalizedKeyword === normalizedTokenQuery) return category;
     }
   }
 
@@ -223,12 +289,12 @@ export function findCategoryByQuery(query) {
 }
 
 export function expandSearchQuery(query) {
-  const terms = [normalizeSearchText(query)].filter(Boolean);
+  const terms = [normalizeTokenText(query)].filter(Boolean);
   const category = findCategoryByQuery(query);
   if (!category) return terms;
 
   for (const keyword of categoryKeywords(category)) {
-    const normalizedKeyword = normalizeSearchText(keyword);
+    const normalizedKeyword = normalizeTokenText(keyword);
     if (normalizedKeyword) terms.push(normalizedKeyword);
   }
 
@@ -250,25 +316,33 @@ export function normalizeSearchText(value) {
     .trim();
 }
 
-function scoreCategory(category, haystack) {
+function scoreCategory(category, context) {
   let score = 0;
   let longestKeyword = "";
 
   for (const [language, keywords] of Object.entries(category.keywords || {})) {
     const weight = language === "cn" ? CN_WEIGHT : DEFAULT_WEIGHT;
     for (const keyword of keywords || []) {
-      const normalizedKeyword = normalizeSearchText(keyword);
-      if (!normalizedKeyword || !haystack.includes(normalizedKeyword)) continue;
+      const normalizedKeyword = matchedKeyword(context, keyword);
+      if (!normalizedKeyword) continue;
       score += weight;
       if (normalizedKeyword.length > longestKeyword.length) longestKeyword = normalizedKeyword;
     }
   }
 
+  for (const keyword of contextualCategoryKeywords(category)) {
+    const normalizedKeyword = matchedKeyword(context, keyword);
+    if (!normalizedKeyword) continue;
+    if (!hasContext(context, contextualCategoryContexts(category))) continue;
+    score += DEFAULT_WEIGHT;
+    if (normalizedKeyword.length > longestKeyword.length) longestKeyword = normalizedKeyword;
+  }
+
   return { score, longestKeyword };
 }
 
-function rankCategoryMatches(haystack) {
-  return CATEGORY_MAP.map((category) => ({ category, ...scoreCategory(category, haystack) }))
+function rankCategoryMatches(context) {
+  return CATEGORY_MAP.map((category) => ({ category, ...scoreCategory(category, context) }))
     .filter((match) => match.score > 0)
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
@@ -277,12 +351,42 @@ function rankCategoryMatches(haystack) {
     });
 }
 
+function matchedKeyword(context, keyword) {
+  const normalizedKeyword = normalizeTokenText(keyword);
+  if (!normalizedKeyword) return "";
+  if (matchesKeyword(context, keyword)) return normalizedKeyword;
+  return "";
+}
+
+function matchesKeyword(context, keyword) {
+  const normalizedKeyword = normalizeTokenText(keyword);
+  if (!normalizedKeyword) return false;
+  if (containsCjk(keyword)) return context.haystack.includes(normalizeSearchText(keyword));
+  if (normalizedKeyword.includes(" ")) return context.tokenText.includes(normalizedKeyword);
+  return context.tokens.has(normalizedKeyword);
+}
+
+function hasContext(context, contextKeywords) {
+  return (contextKeywords || []).some((keyword) => matchesKeyword(context, keyword));
+}
+
 function hasUncategorizedKeyword(haystack) {
   return UNCATEGORIZED_KEYWORDS.some((keyword) => haystack.includes(normalizeSearchText(keyword)));
 }
 
 function categoryKeywords(category) {
-  return Object.values(category.keywords || {}).flat();
+  return [
+    ...Object.values(category.keywords || {}).flat(),
+    ...contextualCategoryKeywords(category),
+  ];
+}
+
+function contextualCategoryKeywords(category) {
+  return Object.values(category.contextualKeywords || {}).flat();
+}
+
+function contextualCategoryContexts(category) {
+  return Object.values(category.contextKeywords || {}).flat();
 }
 
 function categoryPriority(category) {
@@ -293,6 +397,21 @@ function normalizeCategoryKey(value) {
   return normalizeSearchText(value)
     .replace(/[^a-z0-9]+/g, "_")
     .replace(/^_+|_+$/g, "");
+}
+
+function normalizeTokenText(value) {
+  return normalizeSearchText(value)
+    .replace(/[^a-z0-9\u4e00-\u9fff]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenize(value) {
+  return new Set(normalizeTokenText(value).split(" ").filter(Boolean));
+}
+
+function containsCjk(value) {
+  return /[\u4e00-\u9fff]/.test(String(value || ""));
 }
 
 function cleanCategoryLabel(value) {

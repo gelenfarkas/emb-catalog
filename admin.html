@@ -14,13 +14,13 @@
     <script type="importmap">
       {
         "imports": {
-          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
-          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
         },
         "scopes": {
           "./assets/js/": {
-            "./app-version.js": "./assets/js/app-version.js?v=2026-04-22-07",
-            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-22-07"
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
           }
         }
       }
@@ -65,7 +65,8 @@
           </p>
           <p>
             Folyamat: <code>manifest.json</code> → dataset JSON → normalizálás →
-            multi-tag kategorizálás → deduplikáció → szűrés/rendezés → affiliate linkes kártyák.
+            multi-tag kategorizálás és márka felismerés → deduplikáció → szűrés/rendezés →
+            affiliate linkes kártyák.
           </p>
         </article>
 
@@ -91,7 +92,9 @@
           </p>
           <p>
             A manifest kategória manuális hozzárendelésként elsőbbséget kap, az automatikus
-            kategóriák pedig deduplikált kiegészítő címkeként jelennek meg.
+            kategóriák pedig deduplikált kiegészítő címkeként jelennek meg. A publikus oldalon a
+            főkategória szűrő csak a manifestből dolgozik, az automatikus kategória szűrő pedig
+            kizárólag a title alapú felismerést használja.
           </p>
           <pre><code>{
   "datasets": [
@@ -120,13 +123,14 @@
           <h2>Kategorizálás</h2>
           <p>
             A <code>CATEGORY_MAP</code> HU, EN és CN kulcsszavakat tartalmaz. A
-            <code>detectCategories(title)</code> minden kategóriára score-t számol, és minden
-            találatot hozzáad a termékhez.
+            <code>detectCategories(title)</code> token- és kontextusalapú egyezésekkel dolgozik,
+            hogy a rövid vagy túl általános kulcsszavak kevesebb fals pozitív találatot adjanak.
           </p>
           <p>
             A legjobb találat a primary kategória: <code>product.category</code>,
             <code>product.categoryId</code> és <code>product.categoryLabel</code>. Az összes tag a
-            <code>product.categories</code> tömbben van.
+            <code>product.categories</code> tömbben van, külön normalizált
+            <code>manualCategoryNormalized</code> és <code>autoCategoriesNormalized</code> mezőkkel.
           </p>
         </article>
 
@@ -143,11 +147,25 @@
         </article>
 
         <article>
+          <h2>Márka felismerés</h2>
+          <p>
+            A <code>BRAND_MAP</code> title alapján, offline kulcsszavakkal és óvatos aliasokkal
+            dolgozik. Rövid jelölések, például <code>NK</code>, <code>AD</code> és <code>ON</code>
+            csak tokenként vagy kontextussal számítanak találatnak.
+          </p>
+          <p>
+            A termékeken a <code>product.brands</code> tömb és a <code>product.primaryBrand</code>
+            mező jelenik meg. A publikus márkaszűrő csak olyan márkát mutat, amelyhez van legalább
+            egy felismert termék.
+          </p>
+        </article>
+
+        <article>
           <h2>Keresés</h2>
           <p>
             A kereső normalizált szöveget használ: cím, TID, seller, forrás, dataset label és
-            kategóriatag is bekerül a keresési indexbe. Kategória jellegű keresésnél a kapcsolódó
-            HU, EN és CN kulcsszavak is segítik a találatot.
+            kategóriatag, valamint felismert márka is bekerül a keresési indexbe. Kategória jellegű
+            keresésnél a kapcsolódó HU, EN és CN kulcsszavak is segítik a találatot.
           </p>
         </article>
 

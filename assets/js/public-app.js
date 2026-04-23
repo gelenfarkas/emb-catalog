@@ -22,7 +22,9 @@ const [
 const REQUIRED = [
   "#status",
   "#searchInput",
-  "#categoryFilter",
+  "#mainCategoryFilter",
+  "#autoCategoryFilter",
+  "#brandFilter",
   "#minPriceInput",
   "#maxPriceInput",
   "#sellerFilter",
@@ -113,7 +115,7 @@ function bindFilters() {
     input.addEventListener("change", () => scheduleRender({ resetPage: true }));
   }
 
-  for (const input of [elements.categoryFilter, elements.sellerFilter, elements.sortSelect]) {
+  for (const input of [elements.mainCategoryFilter, elements.autoCategoryFilter, elements.brandFilter, elements.sellerFilter, elements.sortSelect]) {
     input.addEventListener("change", () => scheduleRender({ resetPage: true }));
   }
 }
@@ -126,6 +128,8 @@ function prepareProductsForSearch() {
       product.itemId,
       product.sellerName,
       product.source,
+      product.primaryBrand,
+      ...(product.brands || []),
       product.categoryLabel,
       product.manualCategory,
       ...(product.autoCategories || []),
@@ -139,10 +143,12 @@ function prepareProductsForSearch() {
 
 function refreshFilterOptions() {
   const options = getFilterOptions(catalog.products, catalog.datasets);
-  fillSelect(elements.categoryFilter, options.categories, "Összes kategória");
+  fillSelect(elements.mainCategoryFilter, options.mainCategories, "Összes fő kategória");
+  fillSelect(elements.autoCategoryFilter, options.autoCategories, "Összes automatikus kategória");
+  fillSelect(elements.brandFilter, options.brands, "Összes márka");
   fillSelect(elements.sellerFilter, options.sellers, "Összes bolt");
-  renderCategoryNav(elements.categoryNav, options.categories, (category) => {
-    elements.categoryFilter.value = category;
+  renderCategoryNav(elements.categoryNav, options.mainCategories, (category) => {
+    elements.mainCategoryFilter.value = category;
     render({ reason: "category-nav", resetPage: true });
     document.querySelector("#products").scrollIntoView({ behavior: "smooth", block: "start" });
   });
@@ -205,7 +211,9 @@ function render({ reason = "manual", resetPage = false } = {}) {
   elements.duplicateCount.textContent = `${catalog.duplicateCount} ismétlődés szűrve`;
   renderActiveFilters(elements.activeFilters, [
     { label: "Keresés", value: filters.query },
-    { label: "Kategória", value: filters.category },
+    { label: "Főkategória", value: filters.mainCategory },
+    { label: "Auto kategória", value: filters.autoCategory },
+    { label: "Márka", value: filters.brand },
     { label: "Min", value: filters.minPrice ?? "" },
     { label: "Max", value: filters.maxPrice ?? "" },
     { label: "Bolt", value: filters.seller },
@@ -248,7 +256,9 @@ function hasUserSort(sort) {
 function readFilters() {
   return {
     query: elements.searchInput.value,
-    category: elements.categoryFilter.value,
+    mainCategory: elements.mainCategoryFilter.value,
+    autoCategory: elements.autoCategoryFilter.value,
+    brand: elements.brandFilter.value,
     minPrice: parseNumber(elements.minPriceInput.value),
     maxPrice: parseNumber(elements.maxPriceInput.value),
     seller: elements.sellerFilter.value,
@@ -258,7 +268,9 @@ function readFilters() {
 
 function resetFilters() {
   elements.searchInput.value = "";
-  elements.categoryFilter.value = "";
+  elements.mainCategoryFilter.value = "";
+  elements.autoCategoryFilter.value = "";
+  elements.brandFilter.value = "";
   elements.minPriceInput.value = "";
   elements.maxPriceInput.value = "";
   elements.sellerFilter.value = "";

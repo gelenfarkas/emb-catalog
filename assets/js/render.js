@@ -39,6 +39,12 @@ export function renderProducts(container, products, template, options = {}) {
       : product.categories?.length
         ? product.categories
         : [product.categoryLabel || "Egyéb"];
+    const displayBrands = unique([product.primaryBrand, ...(product.brands || [])]).slice(0, 3);
+
+    for (const brand of displayBrands) {
+      badges.appendChild(createBadge(brand, "badge--brand"));
+    }
+
     for (const category of displayCategories.slice(0, 4)) {
       badges.appendChild(createBadge(category, category === product.manualCategory ? "badge--manual" : ""));
     }
@@ -247,6 +253,10 @@ function createMetaRow(label, value) {
   dd.textContent = value || "-";
   wrapper.append(dt, dd);
   return wrapper;
+}
+
+function unique(values) {
+  return Array.from(new Set((values || []).map((value) => String(value || "").trim()).filter(Boolean)));
 }
 
 function escapeHtml(value) {

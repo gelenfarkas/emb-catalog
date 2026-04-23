@@ -316,7 +316,7 @@ function buildFetchOptions(options = {}) {
     ...(options.fetchOptions || {}),
     cache: "no-store",
     headers: {
-      "Cache-Control": "no-cache",
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
       Pragma: "no-cache",
       ...(options.fetchOptions?.headers || {}),
     },

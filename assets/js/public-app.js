@@ -1,4 +1,4 @@
-import { appendVersion } from "./cache-utils.js";
+import { APP_VERSION, appendVersion, logCacheDiagnostics } from "./cache-utils.js";
 
 const [
   {
@@ -97,6 +97,11 @@ async function loadManifest() {
       datasets: catalog.datasets.length,
       products: catalog.products.length,
       rendered: rendered.length,
+    });
+    logCacheDiagnostics({
+      page: "public",
+      appScriptUrl: import.meta.url,
+      manifestUrl: catalog.debug?.manifest?.fetchUrl || appendVersion("data/manifest.json"),
     });
   } catch (error) {
     console.error("Publikus katalógus betöltési hiba", error);
@@ -281,6 +286,7 @@ function resetFilters() {
 function logPublicPerformance(metrics) {
   console.info("[Public catalog] Performance mérés");
   console.table({
+    verzio: APP_VERSION,
     "manifest fetch": roundMs(metrics.manifestFetchMs),
     "manifest parse": roundMs(metrics.manifestParseMs),
     "datasetek összesen": roundMs(metrics.datasetTotalMs),

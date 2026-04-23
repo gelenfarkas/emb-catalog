@@ -1,4 +1,4 @@
-import { appendVersion } from "./cache-utils.js";
+import { APP_VERSION, appendVersion, logCacheDiagnostics } from "./cache-utils.js";
 
 const [
   {
@@ -77,9 +77,13 @@ async function loadManifest(mode) {
   try {
     catalog = await loadCatalogFromManifest({
       debug: createDebug(mode),
-      bypassCache: mode === "admin-reload" || mode === "diagnostics",
     });
     renderAdmin();
+    logCacheDiagnostics({
+      page: "admin",
+      appScriptUrl: import.meta.url,
+      manifestUrl: catalog.debug?.manifest?.fetchUrl || appendVersion("data/manifest.json"),
+    });
     showStatus(
       elements.status,
       `Betöltve: ${catalog.datasets.length} dataset, ${catalog.products.length} termék, ${previewProducts.length} előnézeti kártya.`,
@@ -172,6 +176,7 @@ function renderDebugPanel() {
   elements.debugContent.innerHTML = `
     <div class="debug-grid">
       ${debugKv("Mód", debug.mode)}
+      ${debugKv("APP_VERSION", APP_VERSION)}
       ${debugKv("Protocol", debug.protocol)}
       ${debugKv("Manifest forrás", debug.manifest.selectedSource || "-")}
       ${debugKv("Manifest státusz", debug.manifest.status)}

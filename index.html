@@ -14,16 +14,21 @@
     <script type="importmap">
       {
         "imports": {
-          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
-          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
+          "./assets/js/app-version.js": "./assets/js/app-version.js?v=2026-04-23-03",
+          "./assets/js/cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-03"
         },
         "scopes": {
           "./assets/js/": {
-            "./app-version.js": "./assets/js/app-version.js?v=2026-04-23-02",
-            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-02"
+            "./app-version.js": "./assets/js/app-version.js?v=2026-04-23-03",
+            "./cache-utils.js": "./assets/js/cache-utils.js?v=2026-04-23-03"
           }
         }
       }
+    </script>
+    <script type="module">
+      import { appendVersion } from "./assets/js/cache-utils.js";
+      const { runServiceWorkerCleanup } = await import(appendVersion("./assets/js/sw-cleanup.js"));
+      await runServiceWorkerCleanup("public");
     </script>
     <script type="module">
       import { appendVersion } from "./assets/js/cache-utils.js";

@@ -21,3 +21,20 @@ export function loadVersionedStylesheet(href) {
   document.head.append(link);
   return link;
 }
+
+export function getLoadedStylesheetUrls() {
+  return Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    .map((link) => link.href)
+    .filter(Boolean);
+}
+
+export function logCacheDiagnostics({ page = "unknown", appScriptUrl = "", manifestUrl = "" } = {}) {
+  console.info("[Cache] Diagnostics", {
+    page,
+    appVersion: APP_VERSION,
+    cssUrls: getLoadedStylesheetUrls(),
+    appScriptUrl,
+    manifestUrl,
+    faviconUrl: document.querySelector('link[rel="icon"]')?.href || "",
+  });
+}

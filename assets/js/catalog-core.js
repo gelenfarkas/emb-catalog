@@ -54,7 +54,7 @@ export function createDebug(mode) {
   };
 }
 
-export async function loadCatalogFromManifest({ debug = createDebug("manifest"), bypassCache = false } = {}) {
+export async function loadCatalogFromManifest({ debug = createDebug("manifest") } = {}) {
   let result = null;
   let lastError = null;
   const start = performance.now();
@@ -63,7 +63,7 @@ export async function loadCatalogFromManifest({ debug = createDebug("manifest"),
   for (const manifestPath of candidates) {
     try {
       console.groupCollapsed(`[Catalog] Manifest: ${manifestPath}`);
-      result = await loadFromManifest(manifestPath, { debug, metrics: debug.performance, bypassCache });
+      result = await loadFromManifest(manifestPath, { debug, metrics: debug.performance });
       debug.manifest.selectedSource = manifestPath;
       debug.manifest.status = "ok";
       debug.manifest.entryCount = debug.manifest.entryCount || result.manifest?.datasets?.length || 0;

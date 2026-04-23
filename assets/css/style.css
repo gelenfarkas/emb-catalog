@@ -250,15 +250,92 @@ h3 {
   gap: var(--space-5);
 }
 
-.public-footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
+.site-footer {
+  margin-top: var(--space-4);
+  background: #171717;
+  color: rgba(255, 255, 255, 0.88);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
-.public-footer a {
+.footer-inner {
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.footer-col {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.footer-col h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+.footer-col p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.footer-links {
+  display: grid;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  line-height: 1.45;
   text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.22);
   text-underline-offset: 3px;
+  transition: color 0.16s ease, text-decoration-color 0.16s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.58);
+}
+
+.footer-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+
+.footer-icon:hover,
+.footer-icon:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.footer-icon:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.footer-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 .admin-hero {
@@ -1165,5 +1242,10 @@ code {
 
   .hero-card {
     display: none;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    padding: 18px;
   }
 }
